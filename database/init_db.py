@@ -39,6 +39,7 @@ def init_database():
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute("PRAGMA foreign_keys = ON;")
+    cursor.execute("PRAGMA journal_mode = WAL;")
 
     # 1. Cargar esquema DDL
     with open(SCHEMA_PATH, 'r', encoding='utf-8') as f:

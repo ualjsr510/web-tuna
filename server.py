@@ -21,6 +21,7 @@ import secrets
 import html
 import re
 import mimetypes
+import signal
 from datetime import datetime, timedelta, timezone
 from http.server import HTTPServer, ThreadingHTTPServer, SimpleHTTPRequestHandler
 from http import cookies
@@ -43,9 +44,12 @@ RATE_LIMIT_LOCKOUT_SECONDS = 900  # 15 minutos
 SESSION_CACHE = {}
 
 def get_db_connection():
-    """Obtiene una conexión a la base de datos con foreign keys habilitadas y row_factory."""
-    conn = sqlite3.connect(DB_PATH, timeout=10.0)
+    """Obtiene una conexión a la base de datos con foreign keys habilitadas, modo WAL y timeout."""
+    conn = sqlite3.connect(DB_PATH, timeout=15.0)
     conn.execute("PRAGMA foreign_keys = ON;")
+    conn.execute("PRAGMA journal_mode = WAL;")
+    conn.execute("PRAGMA synchronous = NORMAL;")
+    conn.execute("PRAGMA busy_timeout = 5000;")
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -85,6 +89,18 @@ def sanitize_string(val: str) -> str:
 
 class TunaRequestHandler(SimpleHTTPRequestHandler):
     server_version = "TunaServer/2.0 (SecurityHardened)"
+    timeout = 15  # Libera conexiones inactivas/keep-alive tras 15 segundos
+
+    def log_message(self, format, *args):
+        """Evita que el hilo del servidor caiga con BrokenPipe o EIO si la terminal se cierra."""
+        try:
+            sys.stderr.write("%s - - [%s] %s\n" %
+                             (self.address_string(),
+                              self.log_date_time_string(),
+                              format % args))
+            sys.stderr.flush()
+        except Exception:
+            pass
 
     def set_security_headers(self, content_type="text/html; charset=utf-8"):
         """Añade cabeceras de seguridad HTTP robustas según los mejores estándares."""
@@ -363,7 +379,10 @@ class TunaRequestHandler(SimpleHTTPRequestHandler):
     def send_redirect(self, target_url):
         self.send_response(302)
         self.send_header("Location", target_url)
+        self.send_header("Content-Length", "0")
+        self.send_header("Connection", "close")
         self.end_headers()
+        self.close_connection = True
 
     def serve_static_file(self, req_path):
         """Sirve archivos estáticos asegurando que no haya Path Traversal."""
@@ -1234,9 +1253,25 @@ class TunaRequestHandler(SimpleHTTPRequestHandler):
 
         self.send_error_json("Ruta DELETE no encontrada", 404)
 
+class ThreadedHTTPServer(ThreadingHTTPServer):
+    allow_reuse_address = True
+    daemon_threads = True
+
 def run_server(port=8080):
     server_address = ('0.0.0.0', port)
-    httpd = ThreadingHTTPServer(server_address, TunaRequestHandler)
+    httpd = ThreadedHTTPServer(server_address, TunaRequestHandler)
+
+    def shutdown_handler(signum, frame):
+        print("\n[!] Recibida señal de parada. Deteniendo servidor...")
+        try:
+            httpd.server_close()
+        except Exception:
+            pass
+        sys.exit(0)
+
+    signal.signal(signal.SIGINT, shutdown_handler)
+    signal.signal(signal.SIGTERM, shutdown_handler)
+
     print("=" * 65)
     print("  TUNA DE LA FACULTAD DE DERECHO DE ALMERÍA")
     print(f"  Servidor seguro activo en: http://localhost:{port}/")
@@ -1247,9 +1282,13 @@ def run_server(port=8080):
     print("=" * 65)
     try:
         httpd.serve_forever()
-    except KeyboardInterrupt:
-        print("\n[!] Deteniendo servidor...")
-        httpd.server_close()
+    except Exception as e:
+        print(f"[!] Servidor finalizado: {e}")
+    finally:
+        try:
+            httpd.server_close()
+        except Exception:
+            pass
 
 if __name__ == '__main__':
     port = 8080
