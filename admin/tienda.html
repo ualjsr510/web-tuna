@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración - Tienda | Tuna de Derecho de Almería</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    /* VARIABLES & SISTEMA DE DISEÑO ADMIN */
+    :root {
+      --primary: #991B1B;
+      --primary-hover: #7F1D1D;
+      --primary-light: #FEE2E2;
+      --primary-subtle: #FEF2F2;
+      --text-main: #0F172A;
+      --text-muted: #334155;
+      --text-subtle: #64748B;
+      --text-white: #FFFFFF;
+      --bg-body: #FFFFFF;
+      --bg-alt: #F8FAFC;
+      --bg-dark: #0F172A;
+      --border-color: #E2E8F0;
+      --border-dark: #CBD5E1;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+      --status-success-bg: #DCFCE7;
+      --status-success-text: #166534;
+      --status-danger-bg: #FEE2E2;
+      --status-danger-text: #991B1B;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text-main); background-color: var(--bg-alt); line-height: 1.5;
+      -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container { width: 100%; max-width: 1380px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+
+    /* HEADER ADMIN */
+    .site-header {
+      position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(8px); border-bottom: 1px solid var(--border-color); box-shadow: var(--shadow-sm);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand-crest {
+      width: 44px; height: 44px; border-radius: var(--radius-full); border: 2px solid var(--primary);
+      display: flex; align-items: center; justify-content: center; background: #FFF; color: var(--primary);
+      box-shadow: 0 2px 4px rgba(153, 27, 27, 0.15);
+    }
+    .brand-title {
+      font-size: 15px; font-weight: 700; color: var(--text-main); letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px;
+    }
+    .admin-badge {
+      background: var(--primary); color: white; font-size: 10px; font-weight: 800;
+      padding: 2px 8px; border-radius: var(--radius-full); text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .brand-subtitle { font-size: 12px; font-weight: 500; color: var(--text-subtle); }
+    .main-nav { display: flex; align-items: center; gap: 6px; }
+    .nav-link {
+      padding: 10px 16px; font-size: 14px; font-weight: 600; color: var(--text-muted);
+      border-radius: var(--radius-sm); transition: all 0.2s ease; display: flex; align-items: center; gap: 8px;
+      cursor: pointer; border: none; background: transparent; text-decoration: none;
+    }
+    .nav-link:hover { color: var(--primary); background-color: var(--primary-subtle); }
+    .nav-link.active {
+      color: var(--primary); font-weight: 700; background-color: var(--primary-subtle); border-bottom: 2px solid var(--primary);
+    }
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .user-profile-chip {
+      display: flex; align-items: center; gap: 10px; padding: 6px 12px; background: var(--bg-alt);
+      border: 1px solid var(--border-color); border-radius: var(--radius-full);
+    }
+    .avatar {
+      width: 32px; height: 32px; border-radius: var(--radius-full); background: var(--primary);
+      color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px;
+    }
+    .user-info { line-height: 1.2; }
+    .user-name { font-size: 13px; font-weight: 700; color: var(--text-main); }
+    .user-role { font-size: 11px; color: var(--text-subtle); }
+    .btn-icon-soft {
+      width: 40px; height: 40px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);
+      background: white; color: var(--text-muted); display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .btn-icon-soft:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-subtle); }
+
+    /* MÉTRICAS */
+    .admin-stats-strip {
+      background: white; border-bottom: 1px solid var(--border-color); padding: 24px 0; margin-bottom: 32px;
+    }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .stat-card {
+      background: var(--bg-alt); border: 1px solid var(--border-color); border-radius: var(--radius-md);
+      padding: 20px; display: flex; align-items: center; justify-content: space-between;
+      transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; text-decoration: none; color: inherit;
+    }
+    .stat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--border-dark); }
+    .stat-card.active-card { border-left: 4px solid var(--primary); background: #FFF; }
+    .stat-icon {
+      width: 48px; height: 48px; border-radius: var(--radius-md); background: var(--primary-light);
+      color: var(--primary); display: flex; align-items: center; justify-content: center;
+    }
+    .stat-meta .number { font-size: 26px; font-weight: 800; color: var(--text-main); line-height: 1.1; }
+    .stat-meta .label { font-size: 13px; font-weight: 600; color: var(--text-subtle); margin-top: 2px; }
+    .stat-change {
+      font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: var(--radius-full); display: inline-block; margin-top: 6px;
+    }
+    .stat-change.up { background: #DCFCE7; color: #15803D; }
+    .stat-change.neutral { background: #F1F5F9; color: #475569; }
+
+    /* CONTENIDO */
+    .section-title-bar {
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 16px;
+    }
+    .section-title { font-size: 24px; font-weight: 800; color: var(--text-main); letter-spacing: -0.02em; }
+    .section-subtitle { font-size: 14px; color: var(--text-subtle); font-weight: 500; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px;
+      font-size: 14px; font-weight: 600; border-radius: var(--radius-sm); cursor: pointer; transition: all 0.2s ease;
+      border: 1px solid transparent; font-family: inherit;
+    }
+    .btn-primary { background: var(--primary); color: white; box-shadow: 0 2px 6px rgba(153, 27, 27, 0.25); }
+    .btn-primary:hover { background: var(--primary-hover); transform: translateY(-1px); }
+    .btn-secondary { background: white; color: var(--text-main); border-color: var(--border-dark); }
+    .btn-secondary:hover { background: var(--bg-alt); border-color: #94A3B8; }
+    .btn-sm { padding: 6px 12px; font-size: 12px; }
+
+    .toolbar-box {
+      background: white; border: 1px solid var(--border-color); border-radius: var(--radius-md);
+      padding: 16px 20px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap; box-shadow: var(--shadow-sm);
+    }
+    .filter-pills { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .pill-filter {
+      padding: 6px 14px; font-size: 13px; font-weight: 600; color: var(--text-muted); border-radius: var(--radius-full);
+      background: var(--bg-alt); border: 1px solid var(--border-color); cursor: pointer; transition: all 0.2s; font-family: inherit;
+    }
+    .pill-filter:hover { border-color: var(--primary); color: var(--primary); }
+    .pill-filter.active { background: var(--primary); color: white; border-color: var(--primary); }
+    .search-box { position: relative; min-width: 260px; }
+    .search-box input {
+      width: 100%; padding: 9px 14px 9px 38px; font-size: 13px; border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm); outline: none; transition: border-color 0.2s; font-family: inherit;
+    }
+    .search-box input:focus { border-color: var(--primary); }
+    .search-box svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-subtle); }
+
+    /* GRID PRODUCTOS TIENDA */
+    .products-admin-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; margin-bottom: 32px;
+    }
+    .product-admin-card {
+      background: white; border: 1px solid var(--border-color); border-radius: var(--radius-lg);
+      padding: 16px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between;
+      transition: all 0.2s;
+    }
+    .product-admin-card:hover { box-shadow: var(--shadow-md); border-color: var(--border-dark); }
+    .prod-img-holder {
+      height: 160px; background: var(--bg-alt); border-radius: var(--radius-md); border: 1px dashed var(--border-dark);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-subtle);
+      font-weight: 600; font-size: 13px; margin-bottom: 14px;
+    }
+    .prod-title { font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
+    .prod-price { font-size: 18px; font-weight: 800; color: var(--primary); margin-bottom: 12px; }
+    .prod-meta-row { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-subtle); margin-bottom: 14px; }
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: var(--radius-full);
+      font-size: 12px; font-weight: 700;
+    }
+    .status-badge.active { background: var(--status-success-bg); color: var(--status-success-text); }
+    .status-badge.out-stock { background: var(--status-danger-bg); color: var(--status-danger-text); }
+
+    /* MODAL & TOAST */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px);
+      z-index: 100; display: none; align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-card {
+      background: white; border-radius: var(--radius-lg); max-width: 600px; width: 100%; box-shadow: var(--shadow-lg); overflow: hidden;
+    }
+    .modal-header {
+      padding: 20px 24px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; background: var(--bg-alt);
+    }
+    .modal-title { font-size: 18px; font-weight: 800; color: var(--text-main); }
+    .modal-close { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-subtle); }
+    .modal-body { padding: 24px; max-height: 75vh; overflow-y: auto; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 6px; }
+    .form-control {
+      width: 100%; padding: 10px 14px; font-size: 14px; border: 1px solid var(--border-dark); border-radius: var(--radius-sm); outline: none; background: white; font-family: inherit;
+    }
+    .form-control:focus { border-color: var(--primary); }
+    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .toast-box {
+      position: fixed; bottom: 24px; right: 24px; background: var(--text-main); color: white;
+      padding: 12px 20px; border-radius: var(--radius-md); box-shadow: var(--shadow-lg);
+      display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600;
+      z-index: 120; transform: translateY(100px); opacity: 0; transition: all 0.3s ease;
+    }
+    .toast-box.show { transform: translateY(0); opacity: 1; }
+
+    /* FOOTER */
+    .site-footer {
+      margin-top: auto; background: #0F172A; color: #94A3B8; padding: 24px 0; font-size: 13px; border-top: 1px solid #1E293B;
+    }
+    @media (max-width: 1024px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .header-inner { flex-direction: column; height: auto; padding: 16px 0; gap: 16px; }
+      .main-nav { overflow-x: auto; width: 100%; padding-bottom: 8px; }
+    }
+    @media (max-width: 640px) { .stats-grid { grid-template-columns: 1fr; } .form-grid-2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- 1. CABECERA ADMIN -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="contratos.html" class="brand">
+        <div class="brand-crest">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">
+            <span>Tuna de Derecho</span>
+            <span class="admin-badge">PANEL ADMIN</span>
+          </div>
+          <div class="brand-subtitle">Universidad de Almería</div>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="contratos.html" class="nav-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          <span>Contratos</span>
+        </a>
+
+        <a href="tienda.html" class="nav-link active">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span>Tienda</span>
+        </a>
+
+        <a href="miembros.html" class="nav-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          <span>Miembros</span>
+        </a>
+
+        <a href="repertorio.html" class="nav-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon>
+          </svg>
+          <span>Repertorio y Media</span>
+        </a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="/visitante/inicio.html" class="btn-icon-soft" title="Ver web pública del cliente">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+
+        <div class="user-profile-chip">
+          <div class="avatar" id="adminAvatarInitials">AD</div>
+          <div class="user-info">
+            <div class="user-name" id="adminUserName">Administrador</div>
+            <div class="user-role">Tuno Mayor / Admin</div>
+          </div>
+        </div>
+
+        <button onclick="TunaApp.logout()" class="btn-admin-logout" title="Cerrar Sesión">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          <span>Cerrar Sesión</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. BANDA DE MÉTRICAS -->
+  <section class="admin-stats-strip">
+    <div class="container">
+      <div class="stats-grid">
+        <a href="contratos.html" class="stat-card">
+          <div class="stat-meta">
+            <div class="number">12</div>
+            <div class="label">Contratos Pendientes</div>
+            <span class="stat-change up">+4 esta semana</span>
+          </div>
+          <div class="stat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+        </a>
+
+        <a href="tienda.html" class="stat-card active-card">
+          <div class="stat-meta">
+            <div class="number">1.480 €</div>
+            <div class="label">Ventas Tienda (Mes)</div>
+            <span class="stat-change up">+18% vs mes anterior</span>
+          </div>
+          <div class="stat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+        </a>
+
+        <a href="miembros.html" class="stat-card">
+          <div class="stat-meta">
+            <div class="number">42</div>
+            <div class="label">Miembros Activos</div>
+            <span class="stat-change neutral">6 pardillos en formación</span>
+          </div>
+          <div class="stat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle>
+            </svg>
+          </div>
+        </a>
+
+        <a href="repertorio.html" class="stat-card">
+          <div class="stat-meta">
+            <div class="number">64</div>
+            <div class="label">Canciones en Cancionero</div>
+            <span class="stat-change up">3 partituras subidas</span>
+          </div>
+          <div class="stat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle>
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. CONTENIDO TIENDA -->
+  <main class="container" style="padding-bottom: 60px;">
+    <div class="section-title-bar">
+      <div>
+        <h2 class="section-title">Gestión de Tienda & Productos</h2>
+        <p class="section-subtitle">Controla el catálogo, precios, inventario y visibilidad en el sitio web</p>
+      </div>
+      <button class="btn btn-primary" onclick="openModal('modal-nuevo-producto')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        <span>Añadir Producto</span>
+      </button>
+    </div>
+
+    <!-- Filtros de Tienda -->
+    <div class="toolbar-box">
+      <div class="filter-pills">
+        <button class="pill-filter active" onclick="filterCat('all')">Todos los Productos</button>
+        <button class="pill-filter" onclick="filterCat('ropa')">Ropa y Textil</button>
+        <button class="pill-filter" onclick="filterCat('musica')">Música & CDs</button>
+        <button class="pill-filter" onclick="filterCat('accesorios')">Accesorios</button>
+      </div>
+      <div class="search-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="prodSearch" placeholder="Buscar por producto o SKU..." onkeyup="searchProds()">
+      </div>
+    </div>
+
+    <!-- Grid de Productos -->
+    <div class="products-admin-grid" id="prodsGrid">
+      <div class="product-admin-card" data-cat="ropa">
+        <div>
+          <div class="prod-img-holder">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path>
+            </svg>
+            <span style="margin-top: 6px;">[ Foto Sudadera ]</span>
+          </div>
+          <div class="prod-title">Sudadera Oficial BORDADA</div>
+          <div class="prod-price">35,00 €</div>
+          <div class="prod-meta-row">
+            <span>Categoría: <strong>Ropa</strong></span>
+            <span>Stock: <strong>24 uds</strong></span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 12px;">
+          <span class="status-badge active">En Venta</span>
+          <button class="btn btn-secondary btn-sm" onclick="showToast('Editando producto...')">Editar</button>
+        </div>
+      </div>
+
+      <div class="product-admin-card" data-cat="musica">
+        <div>
+          <div class="prod-img-holder">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <span style="margin-top: 6px;">[ Album Cover ]</span>
+          </div>
+          <div class="prod-title">CD "Noches de Ronda"</div>
+          <div class="prod-price">12,00 €</div>
+          <div class="prod-meta-row">
+            <span>Categoría: <strong>Música</strong></span>
+            <span>Stock: <strong>120 uds</strong></span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 12px;">
+          <span class="status-badge active">En Venta</span>
+          <button class="btn btn-secondary btn-sm" onclick="showToast('Editando producto...')">Editar</button>
+        </div>
+      </div>
+
+      <div class="product-admin-card" data-cat="accesorios">
+        <div>
+          <div class="prod-img-holder">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M17 8h1a4 4 0 1 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path>
+            </svg>
+            <span style="margin-top: 6px;">[ Foto Taza ]</span>
+          </div>
+          <div class="prod-title">Taza Conmemorativa Derecho</div>
+          <div class="prod-price">9,00 €</div>
+          <div class="prod-meta-row">
+            <span>Categoría: <strong>Accesorios</strong></span>
+            <span>Stock: <strong>0 uds</strong></span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 12px;">
+          <span class="status-badge out-stock">Agotado</span>
+          <button class="btn btn-secondary btn-sm" onclick="showToast('Reponiendo stock...')">Reponer</button>
+        </div>
+      </div>
+
+      <div class="product-admin-card" data-cat="accesorios">
+        <div>
+          <div class="prod-img-holder">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span style="margin-top: 6px;">[ Pin Escudo ]</span>
+          </div>
+          <div class="prod-title">Pin Oficial Escudo Metal</div>
+          <div class="prod-price">5,00 €</div>
+          <div class="prod-meta-row">
+            <span>Categoría: <strong>Accesorios</strong></span>
+            <span>Stock: <strong>85 uds</strong></span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 12px;">
+          <span class="status-badge active">En Venta</span>
+          <button class="btn btn-secondary btn-sm" onclick="showToast('Editando producto...')">Editar</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- MODAL NUEVO PRODUCTO -->
+  <div id="modal-nuevo-producto" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Añadir Producto a la Tienda</h3>
+        <button class="modal-close" onclick="closeModal('modal-nuevo-producto')">✕</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="event.preventDefault(); showToast('Producto añadido a la tienda'); closeModal('modal-nuevo-producto');">
+          <div class="form-group">
+            <label>Nombre del Producto</label>
+            <input type="text" class="form-control" placeholder="Ej: Camiseta Oficial Tuna Derecho" required>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Categoría</label>
+              <select class="form-control">
+                <option value="ropa">Ropa y Textil</option>
+                <option value="musica">Música y CD</option>
+                <option value="accesorios">Accesorios</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Precio de Venta (€)</label>
+              <input type="text" class="form-control" placeholder="18,00" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Stock Inicial</label>
+            <input type="number" class="form-control" placeholder="50" required>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Publicar Producto</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="toastBox" class="toast-box">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.5">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    <span id="toastMsg">Acción realizada correctamente</span>
+  </div>
+
+  <!-- MODAL EDITAR PRODUCTO -->
+  <div id="modalEditProduct" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Modificar Producto y Precio</h3>
+        <button class="modal-close" onclick="TunaApp.closeModal('modalEditProduct')">✕</button>
+      </div>
+      <div class="modal-body">
+        <form id="formEditProduct" onsubmit="TunaAdmin.saveProductEdit(event)">
+          <input type="hidden" id="editProdId">
+          <div class="form-group">
+            <label class="form-label">Nombre del Producto</label>
+            <input type="text" id="editProdName" class="form-control" required>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Precio Fijado (€)</label>
+              <input type="number" step="0.01" id="editProdPrice" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Stock Disponible</label>
+              <input type="number" id="editProdStock" class="form-control" required>
+            </div>
+          </div>
+          <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
+            <button type="button" class="btn btn-secondary" onclick="TunaApp.closeModal('modalEditProduct')">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Actualizar Catálogo</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+      <div>© 2026 Tuna de la Facultad de Derecho de Almería · Panel de Control Interno</div>
+      <div style="display: flex; gap: 16px;">
+        <a href="/visitante/tienda.html" style="color: #94A3B8;">← Ver Tienda Pública</a>
+        <span style="color: #64748B;">Base de Datos SQLite Conectada</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/admin.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      TunaAdmin.checkAdminAuth();
+    });
+
+    // Formulario de agregar nuevo producto
+    document.querySelector('#modal-add form')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const inputs = form.querySelectorAll('input, select, textarea');
+      
+      const payload = {
+        name: inputs[0].value.trim(),
+        category: inputs[1].value,
+        price: parseFloat(inputs[2].value.replace(',', '.')),
+        stock: parseInt(inputs[3].value) || 50,
+        description: inputs[0].value + ' oficial de la Tuna de Derecho de Almería.',
+        badge: 'Nuevo'
+      };
+
+      try {
+        const res = await TunaApp.apiFetch('/api/admin/tienda', {
+          method: 'POST',
+          body: payload
+        });
+        if (res.success) {
+          TunaApp.showToast('Producto añadido al catálogo con éxito.', 'success');
+          closeModal('modal-add');
+          form.reset();
+          setTimeout(() => window.location.reload(), 600);
+        }
+      } catch (err) {
+        TunaApp.showToast(err.message, 'error');
+      }
+    });
+
+    function openModal(id) { document.getElementById(id).classList.add('active'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+  </script>
+</body>
+</html>

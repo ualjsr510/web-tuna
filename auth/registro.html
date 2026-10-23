@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Cliente | Tuna de la Facultad de Derecho de Almería</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/common.css">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #090D16 0%, #171C26 50%, #2A1215 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .auth-container {
+      max-width: 520px;
+      margin: 50px auto;
+      padding: 0 20px;
+      width: 100%;
+    }
+
+    .auth-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .auth-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .auth-crest {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-full);
+      background: #FFF;
+      border: 3px solid var(--primary);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+      box-shadow: 0 4px 12px rgba(153, 27, 27, 0.2);
+    }
+
+    .auth-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .auth-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 520px) {
+      .form-grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/visitante/inicio.html" class="brand">
+        <div class="brand-crest">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+        </div>
+        <div>
+          <div class="brand-title">Tuna de Derecho</div>
+          <div class="brand-subtitle">Universidad de Almería</div>
+        </div>
+      </a>
+      <div>
+        <a href="/visitante/inicio.html" class="nav-link">← Volver al portal</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="auth-container">
+    <div class="auth-card">
+      <div class="auth-header">
+        <div class="auth-crest">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </div>
+        <h1 class="auth-title">Crear Cuenta de Cliente</h1>
+        <p class="auth-subtitle">Gestiona contrataciones, seguimiento de pedidos y cotizaciones</p>
+      </div>
+
+      <form id="registerForm" onsubmit="handleRegister(event)">
+        <div class="form-group">
+          <label class="form-label" for="regName">Nombre y Apellidos</label>
+          <input type="text" id="regName" class="form-control" required placeholder="Ej. Ana Fernández Moreno">
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="regEmail">Correo Electrónico</label>
+            <input type="email" id="regEmail" class="form-control" required placeholder="tu@email.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="regPhone">Teléfono de Contacto</label>
+            <input type="tel" id="regPhone" class="form-control" required placeholder="+34 600 000 000">
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="regPassword">Contraseña</label>
+            <input type="password" id="regPassword" class="form-control" required placeholder="Mínimo 8 caracteres">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="regPasswordConfirm">Confirmar</label>
+            <input type="password" id="regPasswordConfirm" class="form-control" required placeholder="Repite la contraseña">
+          </div>
+        </div>
+
+        <div style="font-size: 12px; color: var(--text-subtle); margin-bottom: 16px;">
+          Al registrarte aceptas las políticas de privacidad y condiciones para la gestión de solicitudes musicales de la Tuna de Derecho de Almería.
+        </div>
+
+        <button type="submit" id="btnSubmitRegister" class="btn btn-primary" style="width: 100%; padding: 13px; font-size: 15px;">
+          <span>Completar Registro</span>
+        </button>
+      </form>
+
+      <div style="text-align: center; margin-top: 24px; font-size: 14px; color: var(--text-muted);">
+        ¿Ya dispones de una cuenta? <a href="/auth/login.html" style="color: var(--primary); font-weight: 700;">Inicia Sesión</a>
+      </div>
+    </div>
+  </div>
+
+  <footer style="text-align: center; padding: 24px 0; color: #94A3B8; font-size: 13px;">
+    © 2026 Tuna de la Facultad de Derecho de Almería · Área de Clientes
+  </footer>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    async function handleRegister(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const phone = document.getElementById('regPhone').value.trim();
+      const password = document.getElementById('regPassword').value;
+      const confirm = document.getElementById('regPasswordConfirm').value;
+      const btn = document.getElementById('btnSubmitRegister');
+
+      if (password !== confirm) {
+        TunaApp.showToast('Las contraseñas no coinciden', 'error');
+        return;
+      }
+
+      if (password.length < 8) {
+        TunaApp.showToast('La contraseña debe tener al menos 8 caracteres', 'error');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '<span>Creando cuenta...</span>';
+
+      try {
+        const res = await TunaApp.apiFetch('/api/auth/register', {
+          method: 'POST',
+          body: { name, email, phone, password }
+        });
+
+        if (res.success) {
+          TunaApp.showToast('¡Registro completado! Bienvenido.', 'success');
+          setTimeout(() => {
+            window.location.href = '/cliente/pedidos.html';
+          }, 800);
+        }
+      } catch (err) {
+        TunaApp.showToast(err.message, 'error');
+        btn.disabled = false;
+        btn.innerHTML = '<span>Completar Registro</span>';
+      }
+    }
+  </script>
+</body>
+</html>

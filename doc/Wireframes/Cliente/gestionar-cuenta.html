@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área Privada de Cliente - Gestionar Cuenta | Tuna de la Facultad de Derecho de Almería</title>
+  
+  <!-- Tipografía moderna Inter y Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    /* VARIABLES & SISTEMA DE DISEÑO */
+    :root {
+      --primary: #991B1B;
+      --primary-hover: #7F1D1D;
+      --primary-light: #FEE2E2;
+      --primary-subtle: #FEF2F2;
+      
+      --text-main: #0F172A;
+      --text-muted: #334155;
+      --text-subtle: #64748B;
+      --text-white: #FFFFFF;
+
+      --bg-body: #F8FAFC;
+      --bg-alt: #FFFFFF;
+      --bg-dark: #0F172A;
+      --border-color: #E2E8F0;
+      --border-dark: #CBD5E1;
+      
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-body);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    /* HEADER & NAVEGACIÓN */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-crest {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-full);
+      border: 2px solid var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFF;
+      color: var(--primary);
+      box-shadow: 0 2px 4px rgba(153, 27, 27, 0.15);
+    }
+
+    .brand-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+    }
+
+    .brand-subtitle {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-subtle);
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link {
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+      background-color: var(--primary-subtle);
+    }
+
+    .nav-link.active {
+      color: var(--primary);
+      font-weight: 600;
+      background-color: var(--primary-subtle);
+    }
+
+    .user-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 12px;
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-full);
+      background: #FFF;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .avatar-circle {
+      width: 30px;
+      height: 30px;
+      border-radius: var(--radius-full);
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* HERO BANNER DE CLIENTE */
+    .client-hero {
+      background: linear-gradient(135deg, #090D16 0%, #171C26 60%, #2A1215 100%);
+      color: var(--text-white);
+      padding: 36px 0;
+      border-bottom: 1px solid #334155;
+      position: relative;
+    }
+
+    .client-hero-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .client-badge-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #FCA5A5;
+      background: rgba(153, 27, 27, 0.4);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .client-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+
+    .client-subtitle {
+      font-size: 14px;
+      color: #94A3B8;
+      margin-top: 4px;
+    }
+
+    .client-quick-stats {
+      display: flex;
+      gap: 16px;
+    }
+
+    .stat-pill {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 10px 18px;
+      border-radius: var(--radius-md);
+      text-align: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .stat-pill-val {
+      font-size: 18px;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1;
+    }
+
+    .stat-pill-lbl {
+      font-size: 11px;
+      color: #94A3B8;
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    /* PANEL Y NAVEGACIÓN POR PESTAÑAS */
+    .portal-main {
+      padding: 40px 0 80px;
+      flex: 1;
+    }
+
+    .tabs-bar {
+      display: flex;
+      gap: 8px;
+      border-bottom: 2px solid var(--border-color);
+      margin-bottom: 32px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-muted);
+      border: none;
+      background: transparent;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: var(--primary);
+    }
+
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+      background: rgba(153, 27, 27, 0.03);
+      border-top-left-radius: var(--radius-sm);
+      border-top-right-radius: var(--radius-sm);
+    }
+
+    .tab-badge {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    .tab-panel {
+      display: block;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* TARJETAS */
+    .card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .card-header {
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-subtitle {
+      font-size: 14px;
+      color: var(--text-subtle);
+      margin-top: 4px;
+    }
+
+    /* GRID FORM */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group.full-width {
+      grid-column: span 2;
+    }
+
+    .form-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 11px 14px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text-main);
+      background-color: #FFFFFF;
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(153, 27, 27, 0.15);
+    }
+
+    /* MEDIDOR DE FUERZA DE CONTRASEÑA */
+    .strength-meter {
+      height: 6px;
+      background: var(--border-color);
+      border-radius: var(--radius-full);
+      margin-top: 8px;
+      overflow: hidden;
+    }
+
+    .strength-bar {
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s, background-color 0.3s;
+    }
+
+    .strength-text {
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 4px;
+      color: var(--text-subtle);
+    }
+
+    /* CHECKLIST REQUISITOS */
+    .req-list {
+      list-style: none;
+      margin-top: 10px;
+      font-size: 12px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+
+    .req-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-subtle);
+    }
+
+    .req-item.valid {
+      color: #166534;
+      font-weight: 600;
+    }
+
+    /* BOTONES */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #FFFFFF;
+      box-shadow: 0 2px 8px rgba(153, 27, 27, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    /* TOAST FLOATING NOTIFICATION */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .toast {
+      background: #0F172A;
+      color: white;
+      padding: 14px 20px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      border-left: 4px solid var(--primary);
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: #0F172A;
+      color: #94A3B8;
+      border-top: 1px solid #1E293B;
+      padding-top: 56px;
+      margin-top: auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1.2fr 1.4fr;
+      gap: 48px;
+      padding-bottom: 40px;
+    }
+
+    .footer-brand-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+    }
+
+    .footer-brand-desc {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #94A3B8;
+      margin-bottom: 20px;
+    }
+
+    .footer-col-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      font-size: 14px;
+      color: #94A3B8;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #FFFFFF;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #1E293B;
+      padding: 20px 0;
+      font-size: 13px;
+    }
+
+    .footer-bottom-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full-width { grid-column: span 1; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .client-hero-grid { flex-direction: column; align-items: flex-start; }
+      .req-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABECERA NAVEGACIÓN -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="contratacion.html" class="brand">
+        <div class="brand-crest">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">Tuna de Derecho</div>
+          <div class="brand-subtitle">Universidad de Almería</div>
+        </div>
+      </a>
+
+      <!-- Menú principal Cliente -->
+      <nav class="main-nav">
+        <a href="contratacion.html" class="nav-link">Contratación</a>
+        <a href="datos.html" class="nav-link">Mis Datos</a>
+        <a href="pedidos.html" class="nav-link">Mis Pedidos</a>
+        <a href="gestionar-cuenta.html" class="nav-link active">Gestionar Cuenta</a>
+      </nav>
+
+      <!-- Usuario y avatar -->
+      <div class="user-pill">
+        <div class="avatar-circle" id="user-avatar">JP</div>
+        <div style="display:flex; flex-direction:column;">
+          <span id="user-display-name">Juan Pérez Martínez</span>
+          <span style="font-size:10px; color:var(--text-subtle); font-weight:500;">Cliente Registrado</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO CLIENT BANNER -->
+  <section class="client-hero">
+    <div class="container">
+      <div class="client-hero-grid">
+        <div>
+          <span class="client-badge-tag">ÁREA PRIVADA DE CLIENTE</span>
+          <h1 class="client-title">¡Hola de nuevo, <span id="hero-user-name">Juan</span>!</h1>
+          <p class="client-subtitle">Gestiona tus solicitudes de serenatas, consulta tu historial de actuaciones y edita tus datos.</p>
+        </div>
+
+        <div class="client-quick-stats">
+          <div class="stat-pill">
+            <div class="stat-pill-val">1</div>
+            <div class="stat-pill-lbl">Actuación Confirmada</div>
+          </div>
+          <div class="stat-pill">
+            <div class="stat-pill-val">3</div>
+            <div class="stat-pill-lbl">Historial Total</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="portal-main">
+    <div class="container">
+
+      <!-- PESTAÑAS SUPERIORES -->
+      <div class="tabs-bar">
+        <a href="contratacion.html" class="tab-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          <span>Contratación</span>
+          <span class="tab-badge">Nueva</span>
+        </a>
+
+        <a href="datos.html" class="tab-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>Datos Personales</span>
+        </a>
+
+        <a href="pedidos.html" class="tab-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span>Pedidos e Historial</span>
+          <span class="tab-badge">3</span>
+        </a>
+
+        <a href="gestionar-cuenta.html" class="tab-btn active">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <span>Gestionar Cuenta</span>
+        </a>
+      </div>
+
+      <!-- PESTAÑA: GESTIONAR CUENTA -->
+      <div class="tab-panel" id="tab-cuenta">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                Seguridad y Cambiar Contraseña
+              </h2>
+              <p class="card-subtitle">Actualiza tu clave de acceso y ajusta las preferencias de privacidad.</p>
+            </div>
+          </div>
+
+          <form id="password-form" onsubmit="handlePasswordChange(event)">
+            <div class="form-grid" style="max-width: 600px;">
+              <div class="form-group full-width">
+                <label class="form-label" for="curr-pass">Contraseña Actual *</label>
+                <input type="password" id="curr-pass" class="form-input" required placeholder="••••••••">
+              </div>
+
+              <div class="form-group full-width">
+                <label class="form-label" for="new-pass">Nueva Contraseña *</label>
+                <input type="password" id="new-pass" class="form-input" required placeholder="••••••••" oninput="checkPasswordStrength(this.value)">
+                
+                <!-- Medidor de fuerza -->
+                <div class="strength-meter">
+                  <div class="strength-bar" id="strength-bar"></div>
+                </div>
+                <div class="strength-text" id="strength-text">Seguridad: Por favor escribe una contraseña</div>
+
+                <!-- Requisitos checklist -->
+                <ul class="req-list">
+                  <li class="req-item" id="req-len"><span>• Mínimo 8 caracteres</span></li>
+                  <li class="req-item" id="req-upper"><span>• Incluye una letra mayúscula</span></li>
+                  <li class="req-item" id="req-num"><span>• Incluye un número</span></li>
+                  <li class="req-item" id="req-spec"><span>• Incluye un carácter especial</span></li>
+                </ul>
+              </div>
+
+              <div class="form-group full-width">
+                <label class="form-label" for="confirm-pass">Confirmar Nueva Contraseña *</label>
+                <input type="password" id="confirm-pass" class="form-input" required placeholder="••••••••">
+              </div>
+            </div>
+
+            <div style="margin-top: 24px;">
+              <button type="submit" class="btn btn-primary">
+                <span>Actualizar Contraseña</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Preferencias de Notificaciones -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title" style="font-size:18px;">Preferencias de Notificación</h2>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <label style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600; cursor:pointer;">
+              <input type="checkbox" checked style="accent-color:var(--primary); width:18px; height:18px;">
+              Recibir avisos por correo electrónico sobre confirmaciones de serenatas.
+            </label>
+            <label style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600; cursor:pointer;">
+              <input type="checkbox" checked style="accent-color:var(--primary); width:18px; height:18px;">
+              Recibir recordatorio por WhatsApp 24 horas antes de la actuación.
+            </label>
+            <label style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600; cursor:pointer;">
+              <input type="checkbox" style="accent-color:var(--primary); width:18px; height:18px;">
+              Novedades del catálogo de la tienda de merchandising.
+            </label>
+          </div>
+        </div>
+
+        <!-- Cierre de Sesión Seguro -->
+        <div class="card" style="border-color: #FEE2E2;">
+          <div class="card-header" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
+            <div>
+              <h2 class="card-title" style="font-size:18px; color:var(--primary);">Cerrar Sesión</h2>
+              <p class="card-subtitle">Finaliza tu sesión actual en este dispositivo.</p>
+            </div>
+            <a href="../Visitante/inicio.html" class="btn btn-primary" style="background:#0F172A;">
+              Cerrar Sesión
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- TOAST NOTIFICACIÓN FLOATING -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+            <div class="brand-crest" style="width:36px; height:36px; border-color:#EF4444; background:#1E293B; color:#EF4444;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+              </svg>
+            </div>
+            <span class="footer-brand-title">Tuna de Derecho UAL</span>
+          </div>
+          <p class="footer-brand-desc">Tuna de la Facultad de Derecho de la Universidad de Almería. Desde 1995 de ronda.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="contratacion.html">Solicitar Contratación</a></li>
+            <li><a href="pedidos.html">Historial de Pedidos</a></li>
+            <li><a href="datos.html">Datos de Cliente</a></li>
+            <li><a href="gestionar-cuenta.html">Seguridad</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Atención al Cliente</h4>
+          <p style="font-size:14px; margin-bottom:10px;">Facultad de Derecho, Universidad de Almería</p>
+          <p style="font-size:14px; color:#EF4444; font-weight:600;">tuna.derecho@ual.es</p>
+          <p style="font-size:14px; font-weight:600;">+34 600 000 000</p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Soporte</h4>
+          <p style="font-size:13px; line-height:1.5;">¿Necesitas cambios urgentes en la fecha de tu serenata? Escríbenos por correo con tu número de referencia.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-flex">
+          <div>© 2026 Tuna de Derecho · Universidad de Almería</div>
+          <div>Área Privada de Cliente Protegida</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LÓGICA JAVASCRIPT -->
+  <script>
+    function checkPasswordStrength(pass) {
+      const bar = document.getElementById('strength-bar');
+      const text = document.getElementById('strength-text');
+
+      const reqLen = document.getElementById('req-len');
+      const reqUpper = document.getElementById('req-upper');
+      const reqNum = document.getElementById('req-num');
+      const reqSpec = document.getElementById('req-spec');
+
+      const hasLen = pass.length >= 8;
+      const hasUpper = /[A-Z]/.test(pass);
+      const hasNum = /[0-9]/.test(pass);
+      const hasSpec = /[^A-Za-z0-9]/.test(pass);
+
+      reqLen.classList.toggle('valid', hasLen);
+      reqUpper.classList.toggle('valid', hasUpper);
+      reqNum.classList.toggle('valid', hasNum);
+      reqSpec.classList.toggle('valid', hasSpec);
+
+      let score = 0;
+      if (hasLen) score++;
+      if (hasUpper) score++;
+      if (hasNum) score++;
+      if (hasSpec) score++;
+
+      if (pass.length === 0) {
+        bar.style.width = '0%';
+        text.textContent = "Seguridad: Por favor escribe una contraseña";
+      } else if (score <= 1) {
+        bar.style.width = '25%';
+        bar.style.backgroundColor = '#EF4444';
+        text.textContent = "Seguridad: Débil";
+      } else if (score === 2 || score === 3) {
+        bar.style.width = '60%';
+        bar.style.backgroundColor = '#F59E0B';
+        text.textContent = "Seguridad: Media";
+      } else if (score === 4) {
+        bar.style.width = '100%';
+        bar.style.backgroundColor = '#10B981';
+        text.textContent = "Seguridad: Muy Fuerte";
+      }
+    }
+
+    function handlePasswordChange(event) {
+      event.preventDefault();
+      const newP = document.getElementById('new-pass').value;
+      const confP = document.getElementById('confirm-pass').value;
+
+      if (newP !== confP) {
+        showToast("Las contraseñas no coinciden. Revisa los campos.", "error");
+        return;
+      }
+
+      showToast("¡Contraseña cambiada con éxito!");
+      document.getElementById('password-form').reset();
+      checkPasswordStrength('');
+    }
+
+    function showToast(message) {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.innerHTML = `
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span>${message}</span>
+      `;
+      container.appendChild(toast);
+      setTimeout(() => { toast.remove(); }, 4000);
+    }
+  </script>
+</body>
+</html>

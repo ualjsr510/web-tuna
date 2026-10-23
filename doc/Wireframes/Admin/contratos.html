@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contratos y Solicitudes | Panel de Administración - Tuna de Derecho</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #991B1B;
+      --primary-hover: #7F1D1D;
+      --primary-light: #FEE2E2;
+      --primary-subtle: #FEF2F2;
+      --text-main: #0F172A;
+      --text-muted: #334155;
+      --text-subtle: #64748B;
+      --text-white: #FFFFFF;
+      --bg-body: #FFFFFF;
+      --bg-alt: #F8FAFC;
+      --border-color: #E2E8F0;
+      --border-dark: #CBD5E1;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+
+      --status-success-bg: #DCFCE7;
+      --status-success-text: #166534;
+      --status-warning-bg: #FEF3C7;
+      --status-warning-text: #92400E;
+      --status-danger-bg: #FEE2E2;
+      --status-danger-text: #991B1B;
+      --status-info-bg: #E0F2FE;
+      --status-info-text: #075985;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-alt);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header Admin */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-crest {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-full);
+      border: 2px solid var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFF;
+      color: var(--primary);
+    }
+
+    .brand-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .admin-badge {
+      background: var(--primary);
+      color: white;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+    }
+
+    .brand-subtitle {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-subtle);
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link {
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary);
+      font-weight: 700;
+      background-color: var(--primary-subtle);
+    }
+
+    .nav-link.active {
+      border-bottom: 2px solid var(--primary);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-public {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      background: #FFF;
+      transition: all 0.2s;
+    }
+
+    .btn-public:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .user-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      background: #FFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .user-avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: var(--radius-full);
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    /* Page Hero Banner */
+    .page-hero {
+      background: linear-gradient(135deg, #090D16 0%, #171C26 50%, #2A1215 100%);
+      color: #FFF;
+      padding: 50px 0 55px;
+      border-bottom: 1px solid #334155;
+    }
+
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #94A3B8;
+      margin-bottom: 12px;
+    }
+
+    .breadcrumbs a:hover {
+      color: #FFF;
+    }
+
+    .page-title {
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .page-lead {
+      font-size: 16px;
+      color: #E2E8F0;
+      max-width: 720px;
+      line-height: 1.6;
+    }
+
+    /* Stats Grid */
+    .stats-strip {
+      margin-top: -25px;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: #FFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .stat-meta .number {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .stat-meta .label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-subtle);
+      margin-top: 2px;
+    }
+
+    .stat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Toolbar */
+    .toolbar-box {
+      background: #FFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      padding: 7px 14px;
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+      background: var(--bg-alt);
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .pill.active,
+    .pill:hover {
+      background: var(--primary);
+      color: #FFF;
+      border-color: var(--primary);
+    }
+
+    .search-box {
+      position: relative;
+      min-width: 260px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 9px 14px 9px 36px;
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      outline: none;
+      background: #FFF;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+
+    .search-box svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-subtle);
+    }
+
+    /* Botones */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn-secondary {
+      background: #FFF;
+      border-color: var(--border-dark);
+      color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-alt);
+    }
+
+    .btn-sm {
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+
+    /* Tabla */
+    .table-container {
+      background: #FFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow-x: auto;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 40px;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    .data-table th {
+      background: var(--bg-alt);
+      padding: 12px 16px;
+      font-weight: 700;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-color);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .data-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: middle;
+    }
+
+    .data-table tr:hover td {
+      background-color: #F8FAFC;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .status-badge.pendient {
+      background: var(--status-warning-bg);
+      color: var(--status-warning-text);
+    }
+
+    .status-badge.approved {
+      background: var(--status-info-bg);
+      color: var(--status-info-text);
+    }
+
+    .status-badge.signed {
+      background: var(--status-success-bg);
+      color: var(--status-success-text);
+    }
+
+    .status-badge.rejected {
+      background: var(--status-danger-bg);
+      color: var(--status-danger-text);
+    }
+
+    /* Modales */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-card {
+      background: #FFF;
+      border-radius: var(--radius-lg);
+      max-width: 560px;
+      width: 100%;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    .modal-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-alt);
+    }
+
+    .modal-title {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: var(--text-subtle);
+    }
+
+    .modal-body {
+      padding: 20px;
+      max-height: 75vh;
+      overflow-y: auto;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 8px 12px;
+      font-size: 13px;
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      outline: none;
+      background: #FFF;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    /* Footer */
+    .site-footer {
+      margin-top: auto;
+      background: #0F172A;
+      color: #94A3B8;
+      padding: 40px 0 24px;
+      font-size: 13px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .footer-title {
+      color: #FFF;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-links a:hover {
+      color: #FFF;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #1E293B;
+      padding-top: 20px;
+      font-size: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       1. CABECERA ADMIN
+  ============================================================ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="contratos.html" class="brand">
+        <div class="brand-crest">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">
+            <span>Tuna de Derecho</span>
+            <span class="admin-badge">Admin</span>
+          </div>
+          <div class="brand-subtitle">Universidad de Almería</div>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="contratos.html" class="nav-link active">Contratos</a>
+        <a href="miembros.html" class="nav-link">Miembros</a>
+        <a href="tienda.html" class="nav-link">Tienda</a>
+        <a href="repertorio.html" class="nav-link">Repertorio y Audiovisuales</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="../Visitante/inicio.html" class="btn-public" title="Ir a la web de visitante">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+          <span>Web Pública</span>
+        </a>
+        <div class="user-chip">
+          <div class="user-avatar">TM</div>
+          <span>Maese Caparrós</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       2. HERO BANNER
+  ============================================================ -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="contratos.html">Panel Admin</a>
+        <span>/</span>
+        <span style="color:#FFF;">Contratos</span>
+      </div>
+      <h1 class="page-title">Gestión de Contratos y Solicitudes</h1>
+      <p class="page-lead">Registro de peticiones para serenatas, bodas, aniversarios y actos corporativos de la Tuna de
+        Derecho.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       3. METRICAS / STATS
+  ============================================================ -->
+  <div class="container stats-strip">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-meta">
+          <div class="number">12</div>
+          <div class="label">Contratos Pendientes</div>
+        </div>
+        <div class="stat-icon">📄</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-meta">
+          <div class="number">5</div>
+          <div class="label">Aprobados / Por Firmar</div>
+        </div>
+        <div class="stat-icon" style="background:#E0F2FE; color:#0369A1;">⏳</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-meta">
+          <div class="number">6</div>
+          <div class="label">Firmados y Cerrados</div>
+        </div>
+        <div class="stat-icon" style="background:#DCFCE7; color:#15803D;">✅</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-meta">
+          <div class="number">4.250 €</div>
+          <div class="label">Facturación Prevista</div>
+        </div>
+        <div class="stat-icon" style="background:#FEF3C7; color:#B45309;">💰</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       4. CONTENIDO PRINCIPAL: TABLA DE CONTRATOS
+  ============================================================ -->
+  <main class="container" style="padding-bottom: 60px;">
+
+    <div class="toolbar-box">
+      <div class="filter-pills">
+        <button class="pill active" onclick="filterTable('all')">Todos (24)</button>
+        <button class="pill" onclick="filterTable('pendient')">Pendientes (12)</button>
+        <button class="pill" onclick="filterTable('approved')">Aprobados (5)</button>
+        <button class="pill" onclick="filterTable('signed')">Firmados (6)</button>
+        <button class="pill" onclick="filterTable('rejected')">Rechazados (1)</button>
+      </div>
+
+      <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+        <div class="search-box">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Buscar cliente o evento..."
+            onkeyup="searchRows()">
+        </div>
+        <button class="btn btn-primary" onclick="openModal('modal-nuevo')">+ Nuevo Contrato</button>
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table class="data-table" id="tableContratos">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Cliente / Entidad</th>
+            <th>Evento</th>
+            <th>Fecha & Hora</th>
+            <th>Lugar</th>
+            <th>Importe</th>
+            <th>Estado</th>
+            <th style="text-align: right;">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-status="pendient">
+            <td><strong>#CTR-2026-089</strong></td>
+            <td>
+              <div style="font-weight:700;">Laura Fernández Morales</div>
+              <div style="font-size:11px; color:var(--text-subtle);">laura.f@email.com · 655 123 456</div>
+            </td>
+            <td>Serenata de Boda</td>
+            <td>15 May 2026 - 21:30 h</td>
+            <td>Hotel Catedral, Almería</td>
+            <td><strong>350 €</strong></td>
+            <td><span class="status-badge pendient">Pendiente</span></td>
+            <td style="text-align: right;">
+              <button class="btn btn-secondary btn-sm" onclick="alert('Abriendo ficha de Laura Fernández')">Ver</button>
+              <button class="btn btn-primary btn-sm" onclick="alert('Contrato Aprobado con éxito')">Aprobar</button>
+            </td>
+          </tr>
+
+          <tr data-status="signed">
+            <td><strong>#CTR-2026-088</strong></td>
+            <td>
+              <div style="font-weight:700;">Colegio de Abogados Almería</div>
+              <div style="font-size:11px; color:var(--text-subtle);">eventos@icalmeria.es</div>
+            </td>
+            <td>Acto Institucional</td>
+            <td>22 Abr 2026 - 19:00 h</td>
+            <td>Sede ICALM, Almería</td>
+            <td><strong>600 €</strong></td>
+            <td><span class="status-badge signed">Firmado</span></td>
+            <td style="text-align: right;">
+              <button class="btn btn-secondary btn-sm" onclick="alert('Descargando PDF del contrato...')">📄
+                PDF</button>
+            </td>
+          </tr>
+
+          <tr data-status="approved">
+            <td><strong>#CTR-2026-087</strong></td>
+            <td>
+              <div style="font-weight:700;">Carlos Méndez Ruiz</div>
+              <div style="font-size:11px; color:var(--text-subtle);">carlos.mendez@gmail.com</div>
+            </td>
+            <td>Bodas de Oro</td>
+            <td>02 Jun 2026 - 14:00 h</td>
+            <td>Restaurante Catamarán, Aguadulce</td>
+            <td><strong>400 €</strong></td>
+            <td><span class="status-badge approved">Aprobado</span></td>
+            <td style="text-align: right;">
+              <button class="btn btn-secondary btn-sm"
+                onclick="alert('Abriendo detalles de Carlos Méndez')">Ver</button>
+              <button class="btn btn-secondary btn-sm" onclick="alert('Enviando enlace de firma...')">Firma</button>
+            </td>
+          </tr>
+
+          <tr data-status="pendient">
+            <td><strong>#CTR-2026-086</strong></td>
+            <td>
+              <div style="font-weight:700;">Facultad de Humanidades UAL</div>
+              <div style="font-size:11px; color:var(--text-subtle);">decanato.hum@ual.es</div>
+            </td>
+            <td>Graduación Universitaria</td>
+            <td>18 Jun 2026 - 12:00 h</td>
+            <td>Paraninfo UAL, Almería</td>
+            <td><strong>500 €</strong></td>
+            <td><span class="status-badge pendient">Pendiente</span></td>
+            <td style="text-align: right;">
+              <button class="btn btn-secondary btn-sm" onclick="alert('Abriendo expediente graduación...')">Ver</button>
+              <button class="btn btn-primary btn-sm" onclick="alert('Contrato Aprobado')">Aprobar</button>
+            </td>
+          </tr>
+
+          <tr data-status="rejected">
+            <td><strong>#CTR-2026-085</strong></td>
+            <td>
+              <div style="font-weight:700;">Discoteca Marina Club</div>
+              <div style="font-size:11px; color:var(--text-subtle);">contacto@marinaclub.com</div>
+            </td>
+            <td>Fiesta Temática Privada</td>
+            <td>01 May 2026 - 02:00 h</td>
+            <td>Puerto Roquetas de Mar</td>
+            <td><strong>300 €</strong></td>
+            <td><span class="status-badge rejected">Rechazado</span></td>
+            <td style="text-align: right;">
+              <button class="btn btn-secondary btn-sm"
+                onclick="alert('Motivo: Incompatibilidad horaria con certamen')">Motivo</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- ============================================================
+       5. MODAL NUEVO CONTRATO
+  ============================================================ -->
+  <div id="modal-nuevo" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Registrar Nuevo Contrato</h3>
+        <button class="modal-close" onclick="closeModal('modal-nuevo')">✕</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="event.preventDefault(); alert('Contrato guardado correctamente'); closeModal('modal-nuevo');">
+          <div class="form-group">
+            <label>Nombre del Cliente / Entidad</label>
+            <input type="text" class="form-control" placeholder="Ej: María García" required>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Teléfono</label>
+              <input type="tel" class="form-control" placeholder="600 000 000" required>
+            </div>
+            <div class="form-group">
+              <label>Correo</label>
+              <input type="email" class="form-control" placeholder="cliente@correo.com" required>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Tipo de Evento</label>
+              <select class="form-control">
+                <option>Serenata de Boda</option>
+                <option>Ronda Aniversario</option>
+                <option>Graduación UAL</option>
+                <option>Evento Institucional</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Precio (€)</label>
+              <input type="number" class="form-control" placeholder="350" required>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Fecha</label>
+              <input type="date" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Hora</label>
+              <input type="time" class="form-control" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Lugar en Almería</label>
+            <input type="text" class="form-control" placeholder="Hotel, Iglesia o Dirección">
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%; margin-top:8px;">Guardar Contrato</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       6. PIE DE PÁGINA
+  ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-title">Tuna de Derecho de Almería</div>
+          <p style="margin-bottom: 12px;">Panel de administración interno para gestión de actuaciones, miembros,
+            repertorio y tienda.</p>
+          <a href="../Visitante/inicio.html" style="color: #F87171; font-weight: 600;">← Volver al Portal de
+            Visitantes</a>
+        </div>
+        <div>
+          <div class="footer-title">Panel Admin</div>
+          <ul class="footer-links">
+            <li><a href="contratos.html">Contratos</a></li>
+            <li><a href="miembros.html">Miembros</a></li>
+            <li><a href="tienda.html">Tienda</a></li>
+            <li><a href="repertorio.html">Repertorio y Audiovisuales</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">Web Pública</div>
+          <ul class="footer-links">
+            <li><a href="../Visitante/inicio.html">Inicio</a></li>
+            <li><a href="../Visitante/contratacion.html">Contratación Pública</a></li>
+            <li><a href="../Visitante/tienda.html">Tienda Pública</a></li>
+            <li><a href="../Visitante/cancionero.html">Cancionero</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">Contacto Interno</div>
+          <p>Facultad de Derecho · UAL</p>
+          <p style="margin-top: 6px;">tuna.derecho@ual.es</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 Tuna de la Facultad de Derecho de Almería · Wireframe de Administración</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function openModal(id) { document.getElementById(id).classList.add('active'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+    function filterTable(status) {
+      document.querySelectorAll('#tableContratos tbody tr').forEach(tr => {
+        tr.style.display = (status === 'all' || tr.dataset.status === status) ? '' : 'none';
+      });
+      document.querySelectorAll('.filter-pills .pill').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+    function searchRows() {
+      const q = document.getElementById('searchInput').value.toLowerCase();
+      document.querySelectorAll('#tableContratos tbody tr').forEach(tr => {
+        tr.style.display = tr.innerText.toLowerCase().includes(q) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+
+</html>

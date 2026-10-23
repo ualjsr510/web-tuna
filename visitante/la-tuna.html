@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Tuna - Historia, Miembros y Galería | Tuna de Derecho de Almería</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #991B1B;
+      --primary-hover: #7F1D1D;
+      --primary-light: #FEE2E2;
+      --primary-subtle: #FEF2F2;
+      --text-main: #0F172A;
+      --text-muted: #334155;
+      --text-subtle: #64748B;
+      --text-white: #FFFFFF;
+      --bg-body: #FFFFFF;
+      --bg-alt: #F8FAFC;
+      --bg-dark: #0F172A;
+      --border-color: #E2E8F0;
+      --border-dark: #CBD5E1;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-body);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand-crest {
+      width: 44px; height: 44px; border-radius: var(--radius-full);
+      border: 2px solid var(--primary); display: flex; align-items: center; justify-content: center;
+      background: #FFF; color: var(--primary);
+    }
+    .brand-title { font-size: 15px; font-weight: 700; color: var(--text-main); }
+    .brand-subtitle { font-size: 12px; font-weight: 500; color: var(--text-subtle); }
+    .main-nav { display: flex; align-items: center; gap: 6px; }
+    .nav-link {
+      padding: 8px 14px; font-size: 14px; font-weight: 500; color: var(--text-muted);
+      border-radius: var(--radius-sm); transition: all 0.2s; display: flex; align-items: center; gap: 6px;
+    }
+    .nav-link:hover, .nav-link.active { color: var(--primary); font-weight: 600; background-color: var(--primary-subtle); }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-client {
+      display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px;
+      font-size: 14px; font-weight: 600; color: var(--text-main);
+      border: 1px solid var(--border-dark); border-radius: var(--radius-sm); background: #FFF;
+    }
+    .cart-btn {
+      position: relative; width: 42px; height: 42px; border: 1px solid var(--border-dark);
+      border-radius: var(--radius-sm); background: #FFF; display: flex; align-items: center; justify-content: center;
+    }
+    .cart-count {
+      position: absolute; top: -6px; right: -6px; background: var(--primary);
+      color: white; font-size: 11px; font-weight: 700; min-width: 20px; height: 20px;
+      border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center;
+    }
+
+    /* Page Banner */
+    .page-hero {
+      background: linear-gradient(135deg, #090D16 0%, #171C26 50%, #2A1215 100%);
+      color: #FFF; padding: 60px 0 70px; border-bottom: 1px solid #334155; position: relative;
+    }
+    .breadcrumbs {
+      display: flex; align-items: center; gap: 8px; font-size: 13px; color: #94A3B8; margin-bottom: 16px;
+    }
+    .breadcrumbs a:hover { color: #FFF; }
+    .page-title { font-size: clamp(32px, 4vw, 48px); font-weight: 800; line-height: 1.15; margin-bottom: 14px; }
+    .page-lead { font-size: 17px; color: #E2E8F0; max-width: 720px; line-height: 1.6; }
+
+    /* Subnav de anclas */
+    .subnav-sticky {
+      background: #FFF; border-bottom: 1px solid var(--border-color); position: sticky; top: 80px; z-index: 40;
+    }
+    .subnav-inner { display: flex; gap: 24px; padding: 12px 0; overflow-x: auto; }
+    .subnav-item {
+      font-size: 14px; font-weight: 600; color: var(--text-muted); padding: 8px 16px; border-radius: var(--radius-full);
+      background: var(--bg-alt); border: 1px solid var(--border-color); transition: all 0.2s; white-space: nowrap;
+    }
+    .subnav-item:hover, .subnav-item.active { background: var(--primary); color: #FFF; border-color: var(--primary); }
+
+    /* Secciones comunes */
+    .section-wrap { padding: 80px 0; border-bottom: 1px solid var(--border-color); }
+    .section-eyebrow {
+      font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--primary); margin-bottom: 8px; display: inline-block;
+    }
+    .section-title { font-size: 32px; font-weight: 800; color: var(--text-main); margin-bottom: 16px; }
+    .section-subtitle { font-size: 16px; color: var(--text-muted); max-width: 680px; margin-bottom: 40px; }
+
+    /* Timeline Historia */
+    .timeline { position: relative; padding-left: 36px; border-left: 2px solid #E2E8F0; margin: 40px 0; }
+    .timeline-item { position: relative; margin-bottom: 40px; }
+    .timeline-dot {
+      position: absolute; left: -45px; top: 4px; width: 16px; height: 16px;
+      border-radius: var(--radius-full); background: var(--primary); border: 4px solid #FFF;
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+    .timeline-year { font-size: 14px; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
+    .timeline-title { font-size: 18px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; }
+    .timeline-desc { font-size: 15px; color: var(--text-muted); line-height: 1.6; }
+
+    /* Indumentaria Cards */
+    .costume-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+    .costume-card {
+      background: var(--bg-alt); border: 1px solid var(--border-color); border-radius: var(--radius-lg);
+      padding: 24px; display: flex; flex-direction: column; gap: 12px;
+    }
+    .costume-icon {
+      width: 44px; height: 44px; border-radius: var(--radius-md); background: #FFF;
+      border: 1px solid var(--border-color); color: var(--primary); display: flex; align-items: center; justify-content: center;
+    }
+    .costume-name { font-size: 17px; font-weight: 700; color: var(--text-main); }
+    .costume-text { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+    /* Miembros Grid */
+    .members-filters { display: flex; gap: 10px; margin-bottom: 32px; flex-wrap: wrap; }
+    .filter-btn {
+      padding: 8px 18px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 600;
+      border: 1px solid var(--border-color); background: #FFF; color: var(--text-muted); cursor: pointer;
+    }
+    .filter-btn.active, .filter-btn:hover { background: var(--primary); color: #FFF; border-color: var(--primary); }
+
+    .members-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .member-card {
+      background: #FFF; border: 1px solid var(--border-color); border-radius: var(--radius-lg);
+      padding: 20px; text-align: center; display: flex; flex-direction: column; align-items: center;
+      box-shadow: var(--shadow-sm); transition: transform 0.2s;
+    }
+    .member-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .member-photo-box {
+      width: 100px; height: 100px; border-radius: var(--radius-full); background: #E2E8F0;
+      border: 3px solid var(--primary-light); display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px; color: var(--text-subtle);
+    }
+    .member-nickname { font-size: 17px; font-weight: 800; color: var(--text-main); }
+    .member-role { font-size: 12px; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-bottom: 4px; }
+    .member-instrument { font-size: 13px; color: var(--text-muted); }
+    .member-year { font-size: 12px; color: var(--text-subtle); margin-top: 8px; }
+
+    /* Galería */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .gallery-item {
+      background: #0F172A; border-radius: var(--radius-md); overflow: hidden; height: 260px;
+      position: relative; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px;
+      color: #FFF; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);
+    }
+    .gallery-tag {
+      position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.65);
+      border: 1px solid rgba(255,255,255,0.2); font-size: 11px; font-weight: 600; padding: 4px 10px;
+      border-radius: var(--radius-full);
+    }
+    .gallery-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .gallery-desc { font-size: 12px; color: #CBD5E1; }
+
+    /* Footer */
+    .site-footer { background: #0F172A; color: #94A3B8; padding-top: 60px; border-top: 1px solid #1E293B; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1.3fr; gap: 40px; padding-bottom: 48px; }
+    .footer-title { color: #FFF; font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a:hover { color: #FFF; }
+    .footer-bottom { border-top: 1px solid #1E293B; padding: 20px 0; font-size: 13px; }
+
+    @media print {
+      body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      .site-header, .subnav-sticky { position: static !important; }
+      .member-card, .gallery-item, .costume-card { page-break-inside: avoid; }
+    }
+
+    @media (max-width: 1024px) {
+      .members-grid { grid-template-columns: repeat(2, 1fr); }
+      .costume-grid, .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .members-grid, .costume-grid, .gallery-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .main-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="inicio.html" class="brand">
+        <div class="brand-crest">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">Tuna de Derecho</div>
+          <div class="brand-subtitle">Universidad de Almería</div>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="inicio.html" class="nav-link">Inicio</a>
+        <a href="la-tuna.html" class="nav-link active">La Tuna</a>
+        <a href="cancionero.html" class="nav-link">Cancionero</a>
+        <a href="videos.html" class="nav-link">Vídeos</a>
+        <a href="captacion.html" class="nav-link">Únete</a>
+        <a href="tienda.html" class="nav-link">Tienda</a>
+        <a href="contratacion.html" class="nav-link">
+          <span>Contratación</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </a>
+      </nav>
+
+      <div class="header-actions">
+        <div id="headerUserActions">
+          <a href="/auth/login.html" class="btn-login-header">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+              <polyline points="10 17 15 12 10 7"></polyline>
+              <line x1="15" y1="12" x2="3" y2="12"></line>
+            </svg>
+            <span>Iniciar Sesión</span>
+          </a>
+        </div>
+        <button class="cart-btn" onclick="TunaApp.openCart()" aria-label="Carrito">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="cart-count" style="display:none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="inicio.html">Inicio</a>
+        <span>/</span>
+        <span style="color:#FFF;">La Tuna</span>
+      </div>
+      <h1 class="page-title">Historia, Miembros y Tradición</h1>
+      <p class="page-lead">Conoce a la Tuna de la Facultad de Derecho de Almería: más de 30 años de rondas estudiantiles, canciones de siempre y hermandad universitaria.</p>
+    </div>
+  </section>
+
+  <!-- SUBNAV ANCLAS -->
+  <div class="subnav-sticky">
+    <div class="container subnav-inner">
+      <a href="#historia" class="subnav-item active">Nuestra Historia</a>
+      <a href="#indumentaria" class="subnav-item">Indumentaria y Traje</a>
+      <a href="#miembros" class="subnav-item">Miembros y Tunos</a>
+      <a href="#galeria" class="subnav-item">Galería Fotográfica</a>
+    </div>
+  </div>
+
+  <!-- 1. HISTORIA -->
+  <section id="historia" class="section-wrap">
+    <div class="container">
+      <span class="section-eyebrow">TRAYECTORIA Y ORIGEN</span>
+      <h2 class="section-title">Más de tres décadas de música y andanzas</h2>
+      <p class="section-subtitle">Nacida en las aulas del antiguo Colegio Universitario y consolidada en el Campus de la Cañada, la Tuna de Derecho es una de las agrupaciones más laureadas de Almería.</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">1995 · FUNDACIÓN</div>
+          <h3 class="timeline-title">Primeros acordes en la Facultad de Derecho</h3>
+          <p class="timeline-desc">Un grupo de estudiantes de Derecho decide formalizar la tuna bajo el madrinazgo de la facultad, rescatando la tradición de los sopistas del Siglo de Oro español.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2002 · PRIMERA GIRA INTERNACIONAL</div>
+          <h3 class="timeline-title">Rondas por Portugal, Francia e Italia</h3>
+          <p class="timeline-desc">La agrupación cruza fronteras participando en el FITU de Coímbra y llevando las serenatas almerienses a plazas europeas.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2012 · PRIMER PREMIO NACIONAL</div>
+          <h3 class="timeline-title">Mejor Tuna de Derecho de España</h3>
+          <p class="timeline-desc">En el prestigioso Certamen Nacional de Tunas de Derecho celebrado en Salamanca, la Tuna de Almería se alza con el 1er Premio a la Mejor Tuna y Mejor Solista.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2026 · PRESENTE ACTIVO</div>
+          <h3 class="timeline-title">30+ años formando generaciones de universitarios</h3>
+          <p class="timeline-desc">Con 45 tunos activos y decenas de veteranos, seguimos rondando bodas, certámenes benéficos y las fiestas patronales de San Raimundo de Peñafort.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. INDUMENTARIA -->
+  <section id="indumentaria" class="section-wrap" style="background:var(--bg-alt);">
+    <div class="container">
+      <span class="section-eyebrow">SIMBOLOGÍA Y TRADICIÓN</span>
+      <h2 class="section-title">El Hábito del Tuno de Derecho</h2>
+      <p class="section-subtitle">Cada prenda y cinta cuenta una historia de viajes, amores y lealtad a la facultad.</p>
+
+      <div class="costume-grid">
+        <div class="costume-card">
+          <div class="costume-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+          </div>
+          <h3 class="costume-name">La Beca Roja</h3>
+          <p class="costume-text">Distintivo universitario en forma de 'V' sobre el pecho. El color rojo simboliza la disciplina de las Ciencias Jurídicas y el Derecho, bordado con el escudo oficial de la UAL.</p>
+        </div>
+
+        <div class="costume-card">
+          <div class="costume-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path></svg>
+          </div>
+          <h3 class="costume-name">El Jubón y las Calzas</h3>
+          <p class="costume-text">Prendas de terciopelo negro inspiradas en la usanza académica del siglo XVI y XVII. Elegancia clásica acompañada de gorguera y puños blancos almidonados.</p>
+        </div>
+
+        <div class="costume-card">
+          <div class="costume-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+          </div>
+          <h3 class="costume-name">La Capa y las Cintas</h3>
+          <p class="costume-text">La capa de paño negro alberga las cintas de colores regaladas y bordadas con dedicatorias de madres, novias, madrinas y ciudades donde la tuna ha dejado su huella musical.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. MIEMBROS -->
+  <section id="miembros" class="section-wrap">
+    <div class="container">
+      <span class="section-eyebrow">CUADRO DE HONOR Y COMPONENTES</span>
+      <h2 class="section-title">Quiénes formamos la Tuna</h2>
+      <p class="section-subtitle">Estudiantes de Grado, Máster y antiguos alumnos que mantienen viva la hermandad.</p>
+
+      <div class="members-filters">
+        <button class="filter-btn active">Todos (45)</button>
+        <button class="filter-btn">Junta de Gobierno (5)</button>
+        <button class="filter-btn">Tunos de Beca (28)</button>
+        <button class="filter-btn">Pardillos / Novatos (12)</button>
+      </div>
+
+      <div class="members-grid">
+        <!-- Miembro 1 -->
+        <div class="member-card">
+          <div class="member-photo-box">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="7" r="4"></circle><path d="M20 21v-2a4 4 0 0 0-4-4H4a4 4 0 0 0-4 4v2"></path></svg>
+          </div>
+          <div class="member-role">Jefe de Tuna</div>
+          <div class="member-nickname">"Maese Letrado"</div>
+          <div class="member-instrument">Bandurria & Solista</div>
+          <div class="member-year">Beca 2017 · 4º Derecho</div>
+        </div>
+
+        <!-- Miembro 2 -->
+        <div class="member-card">
+          <div class="member-photo-box">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="7" r="4"></circle><path d="M20 21v-2a4 4 0 0 0-4-4H4a4 4 0 0 0-4 4v2"></path></svg>
+          </div>
+          <div class="member-role">Contador / Tesorero</div>
+          <div class="member-nickname">"El Notario"</div>
+          <div class="member-instrument">Guitarra Española</div>
+          <div class="member-year">Beca 2019 · Máster Abogacía</div>
+        </div>
+
+        <!-- Miembro 3 -->
+        <div class="member-card">
+          <div class="member-photo-box">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="7" r="4"></circle><path d="M20 21v-2a4 4 0 0 0-4-4H4a4 4 0 0 0-4 4v2"></path></svg>
+          </div>
+          <div class="member-role">Maestre de Novatos</div>
+          <div class="member-nickname">"Pandereta Brava"</div>
+          <div class="member-instrument">Pandereta & Baile de Capa</div>
+          <div class="member-year">Beca 2020 · 3º Derecho</div>
+        </div>
+
+        <!-- Miembro 4 -->
+        <div class="member-card">
+          <div class="member-photo-box">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="7" r="4"></circle><path d="M20 21v-2a4 4 0 0 0-4-4H4a4 4 0 0 0-4 4v2"></path></svg>
+          </div>
+          <div class="member-role">Tuno de Beca</div>
+          <div class="member-nickname">"El Cónsul"</div>
+          <div class="member-instrument">Laúd & Acordeón</div>
+          <div class="member-year">Beca 2021 · 3º Derecho</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. GALERÍA -->
+  <section id="galeria" class="section-wrap" style="background:var(--bg-alt);">
+    <div class="container">
+      <span class="section-eyebrow">ARCHIVO FOTOGRÁFICO</span>
+      <h2 class="section-title">Galería de Momentos</h2>
+      <p class="section-subtitle">Instantes de certámenes, rondas por la Alcazaba y graduaciones de la UAL.</p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <span class="gallery-tag">CERTAMEN 2025</span>
+          <div class="gallery-title">Actuación en el Teatro Cervantes</div>
+          <div class="gallery-desc">Primer premio en interpretación musical y pandereta.</div>
+        </div>
+        <div class="gallery-item">
+          <span class="gallery-tag">RONDA NOCTURNA</span>
+          <div class="gallery-title">Serenata en Plaza Vieja</div>
+          <div class="gallery-desc">Música bajo los balcones del casco antiguo de Almería.</div>
+        </div>
+        <div class="gallery-item">
+          <span class="gallery-tag">GRADUACIÓN UAL</span>
+          <div class="gallery-title">Auditorio Paraninfo UAL</div>
+          <div class="gallery-desc">Despedida de la XXX Promoción del Grado en Derecho.</div>
+        </div>
+        <div class="gallery-item">
+          <span class="gallery-tag">VIAJE INTERNACIONAL</span>
+          <div class="gallery-title">Festival de Tunas en Coímbra</div>
+          <div class="gallery-desc">Hermanamiento con tunas portuguesas e hispanoamericanas.</div>
+        </div>
+        <div class="gallery-item">
+          <span class="gallery-tag">FERIA DE ALMERÍA</span>
+          <div class="gallery-title">Ronda en el Paseo de Almería</div>
+          <div class="gallery-desc">Tradicional pasacalles de la Virgen del Mar.</div>
+        </div>
+        <div class="gallery-item">
+          <span class="gallery-tag">BODA REALIZADA</span>
+          <div class="gallery-title">Salida nupcial en la Catedral</div>
+          <div class="gallery-desc">Serenata sorpresa a los novios con capa de honor.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-title">Tuna de Derecho UAL</div>
+          <p style="font-size:14px; margin-bottom:16px;">Tuna oficial de la Facultad de Derecho de la Universidad de Almería.</p>
+          <p style="font-size:13px; color:#64748B;">Fundada en 1995 · Almería, Andalucía</p>
+        </div>
+        <div>
+          <div class="footer-title">Navegación</div>
+          <ul class="footer-links">
+            <li><a href="inicio.html">Inicio</a></li>
+            <li><a href="la-tuna.html">La Tuna</a></li>
+            <li><a href="cancionero.html">Cancionero</a></li>
+            <li><a href="videos.html">Vídeos</a></li>
+            <li><a href="captacion.html">Únete</a></li>
+            <li><a href="tienda.html">Tienda</a></li>
+            <li><a href="contratacion.html">Contratación</a></li>
+            <li><a href="../Admin/miembros.html" style="color:var(--primary); font-weight:700;">Panel Admin</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">Contacto</div>
+          <p style="font-size:14px; margin-bottom:8px;">Facultad de Derecho, Campus UAL</p>
+          <p style="font-size:14px; margin-bottom:8px;">tuna.derecho@ual.es</p>
+          <p style="font-size:14px;">+34 600 000 000</p>
+        </div>
+        <div>
+          <div class="footer-title">¿Quieres unirte?</div>
+          <p style="font-size:14px; margin-bottom:14px;">Ensayamos martes y jueves en el Campus. No hace falta saber tocar.</p>
+          <a href="captacion.html" style="display:inline-block; background:var(--primary); color:white; padding:8px 16px; border-radius:6px; font-weight:700; font-size:13px;">Ven a un ensayo</a>
+        </div>
+      </div>
+  <script src="../assets/js/app.js"></script>
+  <script>
+    let allMembers = [];
+
+    async function loadMembers() {
+      try {
+        const res = await TunaApp.apiFetch('/api/miembros');
+        allMembers = res.members || [];
+        if (allMembers.length > 0) {
+          renderMembersGrid('all');
+        }
+      } catch (e) {
+        console.log('Error cargando miembros de la API', e);
+      }
+    }
+
+    function renderMembersGrid(category = 'all') {
+      const container = document.querySelector('.members-grid');
+      if (!container) return;
+
+      const filtered = category === 'all'
+        ? allMembers
+        : allMembers.filter(m => m.category === category);
+
+      container.innerHTML = filtered.map(m => `
+        <div class="member-card">
+          <div class="member-photo-box">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="7" r="4"></circle><path d="M20 21v-2a4 4 0 0 0-4-4H4a4 4 0 0 0-4 4v2"></path></svg>
+          </div>
+          <div class="member-role" style="text-transform:uppercase;">${TunaApp.escapeHTML(m.category)}</div>
+          <div class="member-nickname">"${TunaApp.escapeHTML(m.nickname)}"</div>
+          <div class="member-instrument">${TunaApp.escapeHTML(m.role_instrument)}</div>
+          <div class="member-year">Beca ${m.generation_year} · ${TunaApp.escapeHTML(m.real_name)}</div>
+        </div>
+      `).join('');
+    }
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        const text = e.target.textContent.toLowerCase();
+        if (text.includes('veterano')) renderMembersGrid('veterano');
+        else if (text.includes('novato')) renderMembersGrid('novato');
+        else if (text.includes('activo') || text.includes('beca')) renderMembersGrid('activo');
+        else renderMembersGrid('all');
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadMembers();
+    });
+  </script>
+</body>
+</html>

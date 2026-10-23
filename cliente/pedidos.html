@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área Privada de Cliente - Mis Pedidos | Tuna de la Facultad de Derecho de Almería</title>
+  
+  <!-- Tipografía moderna Inter y Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    /* VARIABLES & SISTEMA DE DISEÑO */
+    :root {
+      --primary: #991B1B;
+      --primary-hover: #7F1D1D;
+      --primary-light: #FEE2E2;
+      --primary-subtle: #FEF2F2;
+      
+      --text-main: #0F172A;
+      --text-muted: #334155;
+      --text-subtle: #64748B;
+      --text-white: #FFFFFF;
+
+      --bg-body: #F8FAFC;
+      --bg-alt: #FFFFFF;
+      --bg-dark: #0F172A;
+      --border-color: #E2E8F0;
+      --border-dark: #CBD5E1;
+      
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-body);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    /* HEADER & NAVEGACIÓN */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-crest {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-full);
+      border: 2px solid var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFF;
+      color: var(--primary);
+      box-shadow: 0 2px 4px rgba(153, 27, 27, 0.15);
+    }
+
+    .brand-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+    }
+
+    .brand-subtitle {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-subtle);
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link {
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+      background-color: var(--primary-subtle);
+    }
+
+    .nav-link.active {
+      color: var(--primary);
+      font-weight: 600;
+      background-color: var(--primary-subtle);
+    }
+
+    .user-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 12px;
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-full);
+      background: #FFF;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .avatar-circle {
+      width: 30px;
+      height: 30px;
+      border-radius: var(--radius-full);
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* HERO BANNER DE CLIENTE */
+    .client-hero {
+      background: linear-gradient(135deg, #090D16 0%, #171C26 60%, #2A1215 100%);
+      color: var(--text-white);
+      padding: 36px 0;
+      border-bottom: 1px solid #334155;
+      position: relative;
+    }
+
+    .client-hero-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .client-badge-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #FCA5A5;
+      background: rgba(153, 27, 27, 0.4);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .client-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+
+    .client-subtitle {
+      font-size: 14px;
+      color: #94A3B8;
+      margin-top: 4px;
+    }
+
+    .client-quick-stats {
+      display: flex;
+      gap: 16px;
+    }
+
+    .stat-pill {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 10px 18px;
+      border-radius: var(--radius-md);
+      text-align: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .stat-pill-val {
+      font-size: 18px;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1;
+    }
+
+    .stat-pill-lbl {
+      font-size: 11px;
+      color: #94A3B8;
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    /* PANEL Y NAVEGACIÓN POR PESTAÑAS */
+    .portal-main {
+      padding: 40px 0 80px;
+      flex: 1;
+    }
+
+    .tabs-bar {
+      display: flex;
+      gap: 8px;
+      border-bottom: 2px solid var(--border-color);
+      margin-bottom: 32px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-muted);
+      border: none;
+      background: transparent;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: var(--primary);
+    }
+
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+      background: rgba(153, 27, 27, 0.03);
+      border-top-left-radius: var(--radius-sm);
+      border-top-right-radius: var(--radius-sm);
+    }
+
+    .tab-badge {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    .tab-panel {
+      display: block;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* TARJETAS Y TABLAS */
+    .card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .card-header {
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-subtitle {
+      font-size: 14px;
+      color: var(--text-subtle);
+      margin-top: 4px;
+    }
+
+    /* HISTORIAL Y FILTROS */
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-color);
+      background: #FFFFFF;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .order-item-card {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 16px;
+      background: #FFFFFF;
+      transition: all 0.2s;
+    }
+
+    .order-item-card:hover {
+      border-color: var(--border-dark);
+      box-shadow: var(--shadow-md);
+    }
+
+    .order-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border-color);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .order-id {
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .order-type-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      text-transform: uppercase;
+    }
+
+    .type-contratacion { background: #FEF3C7; color: #92400E; }
+    .type-tienda { background: #E0E7FF; color: #3730A3; }
+
+    .status-badge {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-confirmado { background: #DCFCE7; color: #166534; }
+    .status-pendiente { background: #FEF9C3; color: #854D0E; }
+    .status-completado { background: #F1F5F9; color: #475569; }
+
+    .order-body-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr auto;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .order-detail-title {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .order-detail-sub {
+      font-size: 13px;
+      color: var(--text-subtle);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .order-price {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    /* BOTONES */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-secondary {
+      background: #FFFFFF;
+      color: var(--text-main);
+      border-color: var(--border-dark);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-body);
+      border-color: #94A3B8;
+    }
+
+    /* MODAL DETALLES DE PEDIDO */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 90;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      max-width: 600px;
+      width: 100%;
+      padding: 28px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-color);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: #0F172A;
+      color: #94A3B8;
+      border-top: 1px solid #1E293B;
+      padding-top: 56px;
+      margin-top: auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1.2fr 1.4fr;
+      gap: 48px;
+      padding-bottom: 40px;
+    }
+
+    .footer-brand-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+    }
+
+    .footer-brand-desc {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #94A3B8;
+      margin-bottom: 20px;
+    }
+
+    .footer-col-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      font-size: 14px;
+      color: #94A3B8;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #FFFFFF;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #1E293B;
+      padding: 20px 0;
+      font-size: 13px;
+    }
+
+    .footer-bottom-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .order-body-grid { grid-template-columns: 1fr; gap: 10px; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .client-hero-grid { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABECERA NAVEGACIÓN -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="contratacion.html" class="brand">
+        <div class="brand-crest">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">Tuna de Derecho</div>
+          <div class="brand-subtitle">Universidad de Almería</div>
+        </div>
+      </a>
+
+      <!-- Menú principal Cliente -->
+      <nav class="main-nav">
+        <a href="contratacion.html" class="nav-link">Contratación</a>
+        <a href="datos.html" class="nav-link">Mis Datos</a>
+        <a href="pedidos.html" class="nav-link active">Mis Pedidos</a>
+        <a href="gestionar-cuenta.html" class="nav-link">Gestionar Cuenta</a>
+      </nav>
+
+      <!-- Usuario y avatar -->
+      <div class="user-pill">
+        <div class="avatar-circle" id="user-avatar">JP</div>
+        <div style="display:flex; flex-direction:column;">
+          <span id="user-display-name">Juan Pérez Martínez</span>
+          <span style="font-size:10px; color:var(--text-subtle); font-weight:500;">Cliente Registrado</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO CLIENT BANNER -->
+  <section class="client-hero">
+    <div class="container">
+      <div class="client-hero-grid">
+        <div>
+          <span class="client-badge-tag">ÁREA PRIVADA DE CLIENTE</span>
+          <h1 class="client-title">¡Hola de nuevo, <span id="hero-user-name">Juan</span>!</h1>
+          <p class="client-subtitle">Gestiona tus solicitudes de serenatas, consulta tu historial de actuaciones y edita tus datos.</p>
+        </div>
+
+        <div class="client-quick-stats">
+          <div class="stat-pill">
+            <div class="stat-pill-val">1</div>
+            <div class="stat-pill-lbl">Actuación Confirmada</div>
+          </div>
+          <div class="stat-pill">
+            <div class="stat-pill-val">3</div>
+            <div class="stat-pill-lbl">Historial Total</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="portal-main">
+    <div class="container">
+
+      <!-- PESTAÑAS SUPERIORES -->
+      <div class="tabs-bar">
+        <a href="contratacion.html" class="tab-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          <span>Contratación</span>
+          <span class="tab-badge">Nueva</span>
+        </a>
+
+        <a href="datos.html" class="tab-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>Datos Personales</span>
+        </a>
+
+        <a href="pedidos.html" class="tab-btn active">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span>Pedidos e Historial</span>
+          <span class="tab-badge" id="orders-badge-count">3</span>
+        </a>
+
+        <a href="gestionar-cuenta.html" class="tab-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <span>Gestionar Cuenta</span>
+        </a>
+      </div>
+
+      <!-- HISTORIAL Y LISTA DE PEDIDOS -->
+      <div class="tab-panel" id="tab-pedidos">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                Historial de Solicitudes y Compras
+              </h2>
+              <p class="card-subtitle">Consulta el estado de tus actuaciones contratadas y pedidos de merchandising oficial.</p>
+            </div>
+          </div>
+
+          <!-- Filtros de lista -->
+          <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterOrders('all', this)">Todos</button>
+            <button class="filter-btn" onclick="filterOrders('contratacion', this)">Contrataciones</button>
+            <button class="filter-btn" onclick="filterOrders('tienda', this)">Tienda Merchandising</button>
+          </div>
+
+          <!-- LISTA DINÁMICA DE PEDIDOS -->
+          <div id="orders-list-container">
+            <!-- Renderizado dinámico vía JavaScript -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- MODAL DE DETALLES DE PEDIDO -->
+  <div class="modal-overlay" id="order-modal">
+    <div class="modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <h3 class="card-title" id="modal-title">Detalles de la Contratación</h3>
+        <button onclick="closeModal()" style="background:none; border:none; cursor:pointer; font-size:20px; color:var(--text-subtle);">✕</button>
+      </div>
+      <div id="modal-content-body">
+        <!-- Generado dinámicamente -->
+      </div>
+      <div style="margin-top:24px; display:flex; justify-content:flex-end;">
+        <button class="btn btn-secondary" onclick="closeModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+            <div class="brand-crest" style="width:36px; height:36px; border-color:#EF4444; background:#1E293B; color:#EF4444;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+              </svg>
+            </div>
+            <span class="footer-brand-title">Tuna de Derecho UAL</span>
+          </div>
+          <p class="footer-brand-desc">Tuna de la Facultad de Derecho de la Universidad de Almería. Desde 1995 de ronda.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="contratacion.html">Solicitar Contratación</a></li>
+            <li><a href="pedidos.html">Historial de Pedidos</a></li>
+            <li><a href="datos.html">Datos de Cliente</a></li>
+            <li><a href="gestionar-cuenta.html">Seguridad</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Atención al Cliente</h4>
+          <p style="font-size:14px; margin-bottom:10px;">Facultad de Derecho, Universidad de Almería</p>
+          <p style="font-size:14px; color:#EF4444; font-weight:600;">tuna.derecho@ual.es</p>
+          <p style="font-size:14px; font-weight:600;">+34 600 000 000</p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Soporte</h4>
+          <p style="font-size:13px; line-height:1.5;">¿Necesitas cambios urgentes en la fecha de tu serenata? Escríbenos por correo con tu número de referencia.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-flex">
+          <div>© 2026 Tuna de Derecho · Universidad de Almería</div>
+          <div>Área Privada de Cliente Protegida</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/client.js"></script>
+  <script>
+    let realOrders = [];
+    let realContracts = [];
+
+    async function loadClientData() {
+      const user = await TunaClient.initClientPage('pedidos');
+      if (!user) return;
+
+      try {
+        const [ordersRes, contractsRes] = await Promise.all([
+          TunaApp.apiFetch('/api/pedidos').catch(() => ({ orders: [] })),
+          TunaApp.apiFetch('/api/contratos').catch(() => ({ contratos: [] }))
+        ]);
+
+        realOrders = ordersRes.orders || [];
+        realContracts = contractsRes.contratos || [];
+        renderCombinedOrders('all');
+      } catch (err) {
+        console.error('Error cargando datos del cliente:', err);
+      }
+    }
+
+    function renderCombinedOrders(filter) {
+      const container = document.getElementById('orders-list-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      let items = [];
+
+      if (filter === 'all' || filter === 'contratacion') {
+        realContracts.forEach(c => {
+          items.push({
+            id: `ACT-${c.id}`,
+            type: 'contratacion',
+            typeLabel: 'Contratación Actuación',
+            title: `${c.event_type} (${c.attendees || 'Evento'})`,
+            date: c.event_date,
+            time: c.event_time,
+            location: c.location,
+            amount: c.price_agreed ? `${parseFloat(c.price_agreed).toFixed(2)} €` : 'A convenir',
+            status: c.status,
+            statusLabel: c.status.toUpperCase(),
+            details: c.notes || 'Sin observaciones'
+          });
+        });
+      }
+
+      if (filter === 'all' || filter === 'tienda') {
+        realOrders.forEach(o => {
+          const itemNames = (o.items || []).map(i => `${i.quantity}x ${i.product_name}`).join(', ');
+          items.push({
+            id: o.order_code,
+            type: 'tienda',
+            typeLabel: 'Tienda Oficial',
+            title: itemNames || 'Productos de Merchandising',
+            date: o.created_at.split(' ')[0],
+            time: o.created_at.split(' ')[1] || '',
+            location: `${o.shipping_city} (${o.shipping_address})`,
+            amount: `${parseFloat(o.total_amount).toFixed(2)} €`,
+            status: o.status === 'procesando' ? 'pendiente' : (o.status === 'enviado' ? 'confirmado' : 'completado'),
+            statusLabel: o.status.toUpperCase(),
+            details: `Método de pago: ${o.payment_method}. ${o.tracking_number ? 'Seguimiento: ' + o.tracking_number : ''}`
+          });
+        });
+      }
+
+      if (items.length === 0) {
+        container.innerHTML = `<div style="text-align:center; padding:40px; color:var(--text-subtle);">No tienes solicitudes o compras registradas todavía.</div>`;
+        return;
+      }
+
+      items.forEach(order => {
+        const item = document.createElement('div');
+        item.className = 'order-item-card';
+
+        let statusClass = 'status-pendiente';
+        if (order.status === 'confirmado' || order.status === 'aprobado') statusClass = 'status-confirmado';
+        if (order.status === 'completado' || order.status === 'entregado') statusClass = 'status-completado';
+
+        item.innerHTML = `
+          <div class="order-header">
+            <div class="order-id">
+              <span>${order.id}</span>
+              <span class="order-type-badge type-${order.type}">${order.typeLabel}</span>
+            </div>
+            <span class="status-badge ${statusClass}">${order.statusLabel}</span>
+          </div>
+
+          <div class="order-body-grid">
+            <div>
+              <div class="order-detail-title">${TunaApp.escapeHTML(order.title)}</div>
+              <div class="order-detail-sub">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                ${TunaApp.escapeHTML(order.location)}
+              </div>
+            </div>
+
+            <div class="order-detail-sub" style="flex-direction:column; align-items:flex-start;">
+              <span style="font-weight:600; color:var(--text-main);">${order.date}</span>
+              <span>${order.time}</span>
+            </div>
+
+            <div class="order-price">${order.amount}</div>
+
+            <button class="btn btn-secondary" style="padding: 6px 12px; font-size:12px;" onclick='openOrderDetailModal(${JSON.stringify(order)})'>
+              Ver Detalle
+            </button>
+          </div>
+        `;
+
+        container.appendChild(item);
+      });
+    }
+
+    function filterOrders(filterType, btnElem) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btnElem.classList.add('active');
+      renderCombinedOrders(filterType);
+    }
+
+    function openOrderDetailModal(order) {
+      document.getElementById('modal-title').textContent = `${order.typeLabel} #${order.id}`;
+      document.getElementById('modal-content-body').innerHTML = `
+        <div style="display:flex; flex-direction:column; gap:12px; margin-top:12px;">
+          <div style="background:var(--bg-body); padding:12px; border-radius:var(--radius-sm);">
+            <strong>Detalle:</strong> ${TunaApp.escapeHTML(order.title)}
+          </div>
+          <div><strong>Fecha / Hora:</strong> ${order.date} a las ${order.time}</div>
+          <div><strong>Lugar / Destino:</strong> ${TunaApp.escapeHTML(order.location)}</div>
+          <div><strong>Importe Total:</strong> <span style="color:var(--primary); font-weight:800;">${order.amount}</span></div>
+          <div><strong>Estado:</strong> ${order.statusLabel}</div>
+          <hr style="border:none; border-top:1px solid var(--border-color);">
+          <p style="font-size:13px; color:var(--text-muted);"><strong>Información:</strong> ${TunaApp.escapeHTML(order.details)}</p>
+        </div>
+      `;
+      document.getElementById('order-modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('order-modal').style.display = 'none';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadClientData();
+    });
+  </script>
+</body>
+</html>

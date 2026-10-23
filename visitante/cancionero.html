@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cancionero y Repertorio | Tuna de Derecho de Almería</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #991B1B;
+      --primary-hover: #7F1D1D;
+      --primary-light: #FEE2E2;
+      --primary-subtle: #FEF2F2;
+      --text-main: #0F172A;
+      --text-muted: #334155;
+      --text-subtle: #64748B;
+      --text-white: #FFFFFF;
+      --bg-body: #FFFFFF;
+      --bg-alt: #F8FAFC;
+      --border-color: #E2E8F0;
+      --border-dark: #CBD5E1;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text-main); background-color: var(--bg-body); line-height: 1.5; -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    .site-header {
+      position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(8px); border-bottom: 1px solid var(--border-color); box-shadow: var(--shadow-sm);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand-crest {
+      width: 44px; height: 44px; border-radius: var(--radius-full); border: 2px solid var(--primary);
+      display: flex; align-items: center; justify-content: center; background: #FFF; color: var(--primary);
+    }
+    .brand-title { font-size: 15px; font-weight: 700; color: var(--text-main); }
+    .brand-subtitle { font-size: 12px; font-weight: 500; color: var(--text-subtle); }
+    .main-nav { display: flex; align-items: center; gap: 6px; }
+    .nav-link {
+      padding: 8px 14px; font-size: 14px; font-weight: 500; color: var(--text-muted);
+      border-radius: var(--radius-sm); transition: all 0.2s; display: flex; align-items: center; gap: 6px;
+    }
+    .nav-link:hover, .nav-link.active { color: var(--primary); font-weight: 600; background-color: var(--primary-subtle); }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-client {
+      display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; font-size: 14px;
+      font-weight: 600; color: var(--text-main); border: 1px solid var(--border-dark); border-radius: var(--radius-sm); background: #FFF;
+    }
+    .cart-btn {
+      position: relative; width: 42px; height: 42px; border: 1px solid var(--border-dark);
+      border-radius: var(--radius-sm); background: #FFF; display: flex; align-items: center; justify-content: center;
+    }
+    .cart-count {
+      position: absolute; top: -6px; right: -6px; background: var(--primary); color: white;
+      font-size: 11px; font-weight: 700; min-width: 20px; height: 20px; border-radius: var(--radius-full);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* Page Banner */
+    .page-hero {
+      background: linear-gradient(135deg, #090D16 0%, #171C26 50%, #2A1215 100%);
+      color: #FFF; padding: 60px 0 70px; border-bottom: 1px solid #334155;
+    }
+    .breadcrumbs { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #94A3B8; margin-bottom: 16px; }
+    .breadcrumbs a:hover { color: #FFF; }
+    .page-title { font-size: clamp(32px, 4vw, 48px); font-weight: 800; line-height: 1.15; margin-bottom: 14px; }
+    .page-lead { font-size: 17px; color: #E2E8F0; max-width: 720px; line-height: 1.6; }
+
+    /* Barra de Búsqueda y Filtros */
+    .search-filter-bar {
+      background: #FFF; border-bottom: 1px solid var(--border-color); padding: 24px 0;
+      position: sticky; top: 80px; z-index: 40; box-shadow: var(--shadow-sm);
+    }
+    .search-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .search-input-wrap {
+      flex: 1; min-width: 280px; position: relative; display: flex; align-items: center;
+    }
+    .search-input-wrap svg { position: absolute; left: 14px; color: var(--text-subtle); pointer-events: none; }
+    .search-input {
+      width: 100%; padding: 12px 16px 12px 42px; border: 1px solid var(--border-dark);
+      border-radius: var(--radius-sm); font-size: 14px; background: var(--bg-alt);
+    }
+    .search-input:focus { outline: none; border-color: var(--primary); background: #FFF; }
+    
+    .genre-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+    .genre-btn {
+      padding: 8px 16px; border-radius: var(--radius-full); font-size: 13px; font-weight: 600;
+      border: 1px solid var(--border-color); background: var(--bg-alt); color: var(--text-muted); cursor: pointer;
+    }
+    .genre-btn.active, .genre-btn:hover { background: var(--primary); color: #FFF; border-color: var(--primary); }
+
+    /* Layout Repertorio & Spotify */
+    .repertoire-section { padding: 60px 0 90px; }
+    .repertoire-grid-main { display: grid; grid-template-columns: 1.8fr 1.2fr; gap: 48px; align-items: flex-start; }
+
+    /* Tablón de Canciones */
+    .songs-list { display: flex; flex-direction: column; gap: 14px; }
+    .song-card {
+      background: #FFF; border: 1px solid var(--border-color); border-radius: var(--radius-md);
+      padding: 18px 24px; display: flex; justify-content: space-between; align-items: center;
+      transition: all 0.2s; box-shadow: var(--shadow-sm);
+    }
+    .song-card:hover { border-color: var(--primary); transform: translateX(4px); box-shadow: var(--shadow-md); }
+    .song-left { display: flex; align-items: center; gap: 18px; }
+    .song-number {
+      font-size: 14px; font-weight: 700; color: var(--text-subtle); width: 28px; height: 28px;
+      border-radius: var(--radius-full); background: var(--bg-alt); display: flex; align-items: center; justify-content: center;
+    }
+    .song-title { font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 2px; }
+    .song-meta { display: flex; gap: 12px; font-size: 12px; color: var(--text-subtle); align-items: center; }
+    .song-tag { background: #F1F5F9; padding: 2px 8px; border-radius: 4px; font-weight: 600; color: var(--text-muted); }
+    
+    .song-actions { display: flex; align-items: center; gap: 10px; }
+    .btn-lyrics {
+      padding: 7px 14px; font-size: 13px; font-weight: 600; border-radius: var(--radius-sm);
+      border: 1px solid var(--border-dark); background: #FFF; color: var(--text-main); cursor: pointer;
+    }
+    .btn-lyrics:hover { background: var(--primary-subtle); color: var(--primary); border-color: var(--primary); }
+
+    /* Panel Lateral Spotify */
+    .spotify-sidebar {
+      background: #0F172A; color: #FFF; border-radius: var(--radius-lg); padding: 32px;
+      position: sticky; top: 180px; box-shadow: var(--shadow-md); border: 1px solid #1E293B;
+    }
+    .spotify-badge {
+      display: inline-flex; align-items: center; gap: 6px; background: rgba(29, 185, 84, 0.15);
+      color: #1DB954; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: var(--radius-full); margin-bottom: 20px;
+    }
+    .spotify-album-box { display: flex; gap: 18px; align-items: center; margin-bottom: 24px; }
+    .album-art {
+      width: 90px; height: 90px; border-radius: var(--radius-md); background: linear-gradient(135deg, #7F1D1D, #991B1B);
+      display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 700; font-size: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .album-details h3 { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
+    .album-details p { font-size: 13px; color: #94A3B8; }
+    
+    .spotify-tracks-mini { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .mini-track {
+      display: flex; justify-content: space-between; font-size: 13px; padding: 8px 0; border-bottom: 1px solid #1E293B;
+    }
+    .mini-track-name { font-weight: 600; color: #E2E8F0; }
+    .mini-track-time { color: #64748B; }
+
+    .btn-spotify-full {
+      width: 100%; background: #1DB954; color: #000; font-weight: 700; font-size: 14px;
+      padding: 13px; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-spotify-full:hover { background: #1ed760; }
+
+    /* Footer */
+    .site-footer { background: #0F172A; color: #94A3B8; padding-top: 60px; border-top: 1px solid #1E293B; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1.3fr; gap: 40px; padding-bottom: 48px; }
+    .footer-title { color: #FFF; font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a:hover { color: #FFF; }
+    .footer-bottom { border-top: 1px solid #1E293B; padding: 20px 0; font-size: 13px; }
+
+    @media print {
+      .site-header, .search-filter-bar { position: static !important; }
+      .spotify-sidebar { background: #FFF !important; color: #000 !important; border: 1px solid #000 !important; }
+      .song-card { page-break-inside: avoid; }
+    }
+    @media (max-width: 1024px) {
+      .repertoire-grid-main { grid-template-columns: 1fr; }
+      .spotify-sidebar { position: static; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .main-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="inicio.html" class="brand">
+        <div class="brand-crest">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">Tuna de Derecho</div>
+          <div class="brand-subtitle">Universidad de Almería</div>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="inicio.html" class="nav-link">Inicio</a>
+        <a href="la-tuna.html" class="nav-link">La Tuna</a>
+        <a href="cancionero.html" class="nav-link active">Cancionero</a>
+        <a href="videos.html" class="nav-link">Vídeos</a>
+        <a href="captacion.html" class="nav-link">Únete</a>
+        <a href="tienda.html" class="nav-link">Tienda</a>
+        <a href="contratacion.html" class="nav-link">
+          <span>Contratación</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        </a>
+      </nav>
+
+      <div class="header-actions">
+        <div id="headerUserActions">
+          <a href="/auth/login.html" class="btn-login-header">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+              <polyline points="10 17 15 12 10 7"></polyline>
+              <line x1="15" y1="12" x2="3" y2="12"></line>
+            </svg>
+            <span>Iniciar Sesión</span>
+          </a>
+        </div>
+        <button class="cart-btn" onclick="TunaApp.openCart()" aria-label="Carrito">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="cart-count" style="display:none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="inicio.html">Inicio</a>
+        <span>/</span>
+        <span style="color:#FFF;">Cancionero</span>
+      </div>
+      <h1 class="page-title">Cancionero y Repertorio Tradicional</h1>
+      <p class="page-lead">Descubre las más de 120 canciones que componen el repertorio de la Tuna de Derecho de Almería: pasodobles, serenatas, boleros y clásicos de ronda estudiantil.</p>
+    </div>
+  </section>
+
+  <!-- BARRA DE BÚSQUEDA Y GÉNEROS -->
+  <div class="search-filter-bar">
+    <div class="container search-row">
+      <div class="search-input-wrap">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" class="search-input" placeholder="Buscar por título de canción o letra...">
+      </div>
+      <div class="genre-pills">
+        <button class="genre-btn active">Todas (120)</button>
+        <button class="genre-btn">Pasodobles (34)</button>
+        <button class="genre-btn">Boleros y Rondas (28)</button>
+        <button class="genre-btn">Universitarias (18)</button>
+        <button class="genre-btn">Hispanoamericanas (25)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPERTORIO + SPOTIFY -->
+  <section class="repertoire-section">
+    <div class="container">
+      <div class="repertoire-grid-main">
+        <!-- Lista de canciones -->
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+            <h2 style="font-size:22px; font-weight:800; color:var(--text-main);">Listado de Obras</h2>
+            <span style="font-size:13px; color:var(--text-subtle); font-weight:600;">Mostrando 8 canciones destacadas</span>
+          </div>
+
+          <div class="songs-list">
+            <!-- 1 -->
+            <div class="song-card">
+              <div class="song-left">
+                <span class="song-number">01</span>
+                <div>
+                  <div class="song-title">Clavelitos</div>
+                  <div class="song-meta">
+                    <span class="song-tag">Pasodoble</span>
+                    <span>Tonalidad: Do Mayor</span>
+                    <span>Tradicional</span>
+                  </div>
+                </div>
+              </div>
+              <div class="song-actions">
+                <button class="btn-lyrics">Ver Letra y Acordes</button>
+              </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="song-card">
+              <div class="song-left">
+                <span class="song-number">02</span>
+                <div>
+                  <div class="song-title">Fonseca (Triste y Sola)</div>
+                  <div class="song-meta">
+                    <span class="song-tag">Universitaria</span>
+                    <span>Tonalidad: La Menor</span>
+                    <span>Himno estudiantil</span>
+                  </div>
+                </div>
+              </div>
+              <div class="song-actions">
+                <button class="btn-lyrics">Ver Letra y Acordes</button>
+              </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="song-card">
+              <div class="song-left">
+                <span class="song-number">03</span>
+                <div>
+                  <div class="song-title">Libro Rojo</div>
+                  <div class="song-meta">
+                    <span class="song-tag">Pasodoble</span>
+                    <span>Tonalidad: Re Menor</span>
+                    <span>Clásico de Derecho</span>
+                  </div>
+                </div>
+              </div>
+              <div class="song-actions">
+                <button class="btn-lyrics">Ver Letra y Acordes</button>
+              </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="song-card">
+              <div class="song-left">
+                <span class="song-number">04</span>
+                <div>
+                  <div class="song-title">Las Cintas de mi Capa</div>
+                  <div class="song-meta">
+                    <span class="song-tag">Ronda</span>
+                    <span>Tonalidad: Sol Mayor</span>
+                    <span>Autor: Villena / Ruiz</span>
+                  </div>
+                </div>
+              </div>
+              <div class="song-actions">
+                <button class="btn-lyrics">Ver Letra y Acordes</button>
+              </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="song-card">
+              <div class="song-left">
+                <span class="song-number">05</span>
+                <div>
+                  <div class="song-title">Horas de Ronda</div>
+                  <div class="song-meta">
+                    <span class="song-tag">Serenata</span>
+                    <span>Tonalidad: Mi Menor</span>
+                    <span>Ronda tradicional</span>
+                  </div>
+                </div>
+              </div>
+              <div class="song-actions">
+                <button class="btn-lyrics">Ver Letra y Acordes</button>
+              </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="song-card">
+              <div class="song-left">
+                <span class="song-number">06</span>
+                <div>
+                  <div class="song-title">La Morena de mi Copla</div>
+                  <div class="song-meta">
+                    <span class="song-tag">Pasodoble</span>
+                    <span>Tonalidad: Fa Mayor</span>
+                    <span>Solista & Pandereta</span>
+                  </div>
+                </div>
+              </div>
+              <div class="song-actions">
+                <button class="btn-lyrics">Ver Letra y Acordes</button>
+              </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="song-card">
+              <div class="song-left">
+                <span class="song-number">07</span>
+                <div>
+                  <div class="song-title">Cielito Lindo</div>
+                  <div class="song-meta">
+                    <span class="song-tag">Hispanoamericana</span>
+                    <span>Tonalidad: Do Mayor</span>
+                    <span>Popular</span>
+                  </div>
+                </div>
+              </div>
+              <div class="song-actions">
+                <button class="btn-lyrics">Ver Letra y Acordes</button>
+              </div>
+            </div>
+
+            <!-- 8 -->
+            <div class="song-card">
+              <div class="song-left">
+                <span class="song-number">08</span>
+                <div>
+                  <div class="song-title">Tuna de Derecho (Himno de Facultad)</div>
+                  <div class="song-meta">
+                    <span class="song-tag">Universitaria</span>
+                    <span>Tonalidad: Re Mayor</span>
+                    <span>Composición propia</span>
+                  </div>
+                </div>
+              </div>
+              <div class="song-actions">
+                <button class="btn-lyrics">Ver Letra y Acordes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar Spotify -->
+        <div>
+          <div class="spotify-sidebar">
+            <div class="spotify-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"></circle></svg>
+              <span>DISPONIBLE EN SPOTIFY</span>
+            </div>
+
+            <div class="spotify-album-box">
+              <div class="album-art">PORTADA</div>
+              <div class="album-details">
+                <h3>Noches de Ronda</h3>
+                <p>Tuna de Derecho de Almería</p>
+                <span style="font-size:12px; color:#EF4444; font-weight:700;">14 Pistas · 48 min</span>
+              </div>
+            </div>
+
+            <p style="font-size:13px; color:#94A3B8; margin-bottom:18px; line-height:1.5;">
+              Grabación en directo con las mejores rondas del Certamen Internacional y colaboraciones especiales.
+            </p>
+
+            <div class="spotify-tracks-mini">
+              <div class="mini-track">
+                <span class="mini-track-name">1. Clavelitos</span>
+                <span class="mini-track-time">3:41</span>
+              </div>
+              <div class="mini-track">
+                <span class="mini-track-name">2. Fonseca</span>
+                <span class="mini-track-time">4:05</span>
+              </div>
+              <div class="mini-track">
+                <span class="mini-track-name">3. Libro Rojo</span>
+                <span class="mini-track-time">3:22</span>
+              </div>
+              <div class="mini-track">
+                <span class="mini-track-name">4. Las Cintas de mi Capa</span>
+                <span class="mini-track-time">3:58</span>
+              </div>
+              <div class="mini-track">
+                <span class="mini-track-name">5. El Día que me Quieras</span>
+                <span class="mini-track-time">4:15</span>
+              </div>
+            </div>
+
+            <a href="#" class="btn-spotify-full">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+              </svg>
+              <span>Escuchar Álbum en Spotify</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL LETRA Y ACORDES -->
+  <div id="modalLetra" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modalSongTitle" class="modal-title">Letra de Canción</h3>
+        <button class="modal-close" onclick="TunaApp.closeModal('modalLetra')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="modalSongMeta" style="font-size:13px; color:var(--text-subtle); margin-bottom:16px;"></div>
+        <pre id="modalSongLyrics" style="white-space:pre-wrap; font-family:inherit; font-size:15px; line-height:1.7; color:var(--text-main); background:var(--bg-alt); padding:20px; border-radius:var(--radius-md); border:1px solid var(--border-color);"></pre>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" onclick="TunaApp.closeModal('modalLetra')">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-title">Tuna de Derecho UAL</div>
+          <p style="font-size:14px; margin-bottom:16px;">Tuna de la Facultad de Derecho de la Universidad de Almería.</p>
+        </div>
+        <div>
+          <div class="footer-title">Navegación</div>
+          <ul class="footer-links">
+            <li><a href="inicio.html">Inicio</a></li>
+            <li><a href="la-tuna.html">La Tuna</a></li>
+            <li><a href="cancionero.html">Cancionero</a></li>
+            <li><a href="videos.html">Vídeos</a></li>
+            <li><a href="captacion.html">Únete</a></li>
+            <li><a href="tienda.html">Tienda</a></li>
+            <li><a href="contratacion.html">Contratación</a></li>
+            <li><a href="/admin/repertorio.html" style="color:var(--primary); font-weight:700;">Panel Admin</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">Contacto</div>
+          <p style="font-size:14px; margin-bottom:8px;">Facultad de Derecho, Campus UAL</p>
+          <p style="font-size:14px;">tuna.derecho@ual.es</p>
+        </div>
+        <div>
+          <div class="footer-title">Petición de Canciones</div>
+          <p style="font-size:14px; margin-bottom:12px;">¿Tienes una canción especial para tu boda o evento?</p>
+          <a href="contratacion.html" style="color:#EF4444; font-weight:700; font-size:14px;">Consultar en Contratación →</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+          <div>© 2026 Tuna de Derecho · Universidad de Almería</div>
+          <div>Aviso legal · Privacidad · Cookies · <a href="/admin/repertorio.html" style="color:inherit; text-decoration:underline;">Acceso Administración</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    let dbSongs = [];
+
+    async function loadSongs() {
+      try {
+        const res = await TunaApp.apiFetch('/api/repertorio');
+        dbSongs = res.songs || [];
+        if (dbSongs.length > 0) {
+          renderSongsList(dbSongs);
+        }
+      } catch (e) {
+        console.log('Cargando repertorio estático', e);
+      }
+    }
+
+    function renderSongsList(songs) {
+      const listEl = document.querySelector('.song-list');
+      if (!listEl) return;
+
+      listEl.innerHTML = songs.map((s, idx) => `
+        <div class="song-card">
+          <div class="song-left">
+            <span class="song-number">${String(idx + 1).padStart(2, '0')}</span>
+            <div>
+              <div class="song-title">${TunaApp.escapeHTML(s.title)}</div>
+              <div class="song-meta">
+                <span class="song-tag">${TunaApp.escapeHTML(s.genre || 'Tradicional')}</span>
+                <span>Autor: ${TunaApp.escapeHTML(s.author || 'Popular')}</span>
+                <span>Duración: ${TunaApp.escapeHTML(s.duration || '3:30')}</span>
+              </div>
+            </div>
+          </div>
+          <div class="song-actions">
+            <button class="btn-lyrics" onclick="showSongLyrics(${s.id})">Ver Letra Completa</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function showSongLyrics(songId) {
+      const song = dbSongs.find(s => s.id === songId);
+      if (!song) return;
+
+      document.getElementById('modalSongTitle').textContent = song.title;
+      document.getElementById('modalSongMeta').textContent = `${song.genre} · Álbum: ${song.album || 'Disco Oficial'} · Autor: ${song.author}`;
+      document.getElementById('modalSongLyrics').textContent = song.lyrics || 'Letra en proceso de digitalización para este tema.';
+      TunaApp.openModal('modalLetra');
+    }
+
+    document.getElementById('songSearch')?.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      const filtered = dbSongs.filter(s =>
+        s.title.toLowerCase().includes(q) ||
+        (s.lyrics && s.lyrics.toLowerCase().includes(q)) ||
+        (s.author && s.author.toLowerCase().includes(q))
+      );
+      renderSongsList(filtered);
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadSongs();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda Oficial y Catálogo de Merchandising | Tuna de Derecho de Almería</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #991B1B;
+      --primary-hover: #7F1D1D;
+      --primary-light: #FEE2E2;
+      --primary-subtle: #FEF2F2;
+      --text-main: #0F172A;
+      --text-muted: #334155;
+      --text-subtle: #64748B;
+      --text-white: #FFFFFF;
+      --bg-body: #FFFFFF;
+      --bg-alt: #F8FAFC;
+      --border-color: #E2E8F0;
+      --border-dark: #CBD5E1;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text-main); background-color: var(--bg-body); line-height: 1.5; -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    .site-header {
+      position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(8px); border-bottom: 1px solid var(--border-color); box-shadow: var(--shadow-sm);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand-crest {
+      width: 44px; height: 44px; border-radius: var(--radius-full); border: 2px solid var(--primary);
+      display: flex; align-items: center; justify-content: center; background: #FFF; color: var(--primary);
+    }
+    .brand-title { font-size: 15px; font-weight: 700; color: var(--text-main); }
+    .brand-subtitle { font-size: 12px; font-weight: 500; color: var(--text-subtle); }
+    .main-nav { display: flex; align-items: center; gap: 6px; }
+    .nav-link {
+      padding: 8px 14px; font-size: 14px; font-weight: 500; color: var(--text-muted);
+      border-radius: var(--radius-sm); transition: all 0.2s; display: flex; align-items: center; gap: 6px;
+    }
+    .nav-link:hover, .nav-link.active { color: var(--primary); font-weight: 600; background-color: var(--primary-subtle); }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-client {
+      display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; font-size: 14px;
+      font-weight: 600; color: var(--text-main); border: 1px solid var(--border-dark); border-radius: var(--radius-sm); background: #FFF;
+    }
+    .cart-btn {
+      position: relative; width: 42px; height: 42px; border: 1px solid var(--border-dark);
+      border-radius: var(--radius-sm); background: #FFF; display: flex; align-items: center; justify-content: center; cursor: pointer;
+    }
+    .cart-count {
+      position: absolute; top: -6px; right: -6px; background: var(--primary); color: white;
+      font-size: 11px; font-weight: 700; min-width: 20px; height: 20px; border-radius: var(--radius-full);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* Page Banner */
+    .page-hero {
+      background: linear-gradient(135deg, #090D16 0%, #171C26 50%, #2A1215 100%);
+      color: #FFF; padding: 60px 0 70px; border-bottom: 1px solid #334155;
+    }
+    .breadcrumbs { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #94A3B8; margin-bottom: 16px; }
+    .breadcrumbs a:hover { color: #FFF; }
+    .page-title { font-size: clamp(32px, 4vw, 48px); font-weight: 800; line-height: 1.15; margin-bottom: 14px; }
+    .page-lead { font-size: 17px; color: #E2E8F0; max-width: 720px; line-height: 1.6; }
+
+    /* Barra Filtros y Ordenación */
+    .shop-filter-bar {
+      background: #FFF; border-bottom: 1px solid var(--border-color); padding: 18px 0;
+      position: sticky; top: 80px; z-index: 40; box-shadow: var(--shadow-sm);
+    }
+    .shop-filter-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .category-pills { display: flex; gap: 8px; overflow-x: auto; }
+    .category-btn {
+      padding: 8px 16px; border-radius: var(--radius-full); font-size: 13px; font-weight: 600;
+      border: 1px solid var(--border-color); background: var(--bg-alt); color: var(--text-muted); cursor: pointer; white-space: nowrap;
+    }
+    .category-btn.active, .category-btn:hover { background: var(--primary); color: #FFF; border-color: var(--primary); }
+
+    .sort-wrap { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--text-muted); }
+    .sort-select {
+      padding: 7px 12px; border: 1px solid var(--border-dark); border-radius: var(--radius-sm);
+      font-size: 13px; background: #FFF; color: var(--text-main); font-weight: 500;
+    }
+
+    /* Catálogo Grid */
+    .catalog-section { padding: 50px 0 80px; }
+    .catalog-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    
+    .product-card {
+      background: #FFF; border: 1px solid var(--border-color); border-radius: var(--radius-lg);
+      padding: 16px; display: flex; flex-direction: column; justify-content: space-between;
+      box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s; position: relative;
+    }
+    .product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--border-dark); }
+    
+    .product-badge {
+      position: absolute; top: 24px; left: 24px; background: var(--primary); color: white;
+      font-size: 10px; font-weight: 800; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; z-index: 2;
+    }
+    .product-badge.gold { background: #D97706; }
+
+    .product-img-box {
+      height: 210px; border-radius: var(--radius-md); background: #F1F5F9;
+      border: 1px dashed var(--border-dark); display: flex; flex-direction: column;
+      align-items: center; justify-content: center; color: var(--text-subtle);
+      font-size: 13px; font-weight: 600; margin-bottom: 16px;
+    }
+
+    .product-info { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .product-category { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-subtle); }
+    .product-title { font-size: 16px; font-weight: 700; color: var(--text-main); line-height: 1.35; }
+    .product-price-row { display: flex; justify-content: space-between; align-items: baseline; margin-top: 4px; }
+    .product-price { font-size: 20px; font-weight: 800; color: var(--primary); }
+
+    .btn-add-cart {
+      width: 100%; background: #FFF; color: var(--text-main); border: 1px solid var(--border-dark);
+      font-size: 13px; font-weight: 700; padding: 10px; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-add-cart:hover { background: var(--primary); color: #FFF; border-color: var(--primary); }
+
+    /* Banner Envíos */
+    .shipping-banner {
+      background: var(--bg-alt); border: 1px solid var(--border-color); border-radius: var(--radius-lg);
+      padding: 32px; margin-top: 60px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .shipping-item { display: flex; align-items: center; gap: 14px; }
+    .shipping-icon {
+      width: 44px; height: 44px; border-radius: var(--radius-md); background: #FFF;
+      border: 1px solid var(--border-color); color: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .shipping-text h4 { font-size: 14px; font-weight: 700; color: var(--text-main); margin-bottom: 2px; }
+    .shipping-text p { font-size: 12px; color: var(--text-subtle); }
+
+    /* Footer */
+    .site-footer { background: #0F172A; color: #94A3B8; padding-top: 60px; border-top: 1px solid #1E293B; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1.3fr; gap: 40px; padding-bottom: 48px; }
+    .footer-title { color: #FFF; font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a:hover { color: #FFF; }
+    .footer-bottom { border-top: 1px solid #1E293B; padding: 20px 0; font-size: 13px; }
+
+    @media print {
+      .site-header, .shop-filter-bar { position: static !important; }
+      .product-card { page-break-inside: avoid; }
+    }
+    @media (max-width: 1024px) {
+      .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+      .shipping-banner { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .catalog-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .main-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="inicio.html" class="brand">
+        <div class="brand-crest">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">Tuna de Derecho</div>
+          <div class="brand-subtitle">Universidad de Almería</div>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="inicio.html" class="nav-link">Inicio</a>
+        <a href="la-tuna.html" class="nav-link">La Tuna</a>
+        <a href="cancionero.html" class="nav-link">Cancionero</a>
+        <a href="videos.html" class="nav-link">Vídeos</a>
+        <a href="captacion.html" class="nav-link">Únete</a>
+        <a href="tienda.html" class="nav-link active">Tienda</a>
+        <a href="contratacion.html" class="nav-link">
+          <span>Contratación</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        </a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="contratacion.html" class="btn-client">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>Acceso clientes</span>
+        </a>
+        <button class="cart-btn" id="cartButton" aria-label="Carrito de compras" onclick="alert('Tu carrito tiene ' + document.getElementById('cartNum').innerText + ' artículos.');">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="cart-count" id="cartNum">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="inicio.html">Inicio</a>
+        <span>/</span>
+        <span style="color:#FFF;">Tienda</span>
+      </div>
+      <h1 class="page-title">Tienda Oficial y Merchandising</h1>
+      <p class="page-lead">Lleva la Tuna contigo. Con cada compra apoyas los viajes, instrumentos y certámenes de los estudiantes de la Tuna de Derecho de la Universidad de Almería.</p>
+    </div>
+  </section>
+
+  <!-- FILTROS Y ORDEN -->
+  <div class="shop-filter-bar">
+    <div class="container shop-filter-row">
+      <div class="category-pills">
+        <button class="category-btn active">Todos los Productos (8)</button>
+        <button class="category-btn">Ropa y Sudaderas (3)</button>
+        <button class="category-btn">Música y CDs (2)</button>
+        <button class="category-btn">Accesorios y Recuerdos (3)</button>
+      </div>
+      <div class="sort-wrap">
+        <span>Ordenar:</span>
+        <select class="sort-select">
+          <option>Recomendados / Más vendidos</option>
+          <option>Precio: menor a mayor</option>
+          <option>Precio: mayor a menor</option>
+          <option>Novedades</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATÁLOGO GRID -->
+  <section class="catalog-section">
+    <div class="container">
+      <div class="catalog-grid">
+        <!-- 1 -->
+        <div class="product-card">
+          <span class="product-badge">MÁS VENDIDO</span>
+          <div class="product-img-box">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:8px;"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path></svg>
+            <span>[ Sudadera Oficial ]</span>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Ropa · Granate Derecho</span>
+            <h3 class="product-title">Sudadera con Capucha Oficial UAL</h3>
+            <div class="product-price-row">
+              <span class="product-price">35,00 €</span>
+              <span style="font-size:12px; color:var(--text-subtle);">Tallas: S - XXL</span>
+            </div>
+          </div>
+          <button class="btn-add-cart" onclick="addOne();">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+            <span>Añadir al Carrito</span>
+          </button>
+        </div>
+
+        <!-- 2 -->
+        <div class="product-card">
+          <span class="product-badge gold">ÁLBUM OFICIAL</span>
+          <div class="product-img-box">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:8px;"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>
+            <span>[ CD Físico ]</span>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Música · Disco Físico</span>
+            <h3 class="product-title">CD "Noches de Ronda" (14 Temas)</h3>
+            <div class="product-price-row">
+              <span class="product-price">12,00 €</span>
+              <span style="font-size:12px; color:var(--text-subtle);">Incluye libreto</span>
+            </div>
+          </div>
+          <button class="btn-add-cart" onclick="addOne();">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+            <span>Añadir al Carrito</span>
+          </button>
+        </div>
+
+        <!-- 3 -->
+        <div class="product-card">
+          <div class="product-img-box">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:8px;"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path></svg>
+            <span>[ Camiseta Escudo ]</span>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Ropa · 100% Algodón</span>
+            <h3 class="product-title">Camiseta Escudo Facultad de Derecho</h3>
+            <div class="product-price-row">
+              <span class="product-price">18,00 €</span>
+              <span style="font-size:12px; color:var(--text-subtle);">Negro / Blanco</span>
+            </div>
+          </div>
+          <button class="btn-add-cart" onclick="addOne();">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+            <span>Añadir al Carrito</span>
+          </button>
+        </div>
+
+        <!-- 4 -->
+        <div class="product-card">
+          <div class="product-img-box">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:8px;"><path d="M17 8h1a4 4 0 1 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path><line x1="6" y1="2" x2="6" y2="4"></line><line x1="10" y1="2" x2="10" y2="4"></line><line x1="14" y1="2" x2="14" y2="4"></line></svg>
+            <span>[ Taza Conmemorativa ]</span>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Accesorios · Cerámica</span>
+            <h3 class="product-title">Taza Conmemorativa 30 Años UAL</h3>
+            <div class="product-price-row">
+              <span class="product-price">9,00 €</span>
+              <span style="font-size:12px; color:var(--text-subtle);">Apta microondas</span>
+            </div>
+          </div>
+          <button class="btn-add-cart" onclick="addOne();">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+            <span>Añadir al Carrito</span>
+          </button>
+        </div>
+
+        <!-- 5 -->
+        <div class="product-card">
+          <div class="product-img-box">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:8px;"><circle cx="12" cy="12" r="7"></circle><polyline points="12 9 12 12 13.5 13.5"></polyline><path d="M16.51 17.35l-.35 3.83a2 2 0 0 1-2 1.82H9.83a2 2 0 0 1-2-1.82l-.35-3.83m.01-10.7l.35-3.83A2 2 0 0 1 9.83 1h4.35a2 2 0 0 1 2 1.82l.35 3.83"></path></svg>
+            <span>[ Pin Esmaltado ]</span>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Coleccionismo · Metal</span>
+            <h3 class="product-title">Pin Esmaltado Beca de Derecho</h3>
+            <div class="product-price-row">
+              <span class="product-price">5,00 €</span>
+              <span style="font-size:12px; color:var(--text-subtle);">Baño oro</span>
+            </div>
+          </div>
+          <button class="btn-add-cart" onclick="addOne();">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+            <span>Añadir al Carrito</span>
+          </button>
+        </div>
+
+        <!-- 6 -->
+        <div class="product-card">
+          <span class="product-badge gold">TRADICIÓN</span>
+          <div class="product-img-box">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:8px;"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+            <span>[ Cinta de Capa ]</span>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Artesanía · Rasó bordado</span>
+            <h3 class="product-title">Cinta de Capa Bordada Personalizada</h3>
+            <div class="product-price-row">
+              <span class="product-price">15,00 €</span>
+              <span style="font-size:12px; color:var(--text-subtle);">Con tu dedicatoria</span>
+            </div>
+          </div>
+          <button class="btn-add-cart" onclick="addOne();">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+            <span>Añadir al Carrito</span>
+          </button>
+        </div>
+
+        <!-- 7 -->
+        <div class="product-card">
+          <div class="product-img-box">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:8px;"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+            <span>[ Doble CD Colección ]</span>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Música · Antología</span>
+            <h3 class="product-title">Doble CD Antología 30 Años (1995-2025)</h3>
+            <div class="product-price-row">
+              <span class="product-price">20,00 €</span>
+              <span style="font-size:12px; color:var(--text-subtle);">28 Canciones</span>
+            </div>
+          </div>
+          <button class="btn-add-cart" onclick="addOne();">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+            <span>Añadir al Carrito</span>
+          </button>
+        </div>
+
+        <!-- 8 -->
+        <div class="product-card">
+          <div class="product-img-box">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:8px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 3v18"></path><path d="M3 12h18"></path></svg>
+            <span>[ Pandereta Artesanal ]</span>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Instrumento · Madera y Piel</span>
+            <h3 class="product-title">Pandereta de Recuerdo Tuna UAL</h3>
+            <div class="product-price-row">
+              <span class="product-price">22,00 €</span>
+              <span style="font-size:12px; color:var(--text-subtle);">Grabado láser</span>
+            </div>
+          </div>
+          <button class="btn-add-cart" onclick="addOne();">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+            <span>Añadir al Carrito</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Banner de Ventajas -->
+      <div class="shipping-banner">
+        <div class="shipping-item">
+          <div class="shipping-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+          </div>
+          <div class="shipping-text">
+            <h4>Envío Gratis en Campus UAL</h4>
+            <p>Entrega en mano en la Facultad de Derecho.</p>
+          </div>
+        </div>
+
+        <div class="shipping-item">
+          <div class="shipping-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <div class="shipping-text">
+            <h4>Merchandising Oficial</h4>
+            <p>Diseño exclusivo y calidad garantizada.</p>
+          </div>
+        </div>
+
+        <div class="shipping-item">
+          <div class="shipping-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+          </div>
+          <div class="shipping-text">
+            <h4>Recogida en Ensayos</h4>
+            <p>Martes y jueves en el local de ensayo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCRIPT CARRITO SENCILLO -->
+  <script>
+    let count = 0;
+    function addOne() {
+      count++;
+      document.getElementById('cartNum').innerText = count;
+      alert('¡Producto añadido al carrito!');
+    }
+  </script>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-title">Tuna de Derecho UAL</div>
+          <p style="font-size:14px; margin-bottom:16px;">Tuna de la Facultad de Derecho de la Universidad de Almería.</p>
+        </div>
+        <div>
+          <div class="footer-title">Navegación</div>
+          <ul class="footer-links">
+            <li><a href="inicio.html">Inicio</a></li>
+            <li><a href="la-tuna.html">La Tuna</a></li>
+            <li><a href="cancionero.html">Cancionero</a></li>
+            <li><a href="videos.html">Vídeos</a></li>
+            <li><a href="captacion.html">Únete</a></li>
+            <li><a href="contratacion.html">Contratación</a></li>
+            <li><a href="../Admin/tienda.html" style="color:var(--primary); font-weight:700;">Panel Admin</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">Atención al Cliente</div>
+          <p style="font-size:14px; margin-bottom:8px;">tuna.derecho@ual.es</p>
+          <p style="font-size:14px;">Envíos a toda España peninsular e Islas.</p>
+        </div>
+        <div>
+          <div class="footer-title">Métodos de Pago</div>
+          <p style="font-size:14px; margin-bottom:12px;">Bizum, tarjeta de crédito y pago en mano en el campus.</p>
+          <span style="font-size:13px; color:#EF4444; font-weight:700;">100% fondos para la actividad universitaria</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+          <div>© 2026 Tuna de Derecho · Universidad de Almería</div>
+          <div>Aviso legal · Privacidad · Condiciones · <a href="../Admin/tienda.html" style="color:inherit; text-decoration:underline;">Acceso Administración</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

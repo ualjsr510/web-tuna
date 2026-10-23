@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vídeos y Actuaciones en Directo | Tuna de Derecho de Almería</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #991B1B;
+      --primary-hover: #7F1D1D;
+      --primary-light: #FEE2E2;
+      --primary-subtle: #FEF2F2;
+      --text-main: #0F172A;
+      --text-muted: #334155;
+      --text-subtle: #64748B;
+      --text-white: #FFFFFF;
+      --bg-body: #FFFFFF;
+      --bg-alt: #F8FAFC;
+      --border-color: #E2E8F0;
+      --border-dark: #CBD5E1;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text-main); background-color: var(--bg-body); line-height: 1.5; -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    .site-header {
+      position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(8px); border-bottom: 1px solid var(--border-color); box-shadow: var(--shadow-sm);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand-crest {
+      width: 44px; height: 44px; border-radius: var(--radius-full); border: 2px solid var(--primary);
+      display: flex; align-items: center; justify-content: center; background: #FFF; color: var(--primary);
+    }
+    .brand-title { font-size: 15px; font-weight: 700; color: var(--text-main); }
+    .brand-subtitle { font-size: 12px; font-weight: 500; color: var(--text-subtle); }
+    .main-nav { display: flex; align-items: center; gap: 6px; }
+    .nav-link {
+      padding: 8px 14px; font-size: 14px; font-weight: 500; color: var(--text-muted);
+      border-radius: var(--radius-sm); transition: all 0.2s; display: flex; align-items: center; gap: 6px;
+    }
+    .nav-link:hover, .nav-link.active { color: var(--primary); font-weight: 600; background-color: var(--primary-subtle); }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-client {
+      display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; font-size: 14px;
+      font-weight: 600; color: var(--text-main); border: 1px solid var(--border-dark); border-radius: var(--radius-sm); background: #FFF;
+    }
+    .cart-btn {
+      position: relative; width: 42px; height: 42px; border: 1px solid var(--border-dark);
+      border-radius: var(--radius-sm); background: #FFF; display: flex; align-items: center; justify-content: center;
+    }
+    .cart-count {
+      position: absolute; top: -6px; right: -6px; background: var(--primary); color: white;
+      font-size: 11px; font-weight: 700; min-width: 20px; height: 20px; border-radius: var(--radius-full);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* Page Banner */
+    .page-hero {
+      background: linear-gradient(135deg, #090D16 0%, #171C26 50%, #2A1215 100%);
+      color: #FFF; padding: 60px 0 70px; border-bottom: 1px solid #334155;
+    }
+    .breadcrumbs { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #94A3B8; margin-bottom: 16px; }
+    .breadcrumbs a:hover { color: #FFF; }
+    .page-title { font-size: clamp(32px, 4vw, 48px); font-weight: 800; line-height: 1.15; margin-bottom: 14px; }
+    .page-lead { font-size: 17px; color: #E2E8F0; max-width: 720px; line-height: 1.6; }
+
+    /* Filtros de Video */
+    .filter-bar {
+      background: #FFF; border-bottom: 1px solid var(--border-color); padding: 18px 0;
+      position: sticky; top: 80px; z-index: 40; box-shadow: var(--shadow-sm);
+    }
+    .filter-pills { display: flex; gap: 10px; overflow-x: auto; }
+    .filter-btn {
+      padding: 8px 18px; border-radius: var(--radius-full); font-size: 13px; font-weight: 600;
+      border: 1px solid var(--border-color); background: var(--bg-alt); color: var(--text-muted); cursor: pointer; white-space: nowrap;
+    }
+    .filter-btn.active, .filter-btn:hover { background: var(--primary); color: #FFF; border-color: var(--primary); }
+
+    /* Featured Video */
+    .featured-section { padding: 60px 0 40px; }
+    .featured-box {
+      background: #0F172A; border-radius: var(--radius-lg); overflow: hidden;
+      display: grid; grid-template-columns: 1.8fr 1.2fr; border: 1px solid #1E293B; box-shadow: var(--shadow-lg);
+    }
+    .featured-video-player {
+      background: #000; min-height: 400px; position: relative;
+      display: flex; align-items: center; justify-content: center; color: white;
+    }
+    .play-btn-large {
+      width: 80px; height: 80px; border-radius: var(--radius-full); background: #FFF; color: var(--primary);
+      display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+    .play-btn-large:hover { transform: scale(1.1); background: #FEE2E2; }
+    .video-time-tag {
+      position: absolute; bottom: 16px; right: 16px; background: rgba(0,0,0,0.75);
+      padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 600;
+    }
+
+    .featured-content { padding: 40px; color: white; display: flex; flex-direction: column; justify-content: space-between; }
+    .featured-badge {
+      display: inline-flex; align-items: center; gap: 6px; background: var(--primary);
+      color: white; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: var(--radius-full);
+      text-transform: uppercase; align-self: flex-start; margin-bottom: 16px;
+    }
+    .featured-title { font-size: 24px; font-weight: 800; line-height: 1.3; margin-bottom: 12px; }
+    .featured-desc { font-size: 14px; color: #94A3B8; line-height: 1.6; margin-bottom: 24px; }
+    .featured-meta-list { display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: #CBD5E1; }
+
+    /* Video Grid */
+    .videos-grid-section { padding: 40px 0 80px; }
+    .videos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .video-card {
+      background: #FFF; border: 1px solid var(--border-color); border-radius: var(--radius-lg);
+      overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s;
+      display: flex; flex-direction: column;
+    }
+    .video-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--border-dark); }
+    
+    .video-thumb {
+      height: 200px; background: #1E293B; position: relative;
+      display: flex; align-items: center; justify-content: center; color: white;
+    }
+    .mini-play-btn {
+      width: 48px; height: 48px; border-radius: var(--radius-full); background: rgba(255,255,255,0.9);
+      color: #0F172A; display: flex; align-items: center; justify-content: center;
+    }
+    .thumb-tag {
+      position: absolute; top: 12px; left: 12px; background: rgba(0,0,0,0.65);
+      padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;
+    }
+    .thumb-duration {
+      position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.8);
+      padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;
+    }
+
+    .video-card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .video-card-title { font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; line-height: 1.4; }
+    .video-card-location { font-size: 13px; color: var(--text-subtle); display: flex; align-items: center; gap: 6px; margin-bottom: 16px; }
+    .video-card-footer {
+      display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #F1F5F9;
+      padding-top: 14px; font-size: 13px; font-weight: 600; color: var(--primary);
+    }
+
+    /* Spotify Live Banner */
+    .spotify-live-banner {
+      background: linear-gradient(135deg, #0F172A 0%, #172554 100%);
+      color: white; border-radius: var(--radius-lg); padding: 48px; margin-bottom: 80px;
+      display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap;
+    }
+    .spotify-live-content h3 { font-size: 26px; font-weight: 800; margin-bottom: 10px; }
+    .spotify-live-content p { font-size: 15px; color: #94A3B8; max-width: 600px; }
+    .btn-spotify-green {
+      background: #1DB954; color: #000; font-weight: 700; padding: 14px 28px; border-radius: var(--radius-full);
+      display: inline-flex; align-items: center; gap: 10px; font-size: 15px; transition: background 0.2s;
+    }
+    .btn-spotify-green:hover { background: #1ed760; }
+
+    /* Footer */
+    .site-footer { background: #0F172A; color: #94A3B8; padding-top: 60px; border-top: 1px solid #1E293B; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1.3fr; gap: 40px; padding-bottom: 48px; }
+    .footer-title { color: #FFF; font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a:hover { color: #FFF; }
+    .footer-bottom { border-top: 1px solid #1E293B; padding: 20px 0; font-size: 13px; }
+
+    @media print {
+      .site-header, .filter-bar { position: static !important; }
+      .video-card, .featured-box { page-break-inside: avoid; }
+    }
+    @media (max-width: 1024px) {
+      .featured-box { grid-template-columns: 1fr; }
+      .videos-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .videos-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .main-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="inicio.html" class="brand">
+        <div class="brand-crest">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">Tuna de Derecho</div>
+          <div class="brand-subtitle">Universidad de Almería</div>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="inicio.html" class="nav-link">Inicio</a>
+        <a href="la-tuna.html" class="nav-link">La Tuna</a>
+        <a href="cancionero.html" class="nav-link">Cancionero</a>
+        <a href="videos.html" class="nav-link active">Vídeos</a>
+        <a href="captacion.html" class="nav-link">Únete</a>
+        <a href="tienda.html" class="nav-link">Tienda</a>
+        <a href="contratacion.html" class="nav-link">
+          <span>Contratación</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        </a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="contratacion.html" class="btn-client">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>Acceso clientes</span>
+        </a>
+        <button class="cart-btn" onclick="window.location.href='tienda.html'" aria-label="Carrito">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="inicio.html">Inicio</a>
+        <span>/</span>
+        <span style="color:#FFF;">Vídeos</span>
+      </div>
+      <h1 class="page-title">Actuaciones, Certámenes y Rondas</h1>
+      <p class="page-lead">Revive en vídeo nuestras mejores interpretaciones sobre el escenario, pasacalles universitarios y serenatas nocturnas por los rincones de Almería.</p>
+    </div>
+  </section>
+
+  <!-- BARRA DE FILTROS -->
+  <div class="filter-bar">
+    <div class="container filter-pills">
+      <button class="filter-btn active">Todas las Actuaciones (48)</button>
+      <button class="filter-btn">Certámenes Oficiales (22)</button>
+      <button class="filter-btn">Rondas & Balcones (14)</button>
+      <button class="filter-btn">Bodas & Eventos Privados (8)</button>
+      <button class="filter-btn">Graduaciones UAL (4)</button>
+    </div>
+  </div>
+
+  <!-- VÍDEO DESTACADO -->
+  <section class="featured-section">
+    <div class="container">
+      <div class="featured-box">
+        <div class="featured-video-player">
+          <div class="play-btn-large" title="Reproducir vídeo">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          </div>
+          <span class="video-time-tag">24:18 HD</span>
+        </div>
+        <div class="featured-content">
+          <div>
+            <span class="featured-badge">ACTUACIÓN ESTRELLA</span>
+            <h2 class="featured-title">XX Certamen Internacional de Tunas de Almería</h2>
+            <p class="featured-desc">
+              Actuación completa en el histórico Teatro Cervantes, galardonada con el 1er Premio a la Mejor Tuna, Mejor Solista y Mejor Pasacalles.
+            </p>
+            <div class="featured-meta-list">
+              <div>📍 <strong>Lugar:</strong> Teatro Cervantes de Almería</div>
+              <div>📅 <strong>Fecha:</strong> Octubre 2025</div>
+              <div>🎵 <strong>Temas:</strong> Clavelitos, Libro Rojo, El Día que me Quieras y Fantasía de Bandurria</div>
+            </div>
+          </div>
+          <div style="margin-top:24px;">
+            <a href="#" style="background:#FFF; color:#0F172A; padding:10px 20px; border-radius:6px; font-weight:700; font-size:14px; display:inline-flex; align-items:center; gap:8px;">
+              Ver Actuación Completa
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRID DE VÍDEOS -->
+  <section class="videos-grid-section">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:28px;">
+        <h2 style="font-size:24px; font-weight:800; color:var(--text-main);">Otras Actuaciones Destacadas</h2>
+        <span style="font-size:13px; color:var(--text-subtle); font-weight:600;">6 de 48 vídeos</span>
+      </div>
+
+      <div class="videos-grid">
+        <!-- Card 1 -->
+        <div class="video-card">
+          <div class="video-thumb">
+            <span class="thumb-tag">CERTAMEN</span>
+            <div class="mini-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
+            <span class="thumb-duration">4:12</span>
+          </div>
+          <div class="video-card-body">
+            <div>
+              <h3 class="video-card-title">Clavelitos · Certamen Nacional de Derecho</h3>
+              <div class="video-card-location">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Auditorio de Granada · 2024</span>
+              </div>
+            </div>
+            <div class="video-card-footer">
+              <span>Reproducir vídeo</span>
+              <span>→</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="video-card">
+          <div class="video-thumb">
+            <span class="thumb-tag">RONDA</span>
+            <div class="mini-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
+            <span class="thumb-duration">6:45</span>
+          </div>
+          <div class="video-card-body">
+            <div>
+              <h3 class="video-card-title">Ronda Bajo el Balcón en el Casco Histórico</h3>
+              <div class="video-card-location">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Plaza de la Catedral, Almería · 2024</span>
+              </div>
+            </div>
+            <div class="video-card-footer">
+              <span>Reproducir vídeo</span>
+              <span>→</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="video-card">
+          <div class="video-thumb">
+            <span class="thumb-tag">PANDERETA</span>
+            <div class="mini-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
+            <span class="thumb-duration">3:50</span>
+          </div>
+          <div class="video-card-body">
+            <div>
+              <h3 class="video-card-title">Solo y Baile de Pandereta (Primer Premio)</h3>
+              <div class="video-card-location">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>FITU Coímbra, Portugal · 2023</span>
+              </div>
+            </div>
+            <div class="video-card-footer">
+              <span>Reproducir vídeo</span>
+              <span>→</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="video-card">
+          <div class="video-thumb">
+            <span class="thumb-tag">BODA</span>
+            <div class="mini-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
+            <span class="thumb-duration">5:15</span>
+          </div>
+          <div class="video-card-body">
+            <div>
+              <h3 class="video-card-title">Serenata Sorpresa a los Novios</h3>
+              <div class="video-card-location">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Finca El Portón, Roquetas de Mar · 2025</span>
+              </div>
+            </div>
+            <div class="video-card-footer">
+              <span>Reproducir vídeo</span>
+              <span>→</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="video-card">
+          <div class="video-thumb">
+            <span class="thumb-tag">UNIVERSIDAD</span>
+            <div class="mini-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
+            <span class="thumb-duration">4:30</span>
+          </div>
+          <div class="video-card-body">
+            <div>
+              <h3 class="video-card-title">Graduación Derecho · Cierre Solemne UAL</h3>
+              <div class="video-card-location">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Paraninfo Universidad de Almería · 2025</span>
+              </div>
+            </div>
+            <div class="video-card-footer">
+              <span>Reproducir vídeo</span>
+              <span>→</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="video-card">
+          <div class="video-thumb">
+            <span class="thumb-tag">PASACALLES</span>
+            <div class="mini-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
+            <span class="thumb-duration">7:20</span>
+          </div>
+          <div class="video-card-body">
+            <div>
+              <h3 class="video-card-title">Pasacalles de Feria y Ronda por el Paseo</h3>
+              <div class="video-card-location">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Paseo de Almería · Agosto 2025</span>
+              </div>
+            </div>
+            <div class="video-card-footer">
+              <span>Reproducir vídeo</span>
+              <span>→</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNER SPOTIFY AUDIO LIVE -->
+  <section class="container">
+    <div class="spotify-live-banner">
+      <div class="spotify-live-content">
+        <h3>¿Prefieres escuchar el audio remasterizado?</h3>
+        <p>Todas nuestras actuaciones de certámenes y temas en directo están disponibles con máxima fidelidad en nuestro perfil oficial de Spotify.</p>
+      </div>
+      <a href="https://spotify.com" target="_blank" class="btn-spotify-green">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+        </svg>
+        <span>Abrir Canal de Spotify</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-title">Tuna de Derecho UAL</div>
+          <p style="font-size:14px; margin-bottom:16px;">Tuna de la Facultad de Derecho de la Universidad de Almería.</p>
+        </div>
+        <div>
+          <div class="footer-title">Navegación</div>
+          <ul class="footer-links">
+            <li><a href="inicio.html">Inicio</a></li>
+            <li><a href="la-tuna.html">La Tuna</a></li>
+            <li><a href="cancionero.html">Cancionero</a></li>
+            <li><a href="videos.html">Vídeos</a></li>
+            <li><a href="captacion.html">Únete</a></li>
+            <li><a href="tienda.html">Tienda</a></li>
+            <li><a href="contratacion.html">Contratación</a></li>
+            <li><a href="../Admin/repertorio-audiovisuales.html" style="color:var(--primary); font-weight:700;">Panel Admin</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">Contacto</div>
+          <p style="font-size:14px; margin-bottom:8px;">Facultad de Derecho, Campus UAL</p>
+          <p style="font-size:14px;">tuna.derecho@ual.es</p>
+        </div>
+        <div>
+          <div class="footer-title">Canal de YouTube</div>
+          <p style="font-size:14px; margin-bottom:12px;">Suscríbete a nuestro canal para ver estrenos y certámenes en directo.</p>
+          <a href="#" style="color:#EF4444; font-weight:700; font-size:14px;">Visitar Canal YouTube →</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+          <div>© 2026 Tuna de Derecho · Universidad de Almería</div>
+          <div>Aviso legal · Privacidad · Cookies · <a href="../Admin/repertorio-audiovisuales.html" style="color:inherit; text-decoration:underline;">Acceso Administración</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

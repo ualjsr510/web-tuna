@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Únete a la Tuna - Captación y Local de Ensayo | Tuna de Derecho de Almería</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #991B1B;
+      --primary-hover: #7F1D1D;
+      --primary-light: #FEE2E2;
+      --primary-subtle: #FEF2F2;
+      --text-main: #0F172A;
+      --text-muted: #334155;
+      --text-subtle: #64748B;
+      --text-white: #FFFFFF;
+      --bg-body: #FFFFFF;
+      --bg-alt: #F8FAFC;
+      --border-color: #E2E8F0;
+      --border-dark: #CBD5E1;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text-main); background-color: var(--bg-body); line-height: 1.5; -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    .site-header {
+      position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(8px); border-bottom: 1px solid var(--border-color); box-shadow: var(--shadow-sm);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand-crest {
+      width: 44px; height: 44px; border-radius: var(--radius-full); border: 2px solid var(--primary);
+      display: flex; align-items: center; justify-content: center; background: #FFF; color: var(--primary);
+    }
+    .brand-title { font-size: 15px; font-weight: 700; color: var(--text-main); }
+    .brand-subtitle { font-size: 12px; font-weight: 500; color: var(--text-subtle); }
+    .main-nav { display: flex; align-items: center; gap: 6px; }
+    .nav-link {
+      padding: 8px 14px; font-size: 14px; font-weight: 500; color: var(--text-muted);
+      border-radius: var(--radius-sm); transition: all 0.2s; display: flex; align-items: center; gap: 6px;
+    }
+    .nav-link:hover, .nav-link.active { color: var(--primary); font-weight: 600; background-color: var(--primary-subtle); }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-client {
+      display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; font-size: 14px;
+      font-weight: 600; color: var(--text-main); border: 1px solid var(--border-dark); border-radius: var(--radius-sm); background: #FFF;
+    }
+    .cart-btn {
+      position: relative; width: 42px; height: 42px; border: 1px solid var(--border-dark);
+      border-radius: var(--radius-sm); background: #FFF; display: flex; align-items: center; justify-content: center;
+    }
+    .cart-count {
+      position: absolute; top: -6px; right: -6px; background: var(--primary); color: white;
+      font-size: 11px; font-weight: 700; min-width: 20px; height: 20px; border-radius: var(--radius-full);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* Page Banner */
+    .page-hero {
+      background: linear-gradient(135deg, #7F1D1D 0%, #991B1B 50%, #450A0A 100%);
+      color: #FFF; padding: 70px 0 80px; position: relative;
+    }
+    .breadcrumbs { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #FEE2E2; margin-bottom: 16px; }
+    .breadcrumbs a:hover { color: #FFF; }
+    .page-title { font-size: clamp(34px, 4.5vw, 52px); font-weight: 800; line-height: 1.15; margin-bottom: 16px; }
+    .page-lead { font-size: 18px; color: #FEE2E2; max-width: 760px; line-height: 1.6; margin-bottom: 30px; }
+    .hero-btn-group { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-white {
+      background: #FFF; color: var(--primary); font-weight: 700; padding: 12px 26px; border-radius: var(--radius-sm);
+      display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s;
+    }
+    .btn-white:hover { background: #FEF2F2; transform: translateY(-1px); }
+    .btn-outline-banner {
+      background: rgba(255,255,255,0.1); color: #FFF; border: 1px solid rgba(255,255,255,0.4);
+      padding: 12px 24px; border-radius: var(--radius-sm); font-weight: 600;
+    }
+
+    /* Razones Section */
+    .reasons-section { padding: 80px 0; border-bottom: 1px solid var(--border-color); }
+    .section-eyebrow { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary); margin-bottom: 8px; }
+    .section-title { font-size: 32px; font-weight: 800; color: var(--text-main); margin-bottom: 16px; }
+    
+    .reasons-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 36px; }
+    .reason-card {
+      background: var(--bg-alt); border: 1px solid var(--border-color); border-radius: var(--radius-lg);
+      padding: 28px; display: flex; flex-direction: column; gap: 14px; box-shadow: var(--shadow-sm);
+    }
+    .reason-icon {
+      width: 48px; height: 48px; border-radius: var(--radius-md); background: #FFF; border: 1px solid var(--border-color);
+      color: var(--primary); display: flex; align-items: center; justify-content: center;
+    }
+    .reason-title { font-size: 18px; font-weight: 700; color: var(--text-main); }
+    .reason-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+    /* Local de Ensayo Section */
+    .rehearsal-section { padding: 80px 0; background: var(--bg-alt); border-bottom: 1px solid var(--border-color); }
+    .rehearsal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    
+    .rehearsal-card {
+      background: #FFF; border: 1px solid var(--border-color); border-radius: var(--radius-lg);
+      padding: 36px; box-shadow: var(--shadow-sm);
+    }
+    .rehearsal-badge {
+      display: inline-flex; align-items: center; gap: 6px; background: #FEE2E2; color: var(--primary);
+      font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: var(--radius-full); margin-bottom: 16px;
+    }
+    .rehearsal-title { font-size: 26px; font-weight: 800; color: var(--text-main); margin-bottom: 20px; }
+    
+    .info-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px; }
+    .info-item { display: flex; align-items: flex-start; gap: 14px; font-size: 15px; }
+    .info-item svg { flex-shrink: 0; color: var(--primary); margin-top: 3px; }
+    .info-item strong { color: var(--text-main); }
+    .info-item span { color: var(--text-muted); }
+
+    .map-location-box {
+      height: 380px; background: #1E293B; border-radius: var(--radius-lg); color: white;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 30px; border: 1px solid #334155; position: relative;
+    }
+    .map-tag {
+      position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.6);
+      font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 4px;
+    }
+
+    /* Formulario de Captación */
+    .join-form-section { padding: 80px 0; }
+    .form-box {
+      max-width: 760px; margin: 0 auto; background: #FFF; border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-md);
+    }
+    .form-title { font-size: 26px; font-weight: 800; text-align: center; margin-bottom: 10px; }
+    .form-subtitle { font-size: 15px; color: var(--text-muted); text-align: center; margin-bottom: 32px; }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-label { font-size: 13px; font-weight: 600; color: var(--text-main); }
+    .form-input, .form-select {
+      padding: 11px 14px; border: 1px solid var(--border-dark); border-radius: var(--radius-sm);
+      font-size: 14px; background: #FFF; color: var(--text-main);
+    }
+    .form-input:focus, .form-select:focus { outline: none; border-color: var(--primary); }
+
+    .btn-submit-join {
+      width: 100%; background: var(--primary); color: white; font-weight: 700; font-size: 15px;
+      padding: 14px; border-radius: var(--radius-sm); border: none; cursor: pointer; transition: background 0.2s;
+    }
+    .btn-submit-join:hover { background: var(--primary-hover); }
+
+    /* Footer */
+    .site-footer { background: #0F172A; color: #94A3B8; padding-top: 60px; border-top: 1px solid #1E293B; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1.3fr; gap: 40px; padding-bottom: 48px; }
+    .footer-title { color: #FFF; font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a:hover { color: #FFF; }
+    .footer-bottom { border-top: 1px solid #1E293B; padding: 20px 0; font-size: 13px; }
+
+    @media print {
+      .site-header { position: static !important; }
+      .reason-card, .rehearsal-card, .form-box { page-break-inside: avoid; }
+    }
+    @media (max-width: 1024px) {
+      .reasons-grid { grid-template-columns: repeat(2, 1fr); }
+      .rehearsal-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .reasons-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .main-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="inicio.html" class="brand">
+        <div class="brand-crest">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">Tuna de Derecho</div>
+          <div class="brand-subtitle">Universidad de Almería</div>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="inicio.html" class="nav-link">Inicio</a>
+        <a href="la-tuna.html" class="nav-link">La Tuna</a>
+        <a href="cancionero.html" class="nav-link">Cancionero</a>
+        <a href="videos.html" class="nav-link">Vídeos</a>
+        <a href="captacion.html" class="nav-link active">Únete</a>
+        <a href="tienda.html" class="nav-link">Tienda</a>
+        <a href="contratacion.html" class="nav-link">
+          <span>Contratación</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        </a>
+      </nav>
+
+      <div class="header-actions">
+        <div id="headerUserActions">
+          <a href="/auth/login.html" class="btn-login-header">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+              <polyline points="10 17 15 12 10 7"></polyline>
+              <line x1="15" y1="12" x2="3" y2="12"></line>
+            </svg>
+            <span>Iniciar Sesión</span>
+          </a>
+        </div>
+        <button class="cart-btn" onclick="TunaApp.openCart()" aria-label="Carrito">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="cart-count" style="display:none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="inicio.html">Inicio</a>
+        <span>/</span>
+        <span style="color:#FFF;">Únete</span>
+      </div>
+      <h1 class="page-title">¿Estudias en la UAL? ¡Hazte Tuno!</h1>
+      <p class="page-lead">No necesitas saber tocar ningún instrumento ni cantar de antemano. En nuestro local de ensayo te prestamos los instrumentos y te enseñamos desde cero. Vive tu etapa universitaria al máximo.</p>
+      <div class="hero-btn-group">
+        <a href="#ensayo" class="btn-white">Conoce el Local de Ensayo</a>
+        <a href="#formulario" class="btn-outline-banner">Apúntate sin compromiso</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RAZONES PARA UNIRTE -->
+  <section class="reasons-section">
+    <div class="container">
+      <span class="section-eyebrow">VENTAJAS Y EXPERIENCIA</span>
+      <h2 class="section-title">¿Por qué entrar en la Tuna de Derecho?</h2>
+
+      <div class="reasons-grid">
+        <div class="reason-card">
+          <div class="reason-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+          </div>
+          <h3 class="reason-title">Aprende Música Gratis</h3>
+          <p class="reason-desc">Guitarra, bandurria, laúd o pandereta. Tenemos maestros veteranos que te forman a tu propio ritmo sin coste alguno.</p>
+        </div>
+
+        <div class="reason-card">
+          <div class="reason-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </div>
+          <h3 class="reason-title">Viajes por Europa</h3>
+          <p class="reason-desc">Certámenes de tunas en Salamanca, Granada, Coímbra, Sevilla o Madrid con gastos cubiertos por las actuaciones de la agrupación.</p>
+        </div>
+
+        <div class="reason-card">
+          <div class="reason-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <h3 class="reason-title">Hermandad y Networking</h3>
+          <p class="reason-desc">Amigos de verdad dentro y fuera de la facultad. Tunos veteranos ya ejercen como jueces, fiscales, abogados y notarios.</p>
+        </div>
+
+        <div class="reason-card">
+          <div class="reason-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          </div>
+          <h3 class="reason-title">100% Compatible con Estudios</h3>
+          <p class="reason-desc">Los estudios siempre son lo primero. En época de exámenes universitarios se reducen los ensayos para garantizar tus aprobados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCAL DE ENSAYO -->
+  <section id="ensayo" class="rehearsal-section">
+    <div class="container">
+      <div class="rehearsal-grid">
+        <div class="rehearsal-card">
+          <span class="rehearsal-badge">CAMPUS UNIVERSITARIO UAL</span>
+          <h2 class="rehearsal-title">Dónde y cuándo ensayamos</h2>
+
+          <div class="info-list">
+            <div class="info-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <div>
+                <strong>Lugar exacto:</strong><br>
+                <span>Edificio de la Facultad de Derecho (Edif. C), Sótano, Sala de Ensayos S-04.</span>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <div>
+                <strong>Horario de Ensayos:</strong><br>
+                <span>Martes y Jueves · De 19:30 h a 21:30 h.</span>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <div>
+                <strong>Teléfono / WhatsApp de contacto:</strong><br>
+                <span>+34 600 000 000 (Escríbenos y salimos a buscarte a la entrada del edificio).</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:#FEF2F2; border-left:4px solid var(--primary); padding:14px; border-radius:4px; font-size:14px; color:#991B1B;">
+            <strong>¡Ven a probar un día!</strong> Puedes sentarte, escuchar cómo ensayamos y decidir si te apetece unirte. Sin compromisos.
+          </div>
+        </div>
+
+        <!-- Tarjeta de Ubicación de Ensayos -->
+        <div class="map-location-box" style="background: linear-gradient(145deg, #1E293B, #0F172A); border: 1px solid #334155;">
+          <span class="map-tag" style="background: rgba(239, 68, 68, 0.2); color: #FCA5A5; border: 1px solid rgba(239, 68, 68, 0.3);">Punto de Encuentro y Ensayos</span>
+          <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:12px; color:#EF4444;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <div style="font-weight:700; font-size:18px; margin-bottom:6px; color:#FFF;">Edificio Facultad de Derecho (Planta -1)</div>
+          <div style="font-size:13px; color:#CBD5E1; max-width:340px;">Frente a la Biblioteca Central de la UAL · Parada autobús Líneas 11, 12, 18 y 19.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULARIO DE CAPTACIÓN -->
+  <section id="formulario" class="join-form-section">
+    <div class="container">
+      <div class="form-box">
+        <h2 class="form-title">Pide tu plaza para el próximo ensayo</h2>
+        <p class="form-subtitle">Rellena este breve formulario y un miembro de la tuna se pondrá en contacto contigo por WhatsApp para darte la bienvenida.</p>
+
+        <form id="joinForm" onsubmit="submitJoinForm(event)">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Nombre</label>
+              <input type="text" id="joinNombre" class="form-input" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Apellidos</label>
+              <input type="text" id="joinApellidos" class="form-input" placeholder="Tus apellidos" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Teléfono / WhatsApp</label>
+              <input type="tel" id="joinPhone" class="form-input" placeholder="+34 600 000 000" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Correo UAL o personal</label>
+              <input type="email" id="joinEmail" class="form-input" placeholder="tu@alumnos.ual.es" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">¿Qué estudias y en qué curso estás?</label>
+              <input type="text" id="joinDegree" class="form-input" placeholder="Ej. Grado en Derecho, 1º curso" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">¿Tienes experiencia musical previa?</label>
+              <select id="joinExp" class="form-select">
+                <option value="no">Ninguna (quiero aprender desde cero)</option>
+                <option value="guitarra">Sé tocar algo la guitarra</option>
+                <option value="bandurria">Sé tocar la bandurria o el laúd</option>
+                <option value="percusion">Sé tocar la pandereta / percusión</option>
+                <option value="canto">Canto en coro o solista</option>
+                <option value="otro">Toco otro instrumento</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label class="form-label">¿Algún comentario o motivación personal?</label>
+              <input type="text" id="joinMotivation" class="form-input" placeholder="¿Prefieres venir un martes o un jueves? ¿Qué esperas de la Tuna?">
+            </div>
+          </div>
+          <button type="submit" id="btnSubmitJoin" class="btn-submit-join">Enviar Solicitud y Asistir a un Ensayo</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-title">Tuna de Derecho UAL</div>
+          <p style="font-size:14px; margin-bottom:16px;">Tuna de la Facultad de Derecho de la Universidad de Almería.</p>
+        </div>
+        <div>
+          <div class="footer-title">Navegación</div>
+          <ul class="footer-links">
+            <li><a href="inicio.html">Inicio</a></li>
+            <li><a href="la-tuna.html">La Tuna</a></li>
+            <li><a href="cancionero.html">Cancionero</a></li>
+            <li><a href="videos.html">Vídeos</a></li>
+            <li><a href="captacion.html">Únete</a></li>
+            <li><a href="tienda.html">Tienda</a></li>
+            <li><a href="contratacion.html">Contratación</a></li>
+            <li><a href="/admin/miembros.html" style="color:var(--primary); font-weight:700;">Panel Admin</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">Contacto</div>
+          <p style="font-size:14px; margin-bottom:8px;">Facultad de Derecho, Campus UAL</p>
+          <p style="font-size:14px;">tuna.derecho@ual.es</p>
+        </div>
+        <div>
+          <div class="footer-title">Síguenos en Redes</div>
+          <p style="font-size:14px; margin-bottom:12px;">Descubre el día a día y los ensayos de la tuna en Instagram.</p>
+          <a href="#" style="color:#EF4444; font-weight:700; font-size:14px;">@tunadederechoual →</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+          <div>© 2026 Tuna de Derecho · Universidad de Almería</div>
+          <div>Aviso legal · Privacidad · Cookies · <a href="/admin/miembros.html" style="color:inherit; text-decoration:underline;">Acceso Administración</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    async function submitJoinForm(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('joinNombre').value.trim();
+      const apellidos = document.getElementById('joinApellidos').value.trim();
+      const full_name = `${nombre} ${apellidos}`;
+      const phone = document.getElementById('joinPhone').value.trim();
+      const email = document.getElementById('joinEmail').value.trim();
+      const degree = document.getElementById('joinDegree').value.trim();
+      const has_experience = document.getElementById('joinExp').value;
+      const motivation = document.getElementById('joinMotivation').value.trim();
+
+      const btn = document.getElementById('btnSubmitJoin');
+      btn.disabled = true;
+      btn.textContent = 'Enviando solicitud...';
+
+      try {
+        const res = await TunaApp.apiFetch('/api/captacion', {
+          method: 'POST',
+          body: { full_name, phone, email, degree, has_experience, motivation }
+        });
+
+        if (res.success) {
+          TunaApp.showToast('¡Solicitud guardada! Te escribiremos para el próximo ensayo.', 'success');
+          document.getElementById('joinForm').reset();
+          btn.textContent = '¡Solicitud Registrada con Éxito!';
+        }
+      } catch (err) {
+        TunaApp.showToast(err.message, 'error');
+        btn.disabled = false;
+        btn.textContent = 'Enviar Solicitud y Asistir a un Ensayo';
+      }
+    }
+  </script>
+</body>
+</html>
