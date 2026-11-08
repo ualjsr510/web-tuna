@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tuna de la Facultad de Derecho de Almería — index</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logo_corporativo.svg">
+</head>
+<body>
+  <!-- CABECERA PRINCIPAL CON LOGO CORPORATIVO -->
+    <header class="site-header">
+      <a href="../admin/index.html" class="site-logo">
+        <img src="../assets/img/logo_corporativo.svg" alt="Tuna de Derecho Almería Logo" style="height:48px;">
+      </a>
+      <nav class="site-nav">
+        <a href="index.html" class="active">Panel</a><a href="Contratos.html" class="">Contratos</a><a href="Clientes.html" class="">Clientes</a><a href="Pedidos.html" class="">Pedidos</a><a href="Productos.html" class="">Productos</a><a href="Miembros.html" class="">Miembros</a><a href="Certamenes.html" class="">Certámenes</a>
+      </nav>
+      <div class="header-actions">
+        
+          <span class="badge-accent" style="font-size:11px;">ADMIN</span>
+          <a href="../visitante/index.html" class="btn-header-cart" title="Ver portal público">
+            👁 Ver Web
+          </a>
+          <a href="../visitante/index.html" class="btn btn-outline" style="font-size:12px; padding:6px 12px;" onclick="TunaApp.logout()">
+            Salir
+          </a>
+        
+      </div>
+    </header>
+    
+
+  <div class="main-content">
+    
+
+    
+    <div style="flex: 1; min-height: 0; display: flex">
+      <aside style="width: 232px; flex: none; border-right: 1px solid var(--line); padding: 20px 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 4px"><a href="index.html" style="text-decoration: none; font-size: 13px; padding: 11px 14px; background: var(--accent); color: var(--on-accent)">Panel de estadísticas</a><a href="Contratos.html" style="text-decoration: none; font-size: 13px; padding: 11px 14px; border: 1px solid transparent">1 Contratos</a><a href="Clientes.html" style="text-decoration: none; font-size: 13px; padding: 11px 14px; border: 1px solid transparent">2 Cartera de clientes</a><a href="Pedidos.html" style="text-decoration: none; font-size: 13px; padding: 11px 14px; border: 1px solid transparent">3 Pedidos de la tienda</a><a href="Productos.html" style="text-decoration: none; font-size: 13px; padding: 11px 14px; border: 1px solid transparent">4 Productos de la tienda</a><a href="Miembros.html" style="text-decoration: none; font-size: 13px; padding: 11px 14px; border: 1px solid transparent">5 Lista de miembros</a><a href="Cuenta.html" style="text-decoration: none; font-size: 13px; padding: 11px 14px; border: 1px solid transparent">6 Cuenta</a><a href="Certamenes.html" style="text-decoration: none; font-size: 13px; padding: 11px 14px; border: 1px solid transparent">7 Certámenes</a></aside>
+      <main style="flex: 1; min-width: 0; min-height: 0; padding: 24px 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px">
+      <div class="screen-nav-bar">
+        <a href="../visitante/index.html" class="btn-back-nav" onclick="TunaApp.goBack('../visitante/index.html')">
+          <span class="arrow">←</span> <span>Salir al portal público (Visitante)</span>
+        </a>
+        <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
+          <a href="../visitante/index.html" class="bc-link">Portal público</a>
+          <span class="bc-sep">›</span>
+          <span class="bc-current">Panel de administración · Inicio</span>
+        </nav>
+      </div>
+<div style="flex: none"><h1 style="margin: 0; font-size: 26px">Panel de administración</h1><p style="margin: 6px 0 0; font-size: 13px; color: var(--muted)">Resumen y estadísticas de la tuna</p></div><section style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; "><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; gap: 6px"><p style="margin: 0; font-size: 12px; color: var(--muted); line-height: 1.5; ">Contratos pendientes</p><strong style="font-size: 28px">12</strong></section><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; gap: 6px"><p style="margin: 0; font-size: 12px; color: var(--muted); line-height: 1.5; ">Pedidos pendientes</p><strong style="font-size: 28px">8</strong></section><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; gap: 6px"><p style="margin: 0; font-size: 12px; color: var(--muted); line-height: 1.5; ">Ingresos del mes</p><strong style="font-size: 28px">1.340 €</strong></section><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; gap: 6px"><p style="margin: 0; font-size: 12px; color: var(--muted); line-height: 1.5; ">Clientes nuevos</p><strong style="font-size: 28px">5</strong></section></section><section style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; "><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; "><h2 style="margin: 0; font-size: 15px">Contratos por mes</h2><div style="display: flex; align-items: flex-end; gap: 10px; height: 150px; border-bottom: 1px solid var(--accent); padding: 0 6px"><div style="flex: 1; height: 40%; background: var(--line)"></div><div style="flex: 1; height: 55%; background: var(--line)"></div><div style="flex: 1; height: 35%; background: var(--line)"></div><div style="flex: 1; height: 70%; background: var(--line)"></div><div style="flex: 1; height: 60%; background: var(--line)"></div><div style="flex: 1; height: 80%; background: var(--line)"></div><div style="flex: 1; height: 50%; background: var(--line)"></div><div style="flex: 1; height: 65%; background: var(--line)"></div><div style="flex: 1; height: 90%; background: var(--line)"></div><div style="flex: 1; height: 75%; background: var(--line)"></div><div style="flex: 1; height: 55%; background: var(--line)"></div><div style="flex: 1; height: 85%; background: var(--line)"></div></div><p style="margin: 0; font-size: 11px; color: var(--muted); line-height: 1.5; ">Eje temporal: últimos 12 meses</p></section><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; "><h2 style="margin: 0; font-size: 15px">Ventas de la tienda por mes</h2><div style="display: flex; align-items: flex-end; gap: 10px; height: 150px; border-bottom: 1px solid var(--accent); padding: 0 6px"><div style="flex: 1; height: 30%; background: var(--line)"></div><div style="flex: 1; height: 45%; background: var(--line)"></div><div style="flex: 1; height: 60%; background: var(--line)"></div><div style="flex: 1; height: 40%; background: var(--line)"></div><div style="flex: 1; height: 55%; background: var(--line)"></div><div style="flex: 1; height: 70%; background: var(--line)"></div><div style="flex: 1; height: 65%; background: var(--line)"></div><div style="flex: 1; height: 50%; background: var(--line)"></div><div style="flex: 1; height: 60%; background: var(--line)"></div><div style="flex: 1; height: 80%; background: var(--line)"></div><div style="flex: 1; height: 70%; background: var(--line)"></div><div style="flex: 1; height: 95%; background: var(--line)"></div></div><p style="margin: 0; font-size: 11px; color: var(--muted); line-height: 1.5; ">Eje temporal: últimos 12 meses</p></section></section><section style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; "><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; "><h2 style="margin: 0; font-size: 15px">Últimos contratos</h2><table style="width: 100%; border-collapse: collapse; border: 1px solid var(--line)"><thead><tr><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Nº</th><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Cliente</th><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Estado</th><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px"></th></tr></thead><tbody><tr><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">#001</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Marta Gil</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)"><span class="badge warn">Pendiente</span></td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)"><a href="ContratoDetalle.html" style="font-size: 12px">Ver</a></td></tr><tr><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">#002</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Carlos Ruiz</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)"><span class="badge ok">Aceptado</span></td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)"><a href="ContratoDetalle.html" style="font-size: 12px">Ver</a></td></tr><tr><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">#003</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Lucía Fernández</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)"><span class="badge ok">Realizado</span></td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)"><a href="ContratoDetalle.html" style="font-size: 12px">Ver</a></td></tr></tbody></table><a href="Contratos.html" style="font-size: 12px">Ver todos los contratos</a></section><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; "><h2 style="margin: 0; font-size: 15px">Últimos pedidos</h2><table style="width: 100%; border-collapse: collapse; border: 1px solid var(--line)"><thead><tr><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Nº</th><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Cliente</th><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Estado</th><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px"></th></tr></thead><tbody><tr><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">#001</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Javier Ortega</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)"><span class="badge info">Enviado</span></td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)"><a href="PedidoDetalle.html" style="font-size: 12px">Ver</a></td></tr><tr><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">#002</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Elena Prieto</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)"><span class="badge ok">Entregado</span></td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)"><a href="PedidoDetalle.html" style="font-size: 12px">Ver</a></td></tr><tr><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">#003</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Pablo Navarro</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)"><span class="badge warn">Pendiente</span></td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)"><a href="PedidoDetalle.html" style="font-size: 12px">Ver</a></td></tr></tbody></table><a href="Pedidos.html" style="font-size: 12px">Ver todos los pedidos</a></section></section></main>
+    </div>
+
+
+  </div>
+
+  
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+            <img src="../assets/img/logo_corporativo.svg" alt="Tuna de Derecho" style="height:44px; filter:brightness(1.2);">
+          </div>
+          <p>
+            Agrupación musical tradicional universitaria de la <strong>Facultad de Derecho de la Universidad de Almería</strong>. Fundada en el verano de 1993. Portadora de la alegría, la música y el buen hacer estudiantil.
+          </p>
+          <p style="font-size:12px; color:var(--gold);">
+            🏛 Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul class="footer-links">
+            <li><a href="../visitante/index.html">Inicio del portal</a></li>
+            <li><a href="../visitante/Conoce.html">Historia y miembros</a></li>
+            <li><a href="../visitante/Contratacion.html">Contratar actuaciones</a></li>
+            <li><a href="../visitante/Tienda.html">Tienda oficial y discos</a></li>
+            <li><a href="../visitante/Cancionero.html">Cancionero y música</a></li>
+            <li><a href="../visitante/Unete.html">Únete a la tuna</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Área Privada</h4>
+          <ul class="footer-links">
+            <li><a href="../visitante/Acceso.html">Iniciar sesión</a></li>
+            <li><a href="../visitante/Registro.html">Registro de clientes</a></li>
+            <li><a href="../cliente/index.html">Panel de cliente</a></li>
+            <li><a href="../admin/index.html">Panel de administración</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto Oficial</h4>
+          <p>
+            📞 <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
+            ✉️ <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
+            📸 <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
+            🎵 <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>
+          © 1993 - 2026 Tuna de la Facultad de Derecho de Almería. Todos los derechos reservados.
+        </div>
+        <div style="display:flex; gap:16px;">
+          <span>Tecnologías Web · UAL</span>
+          <span>Aviso Legal</span>
+          <span>Política de Privacidad</span>
+        </div>
+      </div>
+    </footer>
+    
+
+  <!-- Scripts modulares -->
+  <script src="../js/db.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

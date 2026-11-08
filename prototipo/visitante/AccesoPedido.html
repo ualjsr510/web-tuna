@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paso 1: Identificación — Tuna de la Facultad de Derecho de Almería</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logo_corporativo.svg">
+</head>
+<body>
+
+  <!-- CABECERA PRINCIPAL CON LOGO CORPORATIVO -->
+  <header class="site-header">
+    <a href="index.html" class="site-logo">
+      <img src="../assets/img/logo_corporativo.svg" alt="Tuna de Derecho Almería Logo" style="height:48px;">
+    </a>
+    <nav class="site-nav">
+      <a href="Conoce.html">Conoce la tuna</a>
+      <a href="Contratacion.html">Contratación</a>
+      <a href="Multimedia.html">Multimedia</a>
+      <a href="Tienda.html" class="active">Tienda</a>
+      <a href="Cancionero.html">Cancionero</a>
+      <a href="Unete.html">Únete</a>
+    </nav>
+    <div class="header-actions">
+      <a href="Cesta.html" class="btn-header-cart">
+        🛒 Cesta (<span class="cart-counter-val">0</span>)
+      </a>
+      <a href="Acceso.html" class="btn-header-login">
+        Iniciar sesión
+      </a>
+    </div>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL CHECKOUT -->
+  <div class="main-content">
+    <div class="screen-nav-bar" style="margin-bottom: 20px;">
+      <a href="Cesta.html" class="btn-back-nav" onclick="TunaApp.goBack('Cesta.html')">
+        <span class="arrow">←</span> <span>Volver a la Cesta</span>
+      </a>
+      <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
+        <a href="index.html" class="bc-link">Inicio</a><span class="bc-sep">›</span>
+        <a href="Tienda.html" class="bc-link">Tienda</a><span class="bc-sep">›</span>
+        <a href="Cesta.html" class="bc-link">Cesta</a><span class="bc-sep">›</span>
+        <span class="bc-current">Paso 1: Identificación</span>
+      </nav>
+    </div>
+
+    <!-- FLUJO CHECKOUT EN 2 COLUMNAS: FORMULARIO IZQUIERDA + STEPPER Y RESUMEN DERECHA -->
+    <div class="checkout-layout">
+      
+      <!-- COLUMNA PRINCIPAL (IZQUIERDA) -->
+      <main class="checkout-main-col">
+        <div>
+          <span class="badge-gold">PASO 1 DE 5</span>
+          <h1 style="margin: 6px 0 4px; font-size: clamp(22px, 3vw, 28px); color: var(--ink); font-family: var(--serif);">
+            Identificación para realizar el pedido
+          </h1>
+          <p style="margin: 0; font-size: 13.5px; color: var(--muted);">
+            Inicia sesión con tu cuenta de cliente o introduce tus datos para tramitar el envío.
+          </p>
+        </div>
+
+        <!-- Banner de sesión activa si ya está autenticado -->
+        <div id="active-session-banner" style="display: none; background: rgba(197, 155, 63, 0.12); border: 1px solid var(--gold); border-radius: 8px; padding: 18px 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <strong style="color: var(--ink); font-size: 15px; display: block;">Sesión iniciada correctamente</strong>
+              <span id="active-session-user-desc" style="font-size: 13px; color: var(--muted);">Conectado como Marta Gil (marta.gil@ual.es)</span>
+            </div>
+            <a href="DireccionEnvio.html" class="btn btn-primary" style="font-size: 13.5px; padding: 10px 20px;">
+              Continuar a Dirección de envío →
+            </a>
+          </div>
+        </div>
+
+        <!-- Dos opciones de identificación -->
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px;" class="responsive-grid-2">
+          
+          <!-- Opción A: Iniciar sesión -->
+          <section class="tuna-card" style="padding: 24px;">
+            <h2 style="margin: 0 0 6px; font-size: 16px; color: var(--ink); font-family: var(--serif);">
+              ¿Ya tienes cuenta de cliente?
+            </h2>
+            <p style="margin: 0 0 16px; font-size: 12.5px; color: var(--muted);">
+              Inicia sesión y tus direcciones y pedidos anteriores se cargarán automáticamente.
+            </p>
+
+            <form onsubmit="handleCheckoutLogin(event)" style="display: flex; flex-direction: column; gap: 14px;">
+              <label style="display: flex; flex-direction: column; gap: 5px;">
+                <span style="font-size: 12px; font-weight: 600; color: var(--ink);">Correo electrónico</span>
+                <input type="email" id="login-email" required placeholder="tu-correo@ejemplo.com" style="height: 38px; border: 1px solid var(--line); padding: 0 12px; font-size: 13px; font-family: inherit; box-sizing: border-box; width: 100%; background: var(--card); color: var(--ink); border-radius: 5px;">
+              </label>
+
+              <label style="display: flex; flex-direction: column; gap: 5px;">
+                <span style="font-size: 12px; font-weight: 600; color: var(--ink);">Contraseña</span>
+                <input type="password" id="login-password" required placeholder="••••••••" style="height: 38px; border: 1px solid var(--line); padding: 0 12px; font-size: 13px; font-family: inherit; box-sizing: border-box; width: 100%; background: var(--card); color: var(--ink); border-radius: 5px;">
+              </label>
+
+              <button type="submit" class="btn btn-primary" style="font-size: 13.5px; padding: 11px 18px; width: 100%; margin-top: 4px;">
+                Iniciar sesión y continuar →
+              </button>
+
+              <!-- Botones para cargar cuentas de prueba en el formulario sin escribirlas -->
+              <div style="font-size: 11.5px; color: var(--muted); padding: 10px 12px; background: var(--soft); border-radius: 6px; border: 1px solid var(--line); line-height: 1.5;">
+                <span style="font-weight: 700; color: var(--ink);">💡 Cargar cuentas de prueba:</span>
+                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px;">
+                  <button type="button" class="btn btn-outline" style="font-size: 11px; padding: 4px 10px;" onclick="TunaForms.fillDemoCredentials('cliente')">
+                    👤 Cliente (marta.gil@ual.es)
+                  </button>
+                  <button type="button" class="btn btn-outline" style="font-size: 11px; padding: 4px 10px;" onclick="TunaForms.fillDemoCredentials('admin')">
+                    🛡️ Admin (admin@derechoual.es)
+                  </button>
+                </div>
+              </div>
+            </form>
+          </section>
+
+          <!-- Opción B: Identificación rápida / Invitado -->
+          <section class="tuna-card" style="padding: 24px;">
+            <h2 style="margin: 0 0 6px; font-size: 16px; color: var(--ink); font-family: var(--serif);">
+              ¿Nuevo cliente o compra rápida?
+            </h2>
+            <p style="margin: 0 0 16px; font-size: 12.5px; color: var(--muted);">
+              Indica tus datos de contacto básicos para el seguimiento del envío.
+            </p>
+
+            <form onsubmit="handleGuestCheckout(event)" style="display: flex; flex-direction: column; gap: 14px;">
+              <label style="display: flex; flex-direction: column; gap: 5px;">
+                <span style="font-size: 12px; font-weight: 600; color: var(--ink);">Nombre y apellidos *</span>
+                <input type="text" id="guest-name" required placeholder="Ej. Marta Gil Sánchez" style="height: 38px; border: 1px solid var(--line); padding: 0 12px; font-size: 13px; font-family: inherit; box-sizing: border-box; width: 100%; background: var(--card); color: var(--ink); border-radius: 5px;">
+              </label>
+
+              <label style="display: flex; flex-direction: column; gap: 5px;">
+                <span style="font-size: 12px; font-weight: 600; color: var(--ink);">Correo de confirmación *</span>
+                <input type="email" id="guest-email" required placeholder="marta.gil@ual.es" style="height: 38px; border: 1px solid var(--line); padding: 0 12px; font-size: 13px; font-family: inherit; box-sizing: border-box; width: 100%; background: var(--card); color: var(--ink); border-radius: 5px;">
+              </label>
+
+              <label style="display: flex; flex-direction: column; gap: 5px;">
+                <span style="font-size: 12px; font-weight: 600; color: var(--ink);">Teléfono móvil para el repartidor *</span>
+                <input type="tel" id="guest-phone" required placeholder="685 99 55 10" style="height: 38px; border: 1px solid var(--line); padding: 0 12px; font-size: 13px; font-family: inherit; box-sizing: border-box; width: 100%; background: var(--card); color: var(--ink); border-radius: 5px;">
+              </label>
+
+              <button type="submit" class="btn btn-gold" style="font-size: 13.5px; padding: 11px 18px; width: 100%; margin-top: 4px;">
+                Continuar con la dirección de envío →
+              </button>
+
+              <div style="font-size: 11.5px; color: var(--muted); text-align: center; margin-top: 4px;">
+                ¿Prefieres tener cuenta? <a href="Registro.html" style="color: var(--accent); font-weight: 600;">Regístrate aquí</a>
+              </div>
+            </form>
+          </section>
+
+        </div>
+      </main>
+
+      <!-- BARRA LATERAL DERECHA (STEPPER VISIBLE EN TODO MOMENTO + RESUMEN) -->
+      <aside class="checkout-sidebar-col">
+        
+        <!-- STEPPER CARD -->
+        <div class="checkout-stepper-card">
+          <div class="stepper-header">
+            <span>🛒 Proceso de compra</span>
+            <span style="font-size: 12px; color: var(--accent); font-weight: 700;">Paso 1 de 5</span>
+          </div>
+          <ul class="stepper-list">
+            <!-- 1. Identificación (ACTIVO) -->
+            <li class="stepper-item active">
+              <span class="stepper-bubble">1</span>
+              <div class="stepper-label">
+                <span class="stepper-title">Identificación</span>
+                <span class="stepper-sub">Cuenta o invitado</span>
+              </div>
+            </li>
+            <!-- 2. Dirección de envío -->
+            <li class="stepper-item pending">
+              <span class="stepper-bubble">2</span>
+              <div class="stepper-label">
+                <span class="stepper-title">Dirección de envío</span>
+                <span class="stepper-sub">Lugar y entrega</span>
+              </div>
+            </li>
+            <!-- 3. Método de pago -->
+            <li class="stepper-item pending">
+              <span class="stepper-bubble">3</span>
+              <div class="stepper-label">
+                <span class="stepper-title">Método de pago</span>
+                <span class="stepper-sub">Tarjeta, Bizum o transf.</span>
+              </div>
+            </li>
+            <!-- 4. Confirmación -->
+            <li class="stepper-item pending">
+              <span class="stepper-bubble">4</span>
+              <div class="stepper-label">
+                <span class="stepper-title">Confirmación</span>
+                <span class="stepper-sub">Revisión y pago</span>
+              </div>
+            </li>
+            <!-- 5. Recibo -->
+            <li class="stepper-item pending">
+              <span class="stepper-bubble">5</span>
+              <div class="stepper-label">
+                <span class="stepper-title">Recibo</span>
+                <span class="stepper-sub">Justificante oficial</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- RESUMEN DE COMPRA MINI -->
+        <div class="checkout-summary-card">
+          <h3 style="margin: 0 0 12px; font-size: 15px; font-family: var(--serif); border-bottom: 1px solid var(--line); padding-bottom: 8px;">
+            Resumen de la cesta
+          </h3>
+          <div id="checkout-mini-items" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px;">
+            <!-- Rellenado dinámicamente por TunaCart.renderMiniCheckoutSummary() -->
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); margin-bottom: 6px;">
+            <span>Subtotal</span>
+            <span id="checkout-subtotal-val" style="font-weight: 600; color: var(--ink);">0.00 €</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); margin-bottom: 10px;">
+            <span>Envío</span>
+            <span id="checkout-shipping-val" style="font-weight: 600; color: var(--ink);">4.50 €</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 16px; font-weight: 800; border-top: 1px solid var(--line); padding-top: 10px; color: var(--accent);">
+            <span>Total a pagar</span>
+            <span id="checkout-total-val">0.00 €</span>
+          </div>
+          <div style="margin-top: 14px; text-align: center;">
+            <a href="Cesta.html" style="font-size: 12px; color: var(--accent); text-decoration: underline;">
+              Modificar cesta de la compra
+            </a>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- PIE DE PÁGINA INSTITUCIONAL -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+          <img src="../assets/img/logo_corporativo.svg" alt="Tuna de Derecho" style="height:44px; filter:brightness(1.2);">
+        </div>
+        <p>
+          Agrupación musical tradicional universitaria de la <strong>Facultad de Derecho de la Universidad de Almería</strong>. Fundada en el verano de 1993. Portadora de la alegría, la música y el buen hacer estudiantil.
+        </p>
+        <p style="font-size:12px; color:var(--gold);">
+          🏛 Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Inicio del portal</a></li>
+          <li><a href="Conoce.html">Historia y miembros</a></li>
+          <li><a href="Contratacion.html">Contratar actuaciones</a></li>
+          <li><a href="Tienda.html">Tienda oficial y discos</a></li>
+          <li><a href="Cancionero.html">Cancionero y música</a></li>
+          <li><a href="Unete.html">Únete a la tuna</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Área Privada</h4>
+        <ul class="footer-links">
+          <li><a href="Acceso.html">Iniciar sesión</a></li>
+          <li><a href="Registro.html">Registro de clientes</a></li>
+          <li><a href="../cliente/index.html">Panel de cliente</a></li>
+          <li><a href="../admin/index.html">Panel de administración</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto Oficial</h4>
+        <p>
+          📞 <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
+          ✉️ <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
+          📸 <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
+          🎵 <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>
+        © 1993 - 2026 Tuna de la Facultad de Derecho de Almería. Todos los derechos reservados.
+      </div>
+      <div style="display:flex; gap:16px;">
+        <span>Tecnologías Web · UAL</span>
+        <span>Aviso Legal</span>
+        <span>Política de Privacidad</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts modulares -->
+  <script src="../js/db.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/forms.js"></script>
+  <script src="../js/cart.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = TunaDB.auth.getCurrentUser();
+      if (user) {
+        const banner = document.getElementById('active-session-banner');
+        const desc = document.getElementById('active-session-user-desc');
+        if (banner) banner.style.display = 'block';
+        if (desc) desc.textContent = `Conectado como ${user.nombre} ${user.apellidos || ''} (${user.email})`;
+      }
+    });
+
+    function handleCheckoutLogin(event) {
+      event.preventDefault();
+      const email = document.getElementById('login-email').value;
+      const pass = document.getElementById('login-password').value;
+      const res = TunaDB.auth.login(email, pass);
+      if (res.success) {
+        TunaApp.showToast(`¡Identificado como ${res.user.nombre}!`, 'success');
+        setTimeout(() => {
+          window.location.href = 'DireccionEnvio.html';
+        }, 500);
+      } else {
+        alert(res.error);
+      }
+    }
+
+    function handleGuestCheckout(event) {
+      event.preventDefault();
+      const name = document.getElementById('guest-name').value;
+      const email = document.getElementById('guest-email').value;
+      const phone = document.getElementById('guest-phone').value;
+
+      TunaCart.saveShippingAddress({
+        name: name,
+        email: email,
+        phone: phone,
+        street: 'Calle Real 12, 2ºB',
+        city: 'Almería',
+        postalCode: '04001',
+        province: 'Almería'
+      });
+
+      TunaApp.showToast('Datos de contacto guardados', 'info');
+      setTimeout(() => {
+        window.location.href = 'DireccionEnvio.html';
+      }, 400);
+    }
+  </script>
+</body>
+</html>

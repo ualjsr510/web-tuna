@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" width="520" height="120">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EED793"/>
+      <stop offset="50%" stop-color="#C59B3F"/>
+      <stop offset="100%" stop-color="#936F1E"/>
+    </linearGradient>
+    <linearGradient id="burgundyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8C2533"/>
+      <stop offset="100%" stop-color="#55121C"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Escudo Heráldico / Emblema -->
+  <g transform="translate(15, 10)">
+    <!-- Marco Exterior Escudo -->
+    <path d="M 50 5 C 75 5 95 18 95 48 C 95 78 50 102 50 102 C 50 102 5 78 5 48 C 5 18 25 5 50 5 Z" 
+          fill="url(#burgundyGrad)" stroke="url(#goldGrad)" stroke-width="3" filter="url(#shadow)"/>
+    <path d="M 50 9 C 71 9 90 20 90 48 C 90 73 50 95 50 95 C 50 95 10 73 10 48 C 10 20 29 9 50 9 Z" 
+          fill="none" stroke="url(#goldGrad)" stroke-width="1" stroke-dasharray="2,2"/>
+    
+    <!-- Balanza de la Justicia (Derecho) & Laúd/Guitarra (Tuna) -->
+    <!-- Columna Balanza -->
+    <line x1="50" y1="24" x2="50" y2="76" stroke="#FAF0D6" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Brazo Balanza -->
+    <line x1="28" y1="36" x2="72" y2="36" stroke="#FAF0D6" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Cadenas y Platillos -->
+    <path d="M 28 36 L 22 50 L 34 50 Z" fill="none" stroke="#EED793" stroke-width="1.5"/>
+    <path d="M 20 50 Q 28 54 36 50 Z" fill="url(#goldGrad)"/>
+    <path d="M 72 36 L 66 50 L 78 50 Z" fill="none" stroke="#EED793" stroke-width="1.5"/>
+    <path d="M 64 50 Q 72 54 80 50 Z" fill="url(#goldGrad)"/>
+    
+    <!-- Silueta Laúd central dorado -->
+    <path d="M 50 48 Q 58 56 56 68 Q 50 78 44 68 Q 42 56 50 48 Z" fill="url(#goldGrad)" opacity="0.9"/>
+    <circle cx="50" cy="62" r="2.5" fill="#55121C"/>
+    
+    <!-- Estrella / Sol de Portocarrero estilizado (Almería) -->
+    <polygon points="50,15 52,20 57,20 53,23 55,28 50,25 45,28 47,23 43,20 48,20" fill="url(#goldGrad)"/>
+  </g>
+
+  <!-- Tipografía Corporativa -->
+  <!-- Nombre Principal -->
+  <text x="125" y="46" font-family="'Cinzel', Georgia, serif" font-size="25" font-weight="800" fill="#7A1F2B" letter-spacing="1.5">
+    TUNA DE DERECHO
+  </text>
+  <!-- Subtítulo Acreditación -->
+  <text x="126" y="70" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="12" font-weight="700" fill="#C59B3F" letter-spacing="2.5">
+    FACULTAD DE DERECHO · ALMERÍA
+  </text>
+  <!-- Lema y Tradición -->
+  <text x="126" y="90" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="10.5" font-weight="500" fill="#6E5F57" letter-spacing="0.5">
+    UNIVERSIDAD DE ALMERÍA · FUNDADA EN 1993
+  </text>
+
+  <!-- Línea divisoria elegante dorada -->
+  <line x1="125" y1="78" x2="480" y2="78" stroke="url(#goldGrad)" stroke-width="1" opacity="0.4"/>
+</svg>
+

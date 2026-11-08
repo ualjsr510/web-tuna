@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tuna de la Facultad de Derecho de Almería — PedidoDetalle</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logo_corporativo.svg">
+</head>
+<body>
+  <!-- CABECERA PRINCIPAL CON LOGO CORPORATIVO -->
+    <header class="site-header">
+      <a href="../cliente/index.html" class="site-logo">
+        <img src="../assets/img/logo_corporativo.svg" alt="Tuna de Derecho Almería Logo" style="height:48px;">
+      </a>
+      <nav class="site-nav">
+        <a href="index.html" class="">Inicio</a><a href="Contratos.html" class="">Mis Contratos</a><a href="Pedidos.html" class="">Mis Pedidos</a><a href="Cuenta.html" class="">Mi Cuenta</a>
+      </nav>
+      <div class="header-actions">
+        
+          <a href="../visitante/index.html" class="btn-header-cart" title="Ver portal público de la Tuna">
+            🏛 Portal Público
+          </a>
+          <a href="../visitante/index.html" class="btn btn-outline" style="font-size:12px; padding:6px 12px;" onclick="TunaApp.logout()">
+            Cerrar sesión
+          </a>
+        
+      </div>
+    </header>
+    
+
+  <div class="main-content">
+    
+
+    
+
+<main style="flex: 1; min-height: 0; padding: 24px 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px"><div class="screen-nav-bar">
+        <a href="Pedidos.html" class="btn-back-nav" onclick="TunaApp.goBack('Pedidos.html')">
+          <span class="arrow">←</span> <span>Volver a Historial de pedidos</span>
+        </a>
+        <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
+          <a href="index.html" class="bc-link">Inicio</a><span class="bc-sep">›</span><a href="Pedidos.html" class="bc-link">Historial de pedidos</a><span class="bc-sep">›</span><span class="bc-current">Ver pedido en detalle</span>
+        </nav>
+      </div><div style="flex: none"><h1 style="margin: 0; font-size: 26px">Pedido #0012</h1><p style="margin: 6px 0 0; font-size: 13px; color: var(--muted)">Detalle de tu pedido</p></div><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; max-width: 820px"><h2 style="margin: 0; font-size: 15px">Datos del pedido</h2><p style="margin: 0; font-size: 13px; color: var(--ink); line-height: 1.5; ">Fecha: 12/03/2026 · Estado: <span class="badge ok">Entregado</span></p><p style="margin: 0; font-size: 13px; color: var(--ink); line-height: 1.5; ">Dirección de envío: Calle Mayor 12, 2º B, 04001 Almería</p></section><table style="width: 100%; border-collapse: collapse; border: 1px solid var(--line)"><thead><tr><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Producto</th><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Cantidad</th><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Precio</th><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Subtotal</th></tr></thead><tbody><tr><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Capa tradicional</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">2</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">45,00 €</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">90,00 €</td></tr><tr><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Pandero decorado</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">1</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">18,00 €</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">18,00 €</td></tr><tr><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Parche bordado</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">3</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">12,00 €</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">36,00 €</td></tr><tr><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)"><strong>Total</strong></td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)"></td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)"></td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)"><strong>144,00 €</strong></td></tr></tbody></table><div style="display: flex; gap: 16px; align-items: center; align-items: flex-start"><div style="display: flex; flex-direction: column; gap: 6px; "><a href="PedidoEditar.html" style="text-decoration: none; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; background: var(--accent); color: var(--on-accent); padding: 12px 20px; border: 1px solid var(--accent); ">Editar datos del pedido</a><p style="margin: 0; font-size: 11px; color: var(--muted); line-height: 1.5; ">Disponible mientras el pedido siga siendo editable</p></div><div style="display: flex; flex-direction: column; gap: 6px; "><a href="PedidoDevolucion.html" style="text-decoration: none; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; color: var(--ink); padding: 11px 20px; border: 1px solid var(--accent); ">Tramitar devolución</a><p style="margin: 0; font-size: 11px; color: var(--muted); line-height: 1.5; ">Disponible si el pedido está entregado y dentro de plazo</p></div><a href="Pedidos.html" style="text-decoration: none; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; color: var(--ink); padding: 11px 20px; border: 1px solid var(--line); ">Volver al historial</a></div></main>
+
+    
+
+
+  </div>
+
+  
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+            <img src="../assets/img/logo_corporativo.svg" alt="Tuna de Derecho" style="height:44px; filter:brightness(1.2);">
+          </div>
+          <p>
+            Agrupación musical tradicional universitaria de la <strong>Facultad de Derecho de la Universidad de Almería</strong>. Fundada en el verano de 1993. Portadora de la alegría, la música y el buen hacer estudiantil.
+          </p>
+          <p style="font-size:12px; color:var(--gold);">
+            🏛 Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul class="footer-links">
+            <li><a href="../visitante/index.html">Inicio del portal</a></li>
+            <li><a href="../visitante/Conoce.html">Historia y miembros</a></li>
+            <li><a href="../visitante/Contratacion.html">Contratar actuaciones</a></li>
+            <li><a href="../visitante/Tienda.html">Tienda oficial y discos</a></li>
+            <li><a href="../visitante/Cancionero.html">Cancionero y música</a></li>
+            <li><a href="../visitante/Unete.html">Únete a la tuna</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Área Privada</h4>
+          <ul class="footer-links">
+            <li><a href="../visitante/Acceso.html">Iniciar sesión</a></li>
+            <li><a href="../visitante/Registro.html">Registro de clientes</a></li>
+            <li><a href="../cliente/index.html">Panel de cliente</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto Oficial</h4>
+          <p>
+            📞 <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
+            ✉️ <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
+            📸 <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
+            🎵 <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>
+          © 1993 - 2026 Tuna de la Facultad de Derecho de Almería. Todos los derechos reservados.
+        </div>
+        <div style="display:flex; gap:16px;">
+          <span>Tecnologías Web · UAL</span>
+          <span>Aviso Legal</span>
+          <span>Política de Privacidad</span>
+        </div>
+      </div>
+    </footer>
+    
+
+  <!-- Scripts modulares -->
+  <script src="../js/db.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

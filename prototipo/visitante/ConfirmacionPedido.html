@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paso 4: Confirmación del Pedido — Tuna de la Facultad de Derecho de Almería</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logo_corporativo.svg">
+</head>
+<body>
+
+  <!-- CABECERA PRINCIPAL CON LOGO CORPORATIVO -->
+  <header class="site-header">
+    <a href="index.html" class="site-logo">
+      <img src="../assets/img/logo_corporativo.svg" alt="Tuna de Derecho Almería Logo" style="height:48px;">
+    </a>
+    <nav class="site-nav">
+      <a href="Conoce.html">Conoce la tuna</a>
+      <a href="Contratacion.html">Contratación</a>
+      <a href="Multimedia.html">Multimedia</a>
+      <a href="Tienda.html" class="active">Tienda</a>
+      <a href="Cancionero.html">Cancionero</a>
+      <a href="Unete.html">Únete</a>
+    </nav>
+    <div class="header-actions">
+      <a href="Cesta.html" class="btn-header-cart">
+        🛒 Cesta (<span class="cart-counter-val">0</span>)
+      </a>
+      <a href="Acceso.html" class="btn-header-login">
+        Iniciar sesión
+      </a>
+    </div>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL CHECKOUT -->
+  <div class="main-content">
+    <div class="screen-nav-bar" style="margin-bottom: 20px;">
+      <a href="MetodoPago.html" class="btn-back-nav" onclick="TunaApp.goBack('MetodoPago.html')">
+        <span class="arrow">←</span> <span>Volver a Método de pago</span>
+      </a>
+      <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
+        <a href="index.html" class="bc-link">Inicio</a><span class="bc-sep">›</span>
+        <a href="Tienda.html" class="bc-link">Tienda</a><span class="bc-sep">›</span>
+        <a href="Cesta.html" class="bc-link">Cesta</a><span class="bc-sep">›</span>
+        <a href="AccesoPedido.html" class="bc-link">Identificación</a><span class="bc-sep">›</span>
+        <a href="DireccionEnvio.html" class="bc-link">Dirección</a><span class="bc-sep">›</span>
+        <a href="MetodoPago.html" class="bc-link">Pago</a><span class="bc-sep">›</span>
+        <span class="bc-current">Paso 4: Confirmación</span>
+      </nav>
+    </div>
+
+    <!-- FLUJO CHECKOUT EN 2 COLUMNAS: FORMULARIO IZQUIERDA + STEPPER Y RESUMEN DERECHA -->
+    <div class="checkout-layout">
+      
+      <!-- COLUMNA PRINCIPAL (IZQUIERDA) -->
+      <main class="checkout-main-col">
+        <div>
+          <span class="badge-gold">PASO 4 DE 5</span>
+          <h1 style="margin: 6px 0 4px; font-size: clamp(22px, 3vw, 28px); color: var(--ink); font-family: var(--serif);">
+            Revisión y confirmación del pedido
+          </h1>
+          <p style="margin: 0; font-size: 13.5px; color: var(--muted);">
+            Por favor, comprueba minuciosamente los artículos y los datos de envío antes de formalizar la orden.
+          </p>
+        </div>
+
+        <!-- 1. Tabla de Artículos -->
+        <section class="tuna-card" style="padding: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 8px;">
+            <h2 style="margin: 0; font-size: 16px; color: var(--ink); font-family: var(--serif);">
+              1. Artículos incluidos en el pedido
+            </h2>
+            <a href="Cesta.html" style="font-size: 12.5px; color: var(--accent); font-weight: 600; text-decoration: underline;">
+              Editar cesta
+            </a>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse;">
+              <thead>
+                <tr style="background: var(--soft); text-align: left; font-size: 12px; color: var(--muted);">
+                  <th style="padding: 10px 12px; border-bottom: 1px solid var(--line);">Producto</th>
+                  <th style="padding: 10px 12px; border-bottom: 1px solid var(--line);">Precio unitario</th>
+                  <th style="padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: center;">Uds</th>
+                  <th style="padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: right;">Subtotal</th>
+                </tr>
+              </thead>
+              <tbody id="review-items-body">
+                <!-- Rellenado dinámicamente por TunaCart.renderReviewPage() -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 2. Dirección y Método de Pago -->
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;" class="responsive-grid-2">
+          
+          <section class="tuna-card" style="padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid var(--line); padding-bottom: 6px;">
+              <h3 style="margin: 0; font-size: 14.5px; color: var(--ink); font-family: var(--serif);">
+                📍 2. Dirección de entrega
+              </h3>
+              <a href="DireccionEnvio.html" style="font-size: 12px; color: var(--accent); text-decoration: underline;">Modificar</a>
+            </div>
+            <div id="review-address-text" style="font-size: 13px; line-height: 1.6; color: var(--ink);">
+              <!-- Rellenado dinámicamente -->
+              <strong>Marta Gil Sánchez</strong><br>
+              Calle Real 12, 2ºB<br>
+              04001 Almería, Almería<br>
+              <span style="color:var(--muted); font-size:12px;">📞 685 99 55 10</span>
+            </div>
+          </section>
+
+          <section class="tuna-card" style="padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid var(--line); padding-bottom: 6px;">
+              <h3 style="margin: 0; font-size: 14.5px; color: var(--ink); font-family: var(--serif);">
+                💳 3. Forma de pago
+              </h3>
+              <a href="MetodoPago.html" style="font-size: 12px; color: var(--accent); text-decoration: underline;">Modificar</a>
+            </div>
+            <div style="font-size: 13px; line-height: 1.6; color: var(--ink);">
+              <span id="review-payment-text" style="font-weight: 700; color: var(--accent);">
+                Tarjeta de crédito / débito (Visa / Mastercard)
+              </span>
+              <p style="margin: 6px 0 0; font-size: 12px; color: var(--muted);">
+                Transacción protegida mediante protocolo 3D Secure / PSD2 de CaixaBank.
+              </p>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- 3. Cláusula de Términos y Confirmación Final -->
+        <section class="tuna-card" style="padding: 24px; border: 2px solid var(--gold); background: var(--soft);">
+          <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer; font-size: 13px; color: var(--ink); line-height: 1.5;">
+            <input type="checkbox" id="terms-agree" checked style="margin-top: 3px;">
+            <span>
+              He leído y acepto expresamente las <strong>Condiciones Generales de Contratación</strong> de la Tuna de Derecho de Almería y la <strong>Política de Privacidad y Devoluciones</strong> (14 días naturales de desistimiento según normativa europea).
+            </span>
+          </label>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 16px; border-top: 1px solid var(--line); padding-top: 18px;">
+            <a href="MetodoPago.html" class="btn btn-outline" style="font-size: 13px; padding: 11px 18px;">
+              ← Modificar método de pago
+            </a>
+
+            <button type="button" id="btn-confirm-order" onclick="processOrderCheckout()" class="btn btn-gold" style="font-size: 15.5px; padding: 14px 28px; font-weight: 800; box-shadow: 0 4px 14px rgba(0,0,0,0.25);">
+              🔒 Formalizar y Pagar Pedido
+            </button>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- BARRA LATERAL DERECHA (STEPPER VISIBLE EN TODO MOMENTO + RESUMEN) -->
+      <aside class="checkout-sidebar-col">
+        
+        <!-- STEPPER CARD -->
+        <div class="checkout-stepper-card">
+          <div class="stepper-header">
+            <span>🛒 Proceso de compra</span>
+            <span style="font-size: 12px; color: var(--accent); font-weight: 700;">Paso 4 de 5</span>
+          </div>
+          <ul class="stepper-list">
+            <!-- 1. Identificación (COMPLETADO) -->
+            <li class="stepper-item completed">
+              <span class="stepper-bubble">✓</span>
+              <div class="stepper-label">
+                <span class="stepper-title">Identificación</span>
+                <span class="stepper-sub">Cliente identificado</span>
+              </div>
+            </li>
+            <!-- 2. Dirección de envío (COMPLETADO) -->
+            <li class="stepper-item completed">
+              <span class="stepper-bubble">✓</span>
+              <div class="stepper-label">
+                <span class="stepper-title">Dirección de envío</span>
+                <span class="stepper-sub">Dirección guardada</span>
+              </div>
+            </li>
+            <!-- 3. Método de pago (COMPLETADO) -->
+            <li class="stepper-item completed">
+              <span class="stepper-bubble">✓</span>
+              <div class="stepper-label">
+                <span class="stepper-title">Método de pago</span>
+                <span class="stepper-sub">Pago configurado</span>
+              </div>
+            </li>
+            <!-- 4. Confirmación (ACTIVO) -->
+            <li class="stepper-item active">
+              <span class="stepper-bubble">4</span>
+              <div class="stepper-label">
+                <span class="stepper-title">Confirmación</span>
+                <span class="stepper-sub">Revisión y pago</span>
+              </div>
+            </li>
+            <!-- 5. Recibo -->
+            <li class="stepper-item pending">
+              <span class="stepper-bubble">5</span>
+              <div class="stepper-label">
+                <span class="stepper-title">Recibo</span>
+                <span class="stepper-sub">Justificante oficial</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- RESUMEN DE COMPRA MINI -->
+        <div class="checkout-summary-card">
+          <h3 style="margin: 0 0 12px; font-size: 15px; font-family: var(--serif); border-bottom: 1px solid var(--line); padding-bottom: 8px;">
+            Resumen de la cesta
+          </h3>
+          <div id="checkout-mini-items" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px;">
+            <!-- Rellenado dinámicamente por TunaCart.renderMiniCheckoutSummary() -->
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); margin-bottom: 6px;">
+            <span>Subtotal</span>
+            <span id="review-subtotal-val" style="font-weight: 600; color: var(--ink);">0.00 €</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); margin-bottom: 10px;">
+            <span>Envío</span>
+            <span id="review-shipping-val" style="font-weight: 600; color: var(--ink);">4.50 €</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 16px; font-weight: 800; border-top: 1px solid var(--line); padding-top: 10px; color: var(--accent);">
+            <span>Total a pagar</span>
+            <span id="review-total-val">0.00 €</span>
+          </div>
+          <div style="margin-top: 14px; text-align: center;">
+            <span style="font-size: 11.5px; color: var(--muted);">🔒 Pasarela bancaria certificada</span>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- PIE DE PÁGINA INSTITUCIONAL -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+          <img src="../assets/img/logo_corporativo.svg" alt="Tuna de Derecho" style="height:44px; filter:brightness(1.2);">
+        </div>
+        <p>
+          Agrupación musical tradicional universitaria de la <strong>Facultad de Derecho de la Universidad de Almería</strong>. Fundada en el verano de 1993. Portadora de la alegría, la música y el buen hacer estudiantil.
+        </p>
+        <p style="font-size:12px; color:var(--gold);">
+          🏛 Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Inicio del portal</a></li>
+          <li><a href="Conoce.html">Historia y miembros</a></li>
+          <li><a href="Contratacion.html">Contratar actuaciones</a></li>
+          <li><a href="Tienda.html">Tienda oficial y discos</a></li>
+          <li><a href="Cancionero.html">Cancionero y música</a></li>
+          <li><a href="Unete.html">Únete a la tuna</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Área Privada</h4>
+        <ul class="footer-links">
+          <li><a href="Acceso.html">Iniciar sesión</a></li>
+          <li><a href="Registro.html">Registro de clientes</a></li>
+          <li><a href="../cliente/index.html">Panel de cliente</a></li>
+          <li><a href="../admin/index.html">Panel de administración</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto Oficial</h4>
+        <p>
+          📞 <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
+          ✉️ <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
+          📸 <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
+          🎵 <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>
+        © 1993 - 2026 Tuna de la Facultad de Derecho de Almería. Todos los derechos reservados.
+      </div>
+      <div style="display:flex; gap:16px;">
+        <span>Tecnologías Web · UAL</span>
+        <span>Aviso Legal</span>
+        <span>Política de Privacidad</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts modulares -->
+  <script src="../js/db.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/cart.js"></script>
+
+  <script>
+    function processOrderCheckout() {
+      const chk = document.getElementById('terms-agree');
+      if (chk && !chk.checked) {
+        alert('Por favor, acepta las condiciones de compra para formalizar el pedido.');
+        return;
+      }
+
+      const btn = document.getElementById('btn-confirm-order');
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '⏳ Procesando pago seguro...';
+      }
+
+      setTimeout(() => {
+        const order = TunaCart.submitCheckoutOrder();
+        if (order) {
+          TunaApp.showToast(`¡Pedido ${order.id} procesado con éxito!`, 'success');
+          setTimeout(() => {
+            window.location.href = 'ReciboPedido.html';
+          }, 600);
+        } else {
+          alert('Hubo un error al tramitar el pedido. Por favor, revisa tu cesta.');
+          window.location.href = 'Cesta.html';
+        }
+      }, 700);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tuna de la Facultad de Derecho de Almería — Repertorio</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logo_corporativo.svg">
+</head>
+<body>
+  <!-- CABECERA PRINCIPAL CON LOGO CORPORATIVO -->
+    <header class="site-header">
+      <a href="../visitante/index.html" class="site-logo">
+        <img src="../assets/img/logo_corporativo.svg" alt="Tuna de Derecho Almería Logo" style="height:48px;">
+      </a>
+      <nav class="site-nav">
+        <a href="Conoce.html" class="">Conoce la tuna</a><a href="Contratacion.html" class="">Contratación</a><a href="Multimedia.html" class="">Multimedia</a><a href="Tienda.html" class="">Tienda</a><a href="Cancionero.html" class="">Cancionero</a><a href="Unete.html" class="">Únete</a>
+      </nav>
+      <div class="header-actions">
+        
+          <a href="Cesta.html" class="btn-header-cart">
+            🛒 Cesta (<span class="cart-counter-val">0</span>)
+          </a>
+          <a href="Acceso.html" class="btn-header-login">
+            Iniciar sesión
+          </a>
+        
+      </div>
+    </header>
+    
+
+  <div class="main-content">
+    
+
+    
+
+<main style="flex: 1; min-height: 0; padding: 24px 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px"><div class="screen-nav-bar">
+        <a href="Cancionero.html" class="btn-back-nav" onclick="TunaApp.goBack('Cancionero.html')">
+          <span class="arrow">←</span> <span>Volver a Cancionero</span>
+        </a>
+        <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
+          <a href="index.html" class="bc-link">Inicio</a><span class="bc-sep">›</span><a href="Cancionero.html" class="bc-link">Cancionero</a><span class="bc-sep">›</span><span class="bc-current">Nuestro repertorio de canciones</span>
+        </nav>
+      </div><div style="flex: none"><h1 style="margin: 0; font-size: 26px">Nuestro repertorio de canciones</h1><p style="margin: 6px 0 0; font-size: 13px; color: var(--muted)">Busca por título o palabra clave</p></div>
+    <!-- REPRODUCTOR OFICIAL DE LA TUNA CON WEB AUDIO -->
+    <section class="audio-player-card" style="margin-bottom: 24px;">
+      <div class="audio-track-info">
+        <div>
+          <span class="badge-gold">EN REPRODUCCIÓN · WEB AUDIO EN VIVO</span>
+          <h2 id="player-title" style="margin: 6px 0 2px; font-size: 22px; color: #fbf3df;">Noche de Ronda en Almería</h2>
+          <span id="player-album" style="font-size: 13px; color: #eed793;">Álbum Oficial XXV Aniversario</span>
+        </div>
+        <div style="text-align: right;">
+          <span id="player-time-current" style="font-size: 16px; font-weight: 700; color: var(--gold);">0:00</span>
+          <span style="color: #eed793;"> / </span>
+          <span id="player-time-total" style="font-size: 13px; color: #eed793;">3:45</span>
+        </div>
+      </div>
+
+      <div class="audio-progress-bar" onclick="TunaAudioPlayer.togglePlay()">
+        <div class="audio-progress-fill" id="player-progress-fill"></div>
+      </div>
+
+      <div class="audio-controls">
+        <button type="button" class="audio-btn" onclick="TunaAudioPlayer.prev()" title="Canción anterior">⏮</button>
+        <button type="button" class="audio-btn audio-btn-play" id="player-play-btn" onclick="TunaAudioPlayer.togglePlay()" title="Reproducir / Pausar">▶</button>
+        <button type="button" class="audio-btn" onclick="TunaAudioPlayer.next()" title="Siguiente canción">⏭</button>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; margin-top:12px; border-top:1px solid rgba(255,255,255,0.12); padding-top:16px;" class="responsive-grid-2">
+        <div>
+          <strong style="font-size:13px; color:#eed793; display:block; margin-bottom:10px;">Lista de canciones:</strong>
+          <ul id="player-playlist-list" style="list-style:none; padding:0; margin:0;"></ul>
+        </div>
+        <div>
+          <strong style="font-size:13px; color:#eed793; display:block; margin-bottom:10px;">Letra de la canción:</strong>
+          <pre id="player-lyrics" style="font-family:var(--sans); font-size:12.5px; color:#d8c8bf; line-height:1.6; white-space:pre-wrap; margin:0; background:rgba(0,0,0,0.3); padding:12px; border-radius:6px; border:1px solid rgba(255,255,255,0.1); max-height:160px; overflow-y:auto;"></pre>
+        </div>
+      </div>
+    </section>
+    <div style="display: flex; gap: 10px; align-items: center; flex: none"><input type="search" placeholder="Buscar canción..." style="height: 38px; border: 1px solid var(--line); padding: 0 10px; font-size: 13px; font-family: inherit; box-sizing: border-box; width: 100%; background: var(--card); color: var(--ink); flex: 1"><select style="height: 38px; border: 1px solid var(--line); padding: 0 10px; font-size: 13px; font-family: inherit; box-sizing: border-box; width: 100%; background: var(--card); color: var(--ink); width: 200px"><option>Todos los géneros</option></select><button type="button" style="font-size: 13px; font-family: inherit; background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent); padding: 0 18px; height: 38px">Buscar</button></div><table style="width: 100%; border-collapse: collapse; border: 1px solid var(--line)"><thead><tr><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Canción</th><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Autor</th><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Género</th></tr></thead><tbody><tr><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Clavelitos</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Tradicional</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Tradicional</td></tr><tr><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Ay, Carmela</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Popular</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Pasodoble</td></tr><tr><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Cielito lindo</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Tradicional</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Balada</td></tr><tr><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">La morena</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Popular</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Popular</td></tr><tr><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Mi Almería</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Tradicional</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Tradicional</td></tr><tr><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Soy minero</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Popular</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Pasodoble</td></tr><tr><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Clavelitos</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Tradicional</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Balada</td></tr><tr><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Ay, Carmela</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Popular</td><td style="padding: 9px 10px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--ink-2)">Popular</td></tr></tbody></table><p style="margin: 0; font-size: 12px; color: var(--muted); line-height: 1.5; ">Mostrando 1–6 de 24 · ‹ 1 2 3 ›</p></main>
+
+    
+
+
+  </div>
+
+  
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+            <img src="../assets/img/logo_corporativo.svg" alt="Tuna de Derecho" style="height:44px; filter:brightness(1.2);">
+          </div>
+          <p>
+            Agrupación musical tradicional universitaria de la <strong>Facultad de Derecho de la Universidad de Almería</strong>. Fundada en el verano de 1993. Portadora de la alegría, la música y el buen hacer estudiantil.
+          </p>
+          <p style="font-size:12px; color:var(--gold);">
+            🏛 Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul class="footer-links">
+            <li><a href="../visitante/index.html">Inicio del portal</a></li>
+            <li><a href="../visitante/Conoce.html">Historia y miembros</a></li>
+            <li><a href="../visitante/Contratacion.html">Contratar actuaciones</a></li>
+            <li><a href="../visitante/Tienda.html">Tienda oficial y discos</a></li>
+            <li><a href="../visitante/Cancionero.html">Cancionero y música</a></li>
+            <li><a href="../visitante/Unete.html">Únete a la tuna</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Área Privada</h4>
+          <ul class="footer-links">
+            <li><a href="../visitante/Acceso.html">Iniciar sesión</a></li>
+            <li><a href="../visitante/Registro.html">Registro de clientes</a></li>
+            <li><a href="../cliente/index.html">Panel de cliente</a></li>
+            <li><a href="../admin/index.html">Panel de administración</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto Oficial</h4>
+          <p>
+            📞 <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
+            ✉️ <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
+            📸 <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
+            🎵 <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>
+          © 1993 - 2026 Tuna de la Facultad de Derecho de Almería. Todos los derechos reservados.
+        </div>
+        <div style="display:flex; gap:16px;">
+          <span>Tecnologías Web · UAL</span>
+          <span>Aviso Legal</span>
+          <span>Política de Privacidad</span>
+        </div>
+      </div>
+    </footer>
+    
+
+  <!-- Scripts modulares -->
+  <script src="../js/db.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/audio-player.js"></script>
+</body>
+</html>

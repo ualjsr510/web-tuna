@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tuna de la Facultad de Derecho de Almería — Tienda</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logo_corporativo.svg">
+</head>
+<body>
+  <!-- CABECERA PRINCIPAL CON LOGO CORPORATIVO -->
+    <header class="site-header">
+      <a href="../visitante/index.html" class="site-logo">
+        <img src="../assets/img/logo_corporativo.svg" alt="Tuna de Derecho Almería Logo" style="height:48px;">
+      </a>
+      <nav class="site-nav">
+        <a href="Conoce.html" class="">Conoce la tuna</a><a href="Contratacion.html" class="">Contratación</a><a href="Multimedia.html" class="">Multimedia</a><a href="Tienda.html" class="active">Tienda</a><a href="Cancionero.html" class="">Cancionero</a><a href="Unete.html" class="">Únete</a>
+      </nav>
+      <div class="header-actions">
+        
+          <a href="Cesta.html" class="btn-header-cart">
+            🛒 Cesta (<span class="cart-counter-val">0</span>)
+          </a>
+          <a href="Acceso.html" class="btn-header-login">
+            Iniciar sesión
+          </a>
+        
+      </div>
+    </header>
+    
+
+  <div class="main-content">
+    
+
+    
+
+<main style="flex: 1; min-height: 0; padding: 24px 36px; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px">
+      <div class="screen-nav-bar">
+        <a href="index.html" class="btn-back-nav" onclick="TunaApp.goBack('index.html')">
+          <span class="arrow">←</span> <span>Volver al Inicio</span>
+        </a>
+        <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
+          <a href="index.html" class="bc-link">Inicio</a><span class="bc-sep">›</span><span class="bc-current">Tienda</span>
+        </nav>
+      </div>
+
+      <!-- CABECERA DE TIENDA OFICIAL -->
+      <section class="tuna-card" style="background: linear-gradient(135deg, #2d080d 0%, #5e1420 60%, #3d0d14 100%); color: #fff; padding: 28px 32px; border: 1px solid var(--gold); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+        <div style="max-width: 660px;">
+          <span class="badge-gold">TIENDA OFICIAL DE LA TUNA</span>
+          <h1 style="margin: 8px 0 6px; font-size: 28px; color: #fbf3df; font-family: var(--serif);">Tienda Oficial y Recuerdos</h1>
+          <p style="margin: 0; font-size: 13.5px; color: #ecdcc3; line-height: 1.5;">Adquiere nuestras grabaciones oficiales en CD y vinilo, indumentaria tradicional universitaria, parches y complementos hechos a mano.</p>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <a href="Catalogo.html" style="background: var(--gold); color: #1c1417; font-weight: 700; text-decoration: none; padding: 12px 20px; border-radius: 5px; font-size: 13.5px; box-shadow: 0 4px 12px rgba(0,0,0,0.25);">
+            🔍 Ver Catálogo con Filtros
+          </a>
+          <a href="Cesta.html" style="background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); font-weight: 600; text-decoration: none; padding: 12px 18px; border-radius: 5px; font-size: 13.5px;">
+            🛒 Cesta de la compra
+          </a>
+        </div>
+      </section>
+
+      <!-- CATEGORÍAS PRINCIPALES DE TIENDA -->
+      <section style="display: flex; flex-direction: column; gap: 12px;">
+        <h2 style="margin: 0; font-size: 18px;">Categorías de la Tienda</h2>
+        <div class="responsive-grid-4" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;">
+          <a href="Catalogo.html" class="tuna-card" style="text-decoration: none; padding: 14px; gap: 10px; text-align: center; align-items: center;">
+            <div class="tuna-photo-frame" style="width: 100%; height: 95px; border-radius: 6px;">
+              <img src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=600&q=80" alt="Indumentaria y Capas">
+            </div>
+            <strong style="font-size: 13.5px; color: var(--ink);">Indumentaria & Capas</strong>
+            <span style="font-size: 11.5px; color: var(--muted);">Capas, sudaderas, camisetas</span>
+          </a>
+          <a href="Catalogo.html" class="tuna-card" style="text-decoration: none; padding: 14px; gap: 10px; text-align: center; align-items: center;">
+            <div class="tuna-photo-frame" style="width: 100%; height: 95px; border-radius: 6px;">
+              <img src="https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=600&q=80" alt="Música y Discos">
+            </div>
+            <strong style="font-size: 13.5px; color: var(--ink);">Música & Discografía</strong>
+            <span style="font-size: 11.5px; color: var(--muted);">CDs oficiales, cancioneros</span>
+          </a>
+          <a href="Catalogo.html" class="tuna-card" style="text-decoration: none; padding: 14px; gap: 10px; text-align: center; align-items: center;">
+            <div class="tuna-photo-frame" style="width: 100%; height: 95px; border-radius: 6px;">
+              <img src="https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?auto=format&fit=crop&w=600&q=80" alt="Instrumentos y Accesorios">
+            </div>
+            <strong style="font-size: 13.5px; color: var(--ink);">Instrumentos & Cintas</strong>
+            <span style="font-size: 11.5px; color: var(--muted);">Panderetas, cintas bordadas</span>
+          </a>
+          <a href="Catalogo.html" class="tuna-card" style="text-decoration: none; padding: 14px; gap: 10px; text-align: center; align-items: center;">
+            <div class="tuna-photo-frame" style="width: 100%; height: 95px; border-radius: 6px;">
+              <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" alt="Recuerdos y Souvenirs">
+            </div>
+            <strong style="font-size: 13.5px; color: var(--ink);">Recuerdos & Pines</strong>
+            <span style="font-size: 11.5px; color: var(--muted);">Parches bordados, regalos</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- LAS 2 SECCIONES DEL ÁRBOL (4.1 CATÁLOGO Y 4.2 CESTA) -->
+      <section class="responsive-grid-2" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px;">
+        <a href="Catalogo.html" class="tuna-card" style="text-decoration: none; padding: 20px; gap: 14px;">
+          <div class="tuna-photo-frame" style="height: 160px; border-radius: 6px;">
+            <img src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=700&q=80" alt="Catálogo">
+            <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.75); color: #fff; padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 700;">NODO 4.1</span>
+          </div>
+          <div>
+            <h3 style="margin: 0 0 4px; font-size: 18px; color: var(--ink);">Catálogo interactivo</h3>
+            <p style="margin: 0; font-size: 13px; color: var(--muted); line-height: 1.5;">Explora los 8 productos oficiales con filtros por categoría, buscador en vivo, rangos de precio y selector de tallas.</p>
+          </div>
+          <span style="font-size: 13px; font-weight: 700; color: var(--accent); margin-top: auto; display: inline-flex; align-items: center; gap: 4px;">Abrir catálogo completo →</span>
+        </a>
+        <a href="Cesta.html" class="tuna-card" style="text-decoration: none; padding: 20px; gap: 14px;">
+          <div class="tuna-photo-frame" style="height: 160px; border-radius: 6px;">
+            <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=700&q=80" alt="Cesta">
+            <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.75); color: #fff; padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 700;">NODO 4.2</span>
+          </div>
+          <div>
+            <h3 style="margin: 0 0 4px; font-size: 18px; color: var(--ink);">Cesta de la compra</h3>
+            <p style="margin: 0; font-size: 13px; color: var(--muted); line-height: 1.5;">Revisa los artículos que has seleccionado, ajusta cantidades y tramita tu pedido con dirección de envío.</p>
+          </div>
+          <span style="font-size: 13px; font-weight: 700; color: var(--accent); margin-top: auto; display: inline-flex; align-items: center; gap: 4px;">Gestionar mi cesta →</span>
+        </a>
+      </section>
+    </main>
+
+    
+
+
+  </div>
+
+  
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+            <img src="../assets/img/logo_corporativo.svg" alt="Tuna de Derecho" style="height:44px; filter:brightness(1.2);">
+          </div>
+          <p>
+            Agrupación musical tradicional universitaria de la <strong>Facultad de Derecho de la Universidad de Almería</strong>. Fundada en el verano de 1993. Portadora de la alegría, la música y el buen hacer estudiantil.
+          </p>
+          <p style="font-size:12px; color:var(--gold);">
+            🏛 Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul class="footer-links">
+            <li><a href="../visitante/index.html">Inicio del portal</a></li>
+            <li><a href="../visitante/Conoce.html">Historia y miembros</a></li>
+            <li><a href="../visitante/Contratacion.html">Contratar actuaciones</a></li>
+            <li><a href="../visitante/Tienda.html">Tienda oficial y discos</a></li>
+            <li><a href="../visitante/Cancionero.html">Cancionero y música</a></li>
+            <li><a href="../visitante/Unete.html">Únete a la tuna</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Área Privada</h4>
+          <ul class="footer-links">
+            <li><a href="../visitante/Acceso.html">Iniciar sesión</a></li>
+            <li><a href="../visitante/Registro.html">Registro de clientes</a></li>
+            <li><a href="../cliente/index.html">Panel de cliente</a></li>
+            <li><a href="../admin/index.html">Panel de administración</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto Oficial</h4>
+          <p>
+            📞 <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
+            ✉️ <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
+            📸 <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
+            🎵 <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>
+          © 1993 - 2026 Tuna de la Facultad de Derecho de Almería. Todos los derechos reservados.
+        </div>
+        <div style="display:flex; gap:16px;">
+          <span>Tecnologías Web · UAL</span>
+          <span>Aviso Legal</span>
+          <span>Política de Privacidad</span>
+        </div>
+      </div>
+    </footer>
+    
+
+  <!-- Scripts modulares -->
+  <script src="../js/db.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/catalog.js"></script>
+  <script src="../js/cart.js"></script>
+</body>
+</html>
