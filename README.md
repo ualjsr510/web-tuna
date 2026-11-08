@@ -59,3 +59,4 @@ La aplicación cuenta con una capa ORM client-side (`prototipo/js/db.js`) conect
 
 - `main`: Código actual del proyecto con prototipo funcional, base de datos relacional y embudo de compra en 5 pasos.
 - `version-antigua` / `version_antigua`: Código histórico previo del repositorio preservado íntegramente.
+
