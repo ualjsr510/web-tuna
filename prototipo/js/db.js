@@ -144,7 +144,8 @@ const TunaDB = {
       TunaApp.showToast('Sesión cerrada con éxito');
       setTimeout(() => {
         // Redirigir siempre a la portada pública
-        window.location.href = '../visitante/index.html';
+        const inSubfolder = /\/(visitante|cliente|admin)\//i.test(window.location.pathname);
+        window.location.href = (inSubfolder ? '../' : '') + 'visitante/index.html';
       }, 400);
     },
 

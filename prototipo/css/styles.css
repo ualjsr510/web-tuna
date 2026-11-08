@@ -1162,3 +1162,17 @@ img {
    y el encuadre prioriza la parte alta (caras en las fotos de grupo) */
 .tuna-photo-frame img { object-position: center 35%; }
 .tuna-photo-frame[style*="aspect-ratio"] { height: auto; }
+
+/* Cabecera de admin: 7 apartados con icono. Se compacta y, si no cabe, el menú pasa a una segunda fila */
+.site-header--admin .site-logo { flex-shrink: 0; }
+@media (max-width: 1500px) {
+  .site-header--admin { padding: 0 20px; gap: 16px; }
+  .site-header--admin .site-nav { gap: 12px; font-size: 12.5px; }
+  .site-header--admin .nav-icon { width: 18px; height: 18px; }
+  .site-header--admin .site-nav a { gap: 4px; }
+}
+@media (min-width: 769px) and (max-width: 1300px) {
+  .site-header--admin { height: auto; padding: 10px 20px 6px; flex-wrap: wrap; justify-content: space-between; row-gap: 6px; }
+  .site-header--admin .site-nav { order: 3; width: 100%; }
+  .site-header--admin .header-actions { margin-left: 0; }
+}

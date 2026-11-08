@@ -54,6 +54,11 @@ const TunaApp = {
     }
   },
 
+  // Enlaces "Cerrar sesión" de cliente y admin: borra la sesión y el propio enlace navega a la portada
+  logout() {
+    localStorage.removeItem('tuna_db_session');
+  },
+
   // Protección de rutas: comprueba si la página exige autenticación y rol adecuado
   enforceRouteGuard() {
     const path = window.location.pathname.replace(/\\/g, '/').toLowerCase();
