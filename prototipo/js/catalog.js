@@ -12,15 +12,7 @@ function setCategoryTab(cat) {
   
   // Actualizar estilos visuales de los botones de categoría
   document.querySelectorAll('button[onclick*="setCategoryTab"]').forEach(btn => {
-    if (btn.getAttribute('onclick').includes(`'${cat}'`)) {
-      btn.style.background = 'var(--accent)';
-      btn.style.color = '#fff';
-      btn.style.borderColor = 'var(--accent)';
-    } else {
-      btn.style.background = 'var(--soft)';
-      btn.style.color = 'var(--ink)';
-      btn.style.borderColor = 'var(--line)';
-    }
+    btn.classList.toggle('active', btn.getAttribute('onclick').includes(`'${cat}'`));
   });
 
   const catSelect = document.getElementById('cat-select');
@@ -50,12 +42,12 @@ function filterCatalog() {
     const inStock = card.getAttribute('data-stock') !== 'false';
 
     let matchSearch = !searchTerm || title.includes(searchTerm);
-    let matchCat = selectedCat === 'todos' || selectedCat === '' || cat === selectedCat;
+    let matchCat = selectedCat === 'all' || selectedCat === 'todos' || selectedCat === '' || cat === selectedCat;
     
     let matchPrice = true;
-    if (selectedPrice === '0-10' || selectedPrice === 'under10') matchPrice = price <= 10;
+    if (selectedPrice === '0-10' || selectedPrice === 'under10' || selectedPrice === 'under-10') matchPrice = price < 10;
     else if (selectedPrice === '10-20' || selectedPrice === '10to20') matchPrice = price > 10 && price <= 20;
-    else if (selectedPrice === '20+' || selectedPrice === 'over20') matchPrice = price > 20;
+    else if (selectedPrice === '20+' || selectedPrice === 'over20' || selectedPrice === 'over-20') matchPrice = price > 20;
 
     let matchStock = !onlyStock || inStock;
 

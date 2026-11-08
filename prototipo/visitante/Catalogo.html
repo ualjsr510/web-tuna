@@ -75,7 +75,7 @@
       </nav>
 
       <!-- BARRA DE FILTROS DE BÚSQUEDA Y ORDENACIÓN -->
-      <section class="tuna-card" style="padding: 16px 20px; background: var(--soft-2); display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end;">
+      <section class="tuna-card cat-filter-bar" style="padding: 16px 20px; background: var(--soft-2); display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end;">
         <label style="display: flex; flex-direction: column; gap: 6px; flex: 2; min-width: 220px;">
           <span style="font-size: 11.5px; font-weight: 700; text-transform: uppercase; color: var(--muted-2);">Buscar por palabra clave</span>
           <input type="search" id="cat-search" placeholder="Buscar por nombre, disco, instrumento..." oninput="filterCatalog()" style="height: 38px; border: 1px solid var(--line); padding: 0 12px; font-size: 13px; font-family: inherit; width: 100%; background: var(--card); color: var(--ink);">
@@ -113,7 +113,7 @@
             
             <!-- Producto 1 -->
             <article class="catalog-card" data-cat="indumentaria" data-name="Capa tradicional de paño" data-price="25">
-              <div class="tuna-photo-frame" style="height: 125px; border-radius: 6px;">
+              <div class="tuna-photo-frame" style="aspect-ratio: 16 / 10; border-radius: 6px;">
                 <img src="../assets/img/prod_capa.jpg" alt="Capa tradicional" loading="lazy">
                 <span class="badge-gold" style="position: absolute; top: 6px; left: 6px;">TOP VENTAS</span>
               </div>
@@ -131,8 +131,8 @@
 
             <!-- Producto 2 -->
             <article class="catalog-card" data-cat="musica" data-name="CD 'Veinticinco Años de Ronda'" data-price="12">
-              <div class="tuna-photo-frame" style="height: 125px; border-radius: 6px;">
-                <img src="../assets/img/prod_cd.jpg" alt="CD XXV Aniversario" loading="lazy">
+              <div class="tuna-photo-frame" style="aspect-ratio: 16 / 10; border-radius: 6px;">
+                <img src="../assets/img/prod_cd_vinilo.jpg" alt="CD XXV Aniversario" loading="lazy">
                 <span class="badge-accent" style="position: absolute; top: 6px; left: 6px;">NUEVO</span>
               </div>
               <div style="display: flex; flex-direction: column; gap: 4px; flex: 1;">
@@ -142,14 +142,14 @@
                 <span style="font-size: 16px; font-weight: 700; color: var(--accent); font-family: var(--serif); margin-top: 4px;">12,00 €</span>
               </div>
               <div style="display: flex; gap: 8px; margin-top: auto;">
-                <button type="button" onclick="selectCatalogProduct('prod-2', 'CD XXV Aniversario', 12.00, '../assets/img/prod_cd.jpg', 'Grabación oficial conmemorativa del XXV Aniversario. 16 temas clásicos y piezas galardonadas en certámenes nacionales con libreto ilustrado de 20 páginas.', 'CD Físico|Edición Digipack|Descarga Digital FLAC')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
+                <button type="button" onclick="selectCatalogProduct('prod-2', 'CD XXV Aniversario', 12.00, '../assets/img/prod_cd_vinilo.jpg', 'Grabación oficial conmemorativa del XXV Aniversario. 16 temas clásicos y piezas galardonadas en certámenes nacionales con libreto ilustrado de 20 páginas.', 'CD Físico|Edición Digipack|Descarga Digital FLAC')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
                 <button type="button" onclick="addToCart('CD XXV Aniversario', 12.00)" style="font-size: 12px; font-weight: 700; background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent); padding: 7px 12px;">+ Cesta</button>
               </div>
             </article>
 
             <!-- Producto 3 -->
             <article class="catalog-card" data-cat="indumentaria" data-name="Sudadera 'Derecho Almería'" data-price="28">
-              <div class="tuna-photo-frame" style="height: 125px; border-radius: 6px;">
+              <div class="tuna-photo-frame" style="aspect-ratio: 16 / 10; border-radius: 6px;">
                 <img src="../assets/img/prod_sudadera.jpg" alt="Sudadera Derecho" loading="lazy">
                 <span class="badge-gold" style="position: absolute; top: 6px; left: 6px;">POPULAR</span>
               </div>
@@ -167,7 +167,7 @@
 
             <!-- Producto 4 -->
             <article class="catalog-card" data-cat="instrumentos" data-name="Pandero decorado con cintas" data-price="18">
-              <div class="tuna-photo-frame" style="height: 125px; border-radius: 6px;">
+              <div class="tuna-photo-frame" style="aspect-ratio: 16 / 10; border-radius: 6px;">
                 <img src="../assets/img/prod_pandero.jpg" alt="Pandero decorado" loading="lazy">
               </div>
               <div style="display: flex; flex-direction: column; gap: 4px; flex: 1;">
@@ -184,7 +184,7 @@
 
             <!-- Producto 5 -->
             <article class="catalog-card" data-cat="recuerdos" data-name="Parche oficial bordado UAL" data-price="6">
-              <div class="tuna-photo-frame" style="height: 125px; border-radius: 6px;">
+              <div class="tuna-photo-frame" style="aspect-ratio: 16 / 10; border-radius: 6px;">
                 <img src="../assets/img/prod_parche.jpg" alt="Parche bordado" loading="lazy">
               </div>
               <div style="display: flex; flex-direction: column; gap: 4px; flex: 1;">
@@ -201,8 +201,8 @@
 
             <!-- Producto 6 -->
             <article class="catalog-card" data-cat="indumentaria" data-name="Camiseta de la tuna" data-price="15">
-              <div class="tuna-photo-frame" style="height: 125px; border-radius: 6px;">
-                <img src="../assets/img/prod_camiseta.jpg" alt="Camiseta de la tuna" loading="lazy">
+              <div class="tuna-photo-frame" style="aspect-ratio: 16 / 10; border-radius: 6px;">
+                <img src="../assets/img/prod_camiseta_escudo.jpg" alt="Camiseta de la tuna" loading="lazy">
               </div>
               <div style="display: flex; flex-direction: column; gap: 4px; flex: 1;">
                 <span style="font-size: 11px; color: var(--muted); text-transform: uppercase; font-weight: 600;">Indumentaria</span>
@@ -211,15 +211,15 @@
                 <span style="font-size: 16px; font-weight: 700; color: var(--accent); font-family: var(--serif); margin-top: 4px;">15,00 €</span>
               </div>
               <div style="display: flex; gap: 8px; margin-top: auto;">
-                <button type="button" onclick="selectCatalogProduct('prod-6', 'Camiseta de la tuna', 15.00, '../assets/img/prod_camiseta.jpg', 'Camiseta 100% algodón suave de alta densidad con serigrafía del escudo de Derecho en el pecho y lema de la tuna en la espalda.', 'S|M|L|XL')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
+                <button type="button" onclick="selectCatalogProduct('prod-6', 'Camiseta de la tuna', 15.00, '../assets/img/prod_camiseta_escudo.jpg', 'Camiseta 100% algodón suave de alta densidad con serigrafía del escudo de Derecho en el pecho y lema de la tuna en la espalda.', 'S|M|L|XL')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
                 <button type="button" onclick="addToCart('Camiseta de la tuna', 15.00)" style="font-size: 12px; font-weight: 700; background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent); padding: 7px 12px;">+ Cesta</button>
               </div>
             </article>
 
             <!-- Producto 7 -->
             <article class="catalog-card" data-cat="instrumentos" data-name="Cinta de colores con dedicatoria" data-price="4">
-              <div class="tuna-photo-frame" style="height: 125px; border-radius: 6px;">
-                <img src="../assets/img/prod_cintas.jpg" alt="Cinta de colores" loading="lazy">
+              <div class="tuna-photo-frame" style="aspect-ratio: 16 / 10; border-radius: 6px;">
+                <img src="../assets/img/prod_taza_cintas.jpg" alt="Cinta de colores" loading="lazy">
               </div>
               <div style="display: flex; flex-direction: column; gap: 4px; flex: 1;">
                 <span style="font-size: 11px; color: var(--muted); text-transform: uppercase; font-weight: 600;">Instrumentos</span>
@@ -228,14 +228,14 @@
                 <span style="font-size: 16px; font-weight: 700; color: var(--accent); font-family: var(--serif); margin-top: 4px;">4,00 €</span>
               </div>
               <div style="display: flex; gap: 8px; margin-top: auto;">
-                <button type="button" onclick="selectCatalogProduct('prod-7', 'Cinta de colores', 4.00, '../assets/img/prod_cintas.jpg', 'Cinta de raso de 1 metro de longitud con orla dorada. Posibilidad de incluir dedicatoria personalizada bordada o estampada.', 'Rojo Derecho|Blanco Almería|Oro Gala|Multicolor')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
+                <button type="button" onclick="selectCatalogProduct('prod-7', 'Cinta de colores', 4.00, '../assets/img/prod_taza_cintas.jpg', 'Cinta de raso de 1 metro de longitud con orla dorada. Posibilidad de incluir dedicatoria personalizada bordada o estampada.', 'Rojo Derecho|Blanco Almería|Oro Gala|Multicolor')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
                 <button type="button" onclick="addToCart('Cinta de colores', 4.00)" style="font-size: 12px; font-weight: 700; background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent); padding: 7px 12px;">+ Cesta</button>
               </div>
             </article>
 
             <!-- Producto 8 -->
             <article class="catalog-card" data-cat="musica" data-name="Cancionero impreso ilustrado" data-price="12">
-              <div class="tuna-photo-frame" style="height: 125px; border-radius: 6px;">
+              <div class="tuna-photo-frame" style="aspect-ratio: 16 / 10; border-radius: 6px;">
                 <img src="../assets/img/prod_cancionero.jpg" alt="Cancionero impreso" loading="lazy">
               </div>
               <div style="display: flex; flex-direction: column; gap: 4px; flex: 1;">
@@ -260,7 +260,7 @@
             <span style="font-size: 11px; color: #16a34a; font-weight: 700;">● En Stock</span>
           </div>
 
-          <div class="tuna-photo-frame" style="height: 180px; border-radius: 6px;">
+          <div class="tuna-photo-frame" style="aspect-ratio: 16 / 10; border-radius: 6px;">
             <img id="cat-detail-img" src="../assets/img/prod_capa.jpg" alt="Detalle del producto">
           </div>
 
