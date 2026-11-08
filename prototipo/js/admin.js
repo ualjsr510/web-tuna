@@ -22,7 +22,7 @@ const TunaAdmin = {
         <td>${c.service}</td>
         <td>${c.date}</td>
         <td><span class="badge ${c.status === 'Confirmado' ? 'badge-ok' : (c.status === 'Pendiente' ? 'badge-warn' : 'badge-info')}">${c.status}</span></td>
-        <td><strong>${c.price}</strong></td>
+        <td><span class="badge-custom-budget" style="font-size:11.5px; padding:3px 8px;">${c.price || 'A convenir'}</span></td>
         <td>
           <div style="display:flex; gap:6px;">
             <button type="button" class="btn btn-outline" style="padding:4px 8px; font-size:11px;" onclick="TunaAdmin.updateContractStatus('${c.id}', 'Confirmado')">Aprobar</button>

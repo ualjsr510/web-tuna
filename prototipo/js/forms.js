@@ -36,7 +36,7 @@ const TunaForms = {
     const service = document.getElementById('contract-service-type')?.value || 'Actuación';
     const date = document.getElementById('contract-date')?.value || new Date().toISOString().split('T')[0];
     const location = document.getElementById('contract-location')?.value || 'Almería Capital';
-    const price = document.getElementById('quote-total-price')?.textContent || '220.00 €';
+    const price = document.getElementById('quote-total-price')?.textContent || 'A convenir';
     const notes = document.getElementById('contract-notes')?.value || '';
 
     // Guardar en la base de datos

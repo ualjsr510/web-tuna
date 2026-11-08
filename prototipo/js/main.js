@@ -101,6 +101,44 @@ const TunaApp = {
     } else if (fallbackUrl) {
       window.location.href = fallbackUrl;
     }
+  },
+
+  // Botón flotante interactivo de máxima elegancia (Contacta a la tuna)
+  renderFloatingContact() {
+    if (document.querySelector('.floating-tuna-contact')) return;
+
+    const path = window.location.pathname.replace(/\\/g, '/').toLowerCase();
+    const isRoot = !path.includes('/visitante/') && !path.includes('/cliente/') && !path.includes('/admin/');
+    const spotifyUrl = isRoot ? 'visitante/Spotify.html' : (path.includes('/visitante/') ? 'Spotify.html' : '../visitante/Spotify.html');
+
+    const widget = document.createElement('aside');
+    widget.className = 'floating-tuna-contact';
+    widget.setAttribute('aria-label', 'Contacta a la tuna');
+    widget.innerHTML = `
+      <div class="contact-badge-label">
+        <span class="sub">Contacta a la tuna</span>
+        <a href="tel:685995510" class="phone-num" title="Llamar directamente a la Tuna">📞 685 99 55 10</a>
+      </div>
+      <div class="floating-sep"></div>
+      <div class="floating-icons-group">
+        <a href="https://wa.me/34685995510" target="_blank" rel="noopener noreferrer" class="floating-btn-icon floating-wa" title="Escribir por WhatsApp al 685 99 55 10">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#ffffff" aria-hidden="true" style="display:block;">
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25.7-.99 1.27-1.74 1.43-.51.11-1.18.2-3.41-.72-2.85-1.18-4.68-4.08-4.82-4.27-.14-.19-1.16-1.54-1.16-2.94 0-1.4.73-2.09 1-2.37.26-.28.57-.35.76-.35.19 0 .38 0 .55.01.18.01.42-.07.66.5.25.59.85 2.07.92 2.22.08.15.13.33.03.53-.1.2-.15.33-.3.51-.15.18-.32.39-.45.53-.15.15-.31.32-.13.63.17.31.78 1.28 1.67 2.08 1.15 1.02 2.11 1.34 2.41 1.49.3.15.48.13.66-.08.18-.21.76-.89.97-1.19.2-.3.41-.25.68-.15.28.1 1.77.88 1.77.88.21.1.35.15.4.24.06.09.06.51-.19 1.21z"/>
+          </svg>
+        </a>
+        <a href="${spotifyUrl}" class="floating-btn-icon floating-spotify" title="Escuchar a la Tuna en Spotify">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#ffffff" aria-hidden="true" style="display:block;">
+            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.563.387-.857.207-2.348-1.435-5.304-1.76-8.785-.963-.335.077-.67-.133-.746-.469-.077-.334.132-.67.467-.746 3.809-.871 7.077-.496 9.714 1.115.294.18.386.563.207.856zm1.223-2.724c-.227.369-.714.484-1.083.257-2.688-1.652-6.785-2.131-9.965-1.166-.413.126-.849-.108-.975-.521-.126-.413.108-.849.521-.975 3.632-1.102 8.147-.568 11.246 1.339.368.226.483.713.256 1.082zm.106-2.835C14.692 8.95 8.082 8.73 4.247 9.894c-.494.15-1.02-.133-1.17-.627-.15-.494.133-1.02.627-1.17 4.403-1.336 11.69-1.08 16.082 1.528.444.263.589.84.326 1.284-.263.444-.84.59-1.284.326z"/>
+          </svg>
+        </a>
+        <a href="https://instagram.com/tunaderechoalmeria" target="_blank" rel="noopener noreferrer" class="floating-btn-icon floating-ig" title="Ver Instagram oficial @tunaderechoalmeria">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#ffffff" aria-hidden="true" style="display:block;">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+      </div>
+    `;
+    document.body.appendChild(widget);
   }
 };
 
@@ -112,14 +150,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. Actualizar estado de autenticación en cabecera
   TunaApp.updateHeaderAuth();
   
-  // 3. Actualizar contador del carrito
+  // 3. Renderizar botón flotante elegante de contacto (Contacta a la tuna)
+  TunaApp.renderFloatingContact();
+  
+  // 4. Actualizar contador del carrito
   const cart = JSON.parse(localStorage.getItem('tuna_cart') || '[]');
   const totalCount = cart.reduce((acc, item) => acc + (item.qty || 1), 0);
   document.querySelectorAll('.cart-counter-val').forEach(el => {
     el.textContent = totalCount;
   });
   
-  // 4. Soporte para modales de imágenes (Lightbox)
+  // 5. Soporte para modales de imágenes (Lightbox)
   document.querySelectorAll('.lightbox-trigger').forEach(imgEl => {
     imgEl.style.cursor = 'pointer';
     imgEl.addEventListener('click', () => {

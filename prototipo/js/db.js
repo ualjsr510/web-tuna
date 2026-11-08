@@ -60,7 +60,7 @@ const TunaDB = {
         guests: 120,
         hours: 2,
         musicians: 8,
-        price: '290.00 €',
+        price: 'A convenir',
         status: 'Confirmado',
         notes: 'Recepción en cóctel y serenata bajo balcón.'
       },
@@ -77,7 +77,7 @@ const TunaDB = {
         guests: 30,
         hours: 1,
         musicians: 6,
-        price: '180.00 €',
+        price: 'A convenir',
         status: 'Pendiente',
         notes: 'Ronda sorpresa.'
       }
@@ -260,7 +260,7 @@ const TunaDB = {
         guests: data.guests || 50,
         hours: data.hours || 1,
         musicians: data.musicians || 6,
-        price: data.price,
+        price: data.price || 'A convenir',
         status: 'Pendiente',
         notes: data.notes || '',
         created: new Date().toLocaleDateString('es-ES')
