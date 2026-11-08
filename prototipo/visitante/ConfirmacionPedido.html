@@ -15,25 +15,23 @@
       <img src="../assets/img/logo_corporativo.svg" alt="Tuna de Derecho Almería Logo" style="height:48px;">
     </a>
     <nav class="site-nav">
-      <a href="Conoce.html">Conoce la tuna</a>
-      <a href="Contratacion.html">Contratación</a>
-      <a href="Multimedia.html">Multimedia</a>
-      <a href="Tienda.html" class="active">Tienda</a>
-      <a href="Cancionero.html">Cancionero</a>
-      <a href="Unete.html">Únete</a>
+      <a href="Conoce.html"><img src="../assets/img/iconos/icono_conoce.png" alt="" class="nav-icon">Conoce la tuna</a>
+      <a href="Contratacion.html"><img src="../assets/img/iconos/icono_contratacion.png" alt="" class="nav-icon">Contratación</a>
+      <a href="Multimedia.html"><img src="../assets/img/iconos/icono_multimedia.png" alt="" class="nav-icon">Multimedia</a>
+      <a href="Tienda.html" class="active"><img src="../assets/img/iconos/icono_bolsa.png" alt="" class="nav-icon">Tienda</a>
+      <a href="Cancionero.html"><img src="../assets/img/iconos/icono_cancionero.png" alt="" class="nav-icon">Cancionero</a>
+      <a href="Unete.html"><img src="../assets/img/iconos/icono_unete.png" alt="" class="nav-icon">Únete</a>
     </nav>
     <div class="header-actions">
-      <a href="Cesta.html" class="btn-header-cart">
-        🛒 Cesta (<span class="cart-counter-val">0</span>)
+      <a href="Cesta.html" class="btn-header-cart" title="Cesta" aria-label="Cesta">
+        <img src="../assets/img/iconos/icono_tienda.png" alt="" class="cart-icon">
+        <span class="cart-counter-val is-empty">0</span>
       </a>
       <a href="Acceso.html" class="btn-header-login">
         Iniciar sesión
       </a>
     </div>
   </header>
-
-  <!-- CONTENEDOR PRINCIPAL CHECKOUT -->
-  <div class="main-content">
     <div class="screen-nav-bar" style="margin-bottom: 20px;">
       <a href="MetodoPago.html" class="btn-back-nav" onclick="TunaApp.goBack('MetodoPago.html')">
         <span class="arrow">←</span> <span>Volver a Método de pago</span>
@@ -48,6 +46,11 @@
         <span class="bc-current">Paso 4: Confirmación</span>
       </nav>
     </div>
+    
+
+  <!-- CONTENEDOR PRINCIPAL CHECKOUT -->
+  <div class="main-content">
+    
 
     <!-- FLUJO CHECKOUT EN 2 COLUMNAS: FORMULARIO IZQUIERDA + STEPPER Y RESUMEN DERECHA -->
     <div class="checkout-layout">
@@ -98,7 +101,7 @@
           <section class="tuna-card" style="padding: 20px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid var(--line); padding-bottom: 6px;">
               <h3 style="margin: 0; font-size: 14.5px; color: var(--ink); font-family: var(--serif);">
-                📍 2. Dirección de entrega
+                2. Dirección de entrega
               </h3>
               <a href="DireccionEnvio.html" style="font-size: 12px; color: var(--accent); text-decoration: underline;">Modificar</a>
             </div>
@@ -107,14 +110,14 @@
               <strong>Marta Gil Sánchez</strong><br>
               Calle Real 12, 2ºB<br>
               04001 Almería, Almería<br>
-              <span style="color:var(--muted); font-size:12px;">📞 685 99 55 10</span>
+              <span style="color:var(--muted); font-size:12px;">685 99 55 10</span>
             </div>
           </section>
 
           <section class="tuna-card" style="padding: 20px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid var(--line); padding-bottom: 6px;">
               <h3 style="margin: 0; font-size: 14.5px; color: var(--ink); font-family: var(--serif);">
-                💳 3. Forma de pago
+                3. Forma de pago
               </h3>
               <a href="MetodoPago.html" style="font-size: 12px; color: var(--accent); text-decoration: underline;">Modificar</a>
             </div>
@@ -145,7 +148,7 @@
             </a>
 
             <button type="button" id="btn-confirm-order" onclick="processOrderCheckout()" class="btn btn-gold" style="font-size: 15.5px; padding: 14px 28px; font-weight: 800; box-shadow: 0 4px 14px rgba(0,0,0,0.25);">
-              🔒 Formalizar y Pagar Pedido
+              Formalizar y Pagar Pedido
             </button>
           </div>
         </section>
@@ -158,7 +161,7 @@
         <!-- STEPPER CARD -->
         <div class="checkout-stepper-card">
           <div class="stepper-header">
-            <span>🛒 Proceso de compra</span>
+            <span>Proceso de compra</span>
             <span style="font-size: 12px; color: var(--accent); font-weight: 700;">Paso 4 de 5</span>
           </div>
           <ul class="stepper-list">
@@ -226,7 +229,7 @@
             <span id="review-total-val">0.00 €</span>
           </div>
           <div style="margin-top: 14px; text-align: center;">
-            <span style="font-size: 11.5px; color: var(--muted);">🔒 Pasarela bancaria certificada</span>
+            <span style="font-size: 11.5px; color: var(--muted);">Pasarela bancaria certificada</span>
           </div>
         </div>
 
@@ -246,7 +249,7 @@
           Agrupación musical tradicional universitaria de la <strong>Facultad de Derecho de la Universidad de Almería</strong>. Fundada en el verano de 1993. Portadora de la alegría, la música y el buen hacer estudiantil.
         </p>
         <p style="font-size:12px; color:var(--gold);">
-          🏛 Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
+          Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
         </p>
       </div>
       <div class="footer-col">
@@ -272,10 +275,10 @@
       <div class="footer-col">
         <h4>Contacto Oficial</h4>
         <p>
-          📞 <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
-          ✉️ <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
-          📸 <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
-          🎵 <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
+          <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
+          <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
+          <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
+          <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
         </p>
       </div>
     </div>
@@ -307,7 +310,7 @@
       const btn = document.getElementById('btn-confirm-order');
       if (btn) {
         btn.disabled = true;
-        btn.innerHTML = '⏳ Procesando pago seguro...';
+        btn.innerHTML = 'Procesando pago seguro...';
       }
 
       setTimeout(() => {

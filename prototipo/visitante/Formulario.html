@@ -14,12 +14,13 @@
         <img src="../assets/img/logo_corporativo.svg" alt="Tuna de Derecho Almería Logo" style="height:48px;">
       </a>
       <nav class="site-nav">
-        <a href="Conoce.html" class="">Conoce la tuna</a><a href="Contratacion.html" class="">Contratación</a><a href="Multimedia.html" class="">Multimedia</a><a href="Tienda.html" class="">Tienda</a><a href="Cancionero.html" class="">Cancionero</a><a href="Unete.html" class="">Únete</a>
+        <a href="Conoce.html" class=""><img src="../assets/img/iconos/icono_conoce.png" alt="" class="nav-icon">Conoce la tuna</a><a href="Contratacion.html" class=""><img src="../assets/img/iconos/icono_contratacion.png" alt="" class="nav-icon">Contratación</a><a href="Multimedia.html" class=""><img src="../assets/img/iconos/icono_multimedia.png" alt="" class="nav-icon">Multimedia</a><a href="Tienda.html" class=""><img src="../assets/img/iconos/icono_bolsa.png" alt="" class="nav-icon">Tienda</a><a href="Cancionero.html" class=""><img src="../assets/img/iconos/icono_cancionero.png" alt="" class="nav-icon">Cancionero</a><a href="Unete.html" class=""><img src="../assets/img/iconos/icono_unete.png" alt="" class="nav-icon">Únete</a>
       </nav>
       <div class="header-actions">
         
-          <a href="Cesta.html" class="btn-header-cart">
-            🛒 Cesta (<span class="cart-counter-val">0</span>)
+          <a href="Cesta.html" class="btn-header-cart" title="Cesta" aria-label="Cesta">
+        <img src="../assets/img/iconos/icono_tienda.png" alt="" class="cart-icon">
+        <span class="cart-counter-val is-empty">0</span>
           </a>
           <a href="Acceso.html" class="btn-header-login">
             Iniciar sesión
@@ -27,6 +28,15 @@
         
       </div>
     </header>
+    <div class="screen-nav-bar">
+        <a href="Unete.html" class="btn-back-nav" onclick="TunaApp.goBack('Unete.html')">
+          <span class="arrow">←</span> <span>Volver a Únete a nosotros</span>
+        </a>
+        <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
+          <a href="index.html" class="bc-link">Inicio</a><span class="bc-sep">›</span><a href="Unete.html" class="bc-link">Únete a nosotros</a><span class="bc-sep">›</span><span class="bc-current">Formulario para unirse</span>
+        </nav>
+      </div>
+    
     
 
   <div class="main-content">
@@ -34,14 +44,7 @@
 
     
 
-<main style="flex: 1; min-height: 0; padding: 24px 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px"><div class="screen-nav-bar">
-        <a href="Unete.html" class="btn-back-nav" onclick="TunaApp.goBack('Unete.html')">
-          <span class="arrow">←</span> <span>Volver a Únete a nosotros</span>
-        </a>
-        <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
-          <a href="index.html" class="bc-link">Inicio</a><span class="bc-sep">›</span><a href="Unete.html" class="bc-link">Únete a nosotros</a><span class="bc-sep">›</span><span class="bc-current">Formulario para unirse</span>
-        </nav>
-      </div><div style="flex: none"><h1 style="margin: 0; font-size: 26px">Formulario para unirse</h1><p style="margin: 6px 0 0; font-size: 13px; color: var(--muted)">Cuéntanos quién eres y qué tocas</p></div><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; max-width: 820px"><section style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; "><label style="display: flex; flex-direction: column; gap: 6px; "><span style="font-size: 12px; font-weight: 600">Nombre y apellidos</span><input type="text" placeholder="Nombre completo" style="height: 38px; border: 1px solid var(--line); padding: 0 10px; font-size: 13px; font-family: inherit; box-sizing: border-box; width: 100%; background: var(--card); color: var(--ink)"></label><label style="display: flex; flex-direction: column; gap: 6px; "><span style="font-size: 12px; font-weight: 600">Correo electrónico</span><input type="email" placeholder="correo@ejemplo.com" style="height: 38px; border: 1px solid var(--line); padding: 0 10px; font-size: 13px; font-family: inherit; box-sizing: border-box; width: 100%; background: var(--card); color: var(--ink)"></label><label style="display: flex; flex-direction: column; gap: 6px; "><span style="font-size: 12px; font-weight: 600">Teléfono</span><input type="tel" placeholder="600 000 000" style="height: 38px; border: 1px solid var(--line); padding: 0 10px; font-size: 13px; font-family: inherit; box-sizing: border-box; width: 100%; background: var(--card); color: var(--ink)"></label><label style="display: flex; flex-direction: column; gap: 6px; "><span style="font-size: 12px; font-weight: 600">Instrumento</span><select style="height: 38px; border: 1px solid var(--line); padding: 0 10px; font-size: 13px; font-family: inherit; box-sizing: border-box; width: 100%; background: var(--card); color: var(--ink)"><option>Guitarra</option></select></label><label style="display: flex; flex-direction: column; gap: 6px; grid-column: span 2"><span style="font-size: 12px; font-weight: 600">Experiencia musical</span><textarea rows="3" placeholder="Cuéntanos tu experiencia" style="height: 38px; border: 1px solid var(--line); padding: 0 10px; font-size: 13px; font-family: inherit; box-sizing: border-box; width: 100%; background: var(--card); color: var(--ink); height: 80px; padding: 8px 10px; resize: none"></textarea></label></section><label style="display: flex; gap: 8px; align-items: center; font-size: 12px; color: var(--ink-2)"><input type="checkbox"> Acepto la política de privacidad</label><div style="display: flex; gap: 12px; align-items: center; "><button type="button" style="font-size: 14px; font-family: inherit; background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent); padding: 12px 20px; ">Enviar solicitud</button><a href="Unete.html" style="text-decoration: none; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; color: var(--ink); padding: 11px 20px; border: 1px solid var(--line); ">Cancelar</a></div></section></main>
+<main style="flex: 1; min-height: 0; padding: 24px 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px"><div style="flex: none"><h1 style="margin: 0; font-size: 26px">Formulario para unirse</h1><p style="margin: 6px 0 0; font-size: 13px; color: var(--muted)">Cuéntanos quién eres y qué tocas</p></div><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; max-width: 820px"><section style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; "><label style="display: flex; flex-direction: column; gap: 6px; "><span style="font-size: 12px; font-weight: 600">Nombre y apellidos</span><input type="text" placeholder="Nombre completo" style="height: 38px; border: 1px solid var(--line); padding: 0 10px; font-size: 13px; font-family: inherit; box-sizing: border-box; width: 100%; background: var(--card); color: var(--ink)"></label><label style="display: flex; flex-direction: column; gap: 6px; "><span style="font-size: 12px; font-weight: 600">Correo electrónico</span><input type="email" placeholder="correo@ejemplo.com" style="height: 38px; border: 1px solid var(--line); padding: 0 10px; font-size: 13px; font-family: inherit; box-sizing: border-box; width: 100%; background: var(--card); color: var(--ink)"></label><label style="display: flex; flex-direction: column; gap: 6px; "><span style="font-size: 12px; font-weight: 600">Teléfono</span><input type="tel" placeholder="600 000 000" style="height: 38px; border: 1px solid var(--line); padding: 0 10px; font-size: 13px; font-family: inherit; box-sizing: border-box; width: 100%; background: var(--card); color: var(--ink)"></label><label style="display: flex; flex-direction: column; gap: 6px; "><span style="font-size: 12px; font-weight: 600">Instrumento</span><select style="height: 38px; border: 1px solid var(--line); padding: 0 10px; font-size: 13px; font-family: inherit; box-sizing: border-box; width: 100%; background: var(--card); color: var(--ink)"><option>Guitarra</option></select></label><label style="display: flex; flex-direction: column; gap: 6px; grid-column: span 2"><span style="font-size: 12px; font-weight: 600">Experiencia musical</span><textarea rows="3" placeholder="Cuéntanos tu experiencia" style="height: 38px; border: 1px solid var(--line); padding: 0 10px; font-size: 13px; font-family: inherit; box-sizing: border-box; width: 100%; background: var(--card); color: var(--ink); height: 80px; padding: 8px 10px; resize: none"></textarea></label></section><label style="display: flex; gap: 8px; align-items: center; font-size: 12px; color: var(--ink-2)"><input type="checkbox"> Acepto la política de privacidad</label><div style="display: flex; gap: 12px; align-items: center; "><button type="button" style="font-size: 14px; font-family: inherit; background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent); padding: 12px 20px; ">Enviar solicitud</button><a href="Unete.html" style="text-decoration: none; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; color: var(--ink); padding: 11px 20px; border: 1px solid var(--line); ">Cancelar</a></div></section></main>
 
     
 
@@ -59,7 +62,7 @@
             Agrupación musical tradicional universitaria de la <strong>Facultad de Derecho de la Universidad de Almería</strong>. Fundada en el verano de 1993. Portadora de la alegría, la música y el buen hacer estudiantil.
           </p>
           <p style="font-size:12px; color:var(--gold);">
-            🏛 Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
+            Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
           </p>
         </div>
         <div class="footer-col">
@@ -85,10 +88,10 @@
         <div class="footer-col">
           <h4>Contacto Oficial</h4>
           <p>
-            📞 <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
-            ✉️ <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
-            📸 <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
-            🎵 <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
+            <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
+            <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
+            <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
+            <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
           </p>
         </div>
       </div>

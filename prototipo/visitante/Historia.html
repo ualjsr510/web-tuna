@@ -14,12 +14,13 @@
         <img src="../assets/img/logo_corporativo.svg" alt="Tuna de Derecho Almería Logo" style="height:48px;">
       </a>
       <nav class="site-nav">
-        <a href="Conoce.html" class="">Conoce la tuna</a><a href="Contratacion.html" class="">Contratación</a><a href="Multimedia.html" class="">Multimedia</a><a href="Tienda.html" class="">Tienda</a><a href="Cancionero.html" class="">Cancionero</a><a href="Unete.html" class="">Únete</a>
+        <a href="Conoce.html" class=""><img src="../assets/img/iconos/icono_conoce.png" alt="" class="nav-icon">Conoce la tuna</a><a href="Contratacion.html" class=""><img src="../assets/img/iconos/icono_contratacion.png" alt="" class="nav-icon">Contratación</a><a href="Multimedia.html" class=""><img src="../assets/img/iconos/icono_multimedia.png" alt="" class="nav-icon">Multimedia</a><a href="Tienda.html" class=""><img src="../assets/img/iconos/icono_bolsa.png" alt="" class="nav-icon">Tienda</a><a href="Cancionero.html" class=""><img src="../assets/img/iconos/icono_cancionero.png" alt="" class="nav-icon">Cancionero</a><a href="Unete.html" class=""><img src="../assets/img/iconos/icono_unete.png" alt="" class="nav-icon">Únete</a>
       </nav>
       <div class="header-actions">
         
-          <a href="Cesta.html" class="btn-header-cart">
-            🛒 Cesta (<span class="cart-counter-val">0</span>)
+          <a href="Cesta.html" class="btn-header-cart" title="Cesta" aria-label="Cesta">
+        <img src="../assets/img/iconos/icono_tienda.png" alt="" class="cart-icon">
+        <span class="cart-counter-val is-empty">0</span>
           </a>
           <a href="Acceso.html" class="btn-header-login">
             Iniciar sesión
@@ -27,6 +28,15 @@
         
       </div>
     </header>
+    <div class="screen-nav-bar">
+        <a href="Conoce.html" class="btn-back-nav" onclick="TunaApp.goBack('Conoce.html')">
+          <span class="arrow">←</span> <span>Volver a Conoce la tuna</span>
+        </a>
+        <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
+          <a href="index.html" class="bc-link">Inicio</a><span class="bc-sep">›</span><a href="Conoce.html" class="bc-link">Conoce la tuna</a><span class="bc-sep">›</span><span class="bc-current">Historia</span>
+        </nav>
+      </div>
+    
     
 
   <div class="main-content">
@@ -34,14 +44,7 @@
 
     
 
-<main style="flex: 1; min-height: 0; padding: 24px 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px"><div class="screen-nav-bar">
-        <a href="Conoce.html" class="btn-back-nav" onclick="TunaApp.goBack('Conoce.html')">
-          <span class="arrow">←</span> <span>Volver a Conoce la tuna</span>
-        </a>
-        <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
-          <a href="index.html" class="bc-link">Inicio</a><span class="bc-sep">›</span><a href="Conoce.html" class="bc-link">Conoce la tuna</a><span class="bc-sep">›</span><span class="bc-current">Historia</span>
-        </nav>
-      </div><div style="flex: none"><h1 style="margin: 0; font-size: 26px">Historia</h1><p style="margin: 6px 0 0; font-size: 13px; color: var(--muted)">Cómo nació la tuna y cómo hemos llegado hasta hoy</p></div><div style="display: flex; gap: 32px; align-items: center; align-items: flex-start"><div class="tuna-photo-frame lightbox-trigger" style="width: 420px; max-width:100%; height: 300px; border-radius: 8px; border: 2px solid var(--gold); flex: none; box-shadow: var(--shadow-md);"><img src="../assets/img/tuna_oficial_grupo.jpg" alt="Tuna de la Facultad de Derecho de Almería (1993)" loading="lazy"><span class="badge-gold" style="position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,0.85);color:#eed793;">Foto Histórica Oficial</span></div><div style="display: flex; flex-direction: column; gap: 12px; flex: 1"><p style="margin: 0; font-size: 13px; color: var(--muted-2); line-height: 1.5; ">La Tuna de la Facultad de Derecho de Almería fue fundada en el verano de 1993 por un entusiasta grupo de estudiantes de la recién creada Universidad de Almería, con el anhelo de llevar por bandera la tradición musical, la galantería y el espíritu festivo universitario.</p><p style="margin: 0; font-size: 13px; color: var(--muted-2); line-height: 1.5; ">A lo largo de más de tres décadas de trayectoria ininterrumpida, la tuna ha recorrido toda la geografía española y europea, cosechando más de 18 premios oficiales en Certámenes Nacionales de Tunas de Derecho (Granada, Salamanca, Valencia, Sevilla, Alicante) y organizando el célebre Certamen Internacional «Costa de Almería».</p><p style="margin: 0; font-size: 13px; color: var(--muted-2); line-height: 1.5; ">Hoy la tuna se renueva cada curso, combinando el repertorio clásico con nuevas canciones y proyectos.</p></div></div><section style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; "><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; "><strong style="font-size: 18px">1998</strong><p style="margin: 0; font-size: 12px; color: var(--muted-2); line-height: 1.5; ">Fundación de la tuna</p></section><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; "><strong style="font-size: 18px">2004</strong><p style="margin: 0; font-size: 12px; color: var(--muted-2); line-height: 1.5; ">Primer certamen nacional</p></section><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; "><strong style="font-size: 18px">2012</strong><p style="margin: 0; font-size: 12px; color: var(--muted-2); line-height: 1.5; ">Gira internacional</p></section><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; "><strong style="font-size: 18px">2019</strong><p style="margin: 0; font-size: 12px; color: var(--muted-2); line-height: 1.5; ">Nuevo local de ensayo</p></section></section><div style="display: flex; gap: 12px; align-items: center; "><a href="Miembros.html" style="text-decoration: none; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; background: var(--accent); color: var(--on-accent); padding: 12px 20px; border: 1px solid var(--accent); ">Ver miembros</a><a href="Conoce.html" style="text-decoration: none; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; color: var(--ink); padding: 11px 20px; border: 1px solid var(--accent); ">Volver</a></div></main>
+<main style="flex: 1; min-height: 0; padding: 24px 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px"><div style="flex: none"><h1 style="margin: 0; font-size: 26px">Historia</h1><p style="margin: 6px 0 0; font-size: 13px; color: var(--muted)">Cómo nació la tuna y cómo hemos llegado hasta hoy</p></div><div style="display: flex; gap: 32px; align-items: center; align-items: flex-start"><div class="tuna-photo-frame lightbox-trigger" style="width: 420px; max-width:100%; height: 300px; border-radius: 8px; border: 2px solid var(--gold); flex: none; box-shadow: var(--shadow-md);"><img src="../assets/img/tuna_oficial_grupo.jpg" alt="Tuna de la Facultad de Derecho de Almería (1993)" loading="lazy"><span class="badge-gold" style="position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,0.85);color:#eed793;">Foto Histórica Oficial</span></div><div style="display: flex; flex-direction: column; gap: 12px; flex: 1"><p style="margin: 0; font-size: 13px; color: var(--muted-2); line-height: 1.5; ">La Tuna de la Facultad de Derecho de Almería fue fundada en el verano de 1993 por un entusiasta grupo de estudiantes de la recién creada Universidad de Almería, con el anhelo de llevar por bandera la tradición musical, la galantería y el espíritu festivo universitario.</p><p style="margin: 0; font-size: 13px; color: var(--muted-2); line-height: 1.5; ">A lo largo de más de tres décadas de trayectoria ininterrumpida, la tuna ha recorrido toda la geografía española y europea, cosechando más de 18 premios oficiales en Certámenes Nacionales de Tunas de Derecho (Granada, Salamanca, Valencia, Sevilla, Alicante) y organizando el célebre Certamen Internacional «Costa de Almería».</p><p style="margin: 0; font-size: 13px; color: var(--muted-2); line-height: 1.5; ">Hoy la tuna se renueva cada curso, combinando el repertorio clásico con nuevas canciones y proyectos.</p></div></div><section style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; "><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; "><strong style="font-size: 18px">1998</strong><p style="margin: 0; font-size: 12px; color: var(--muted-2); line-height: 1.5; ">Fundación de la tuna</p></section><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; "><strong style="font-size: 18px">2004</strong><p style="margin: 0; font-size: 12px; color: var(--muted-2); line-height: 1.5; ">Primer certamen nacional</p></section><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; "><strong style="font-size: 18px">2012</strong><p style="margin: 0; font-size: 12px; color: var(--muted-2); line-height: 1.5; ">Gira internacional</p></section><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; "><strong style="font-size: 18px">2019</strong><p style="margin: 0; font-size: 12px; color: var(--muted-2); line-height: 1.5; ">Nuevo local de ensayo</p></section></section><div style="display: flex; gap: 12px; align-items: center; "><a href="Miembros.html" style="text-decoration: none; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; background: var(--accent); color: var(--on-accent); padding: 12px 20px; border: 1px solid var(--accent); ">Ver miembros</a><a href="Conoce.html" style="text-decoration: none; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; color: var(--ink); padding: 11px 20px; border: 1px solid var(--accent); ">Volver</a></div></main>
 
     
 
@@ -59,7 +62,7 @@
             Agrupación musical tradicional universitaria de la <strong>Facultad de Derecho de la Universidad de Almería</strong>. Fundada en el verano de 1993. Portadora de la alegría, la música y el buen hacer estudiantil.
           </p>
           <p style="font-size:12px; color:var(--gold);">
-            🏛 Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
+            Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
           </p>
         </div>
         <div class="footer-col">
@@ -85,10 +88,10 @@
         <div class="footer-col">
           <h4>Contacto Oficial</h4>
           <p>
-            📞 <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
-            ✉️ <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
-            📸 <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
-            🎵 <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
+            <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
+            <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
+            <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
+            <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
           </p>
         </div>
       </div>

@@ -19,7 +19,7 @@
       <div class="header-actions">
         
           <a href="../visitante/index.html" class="btn-header-cart" title="Ver portal público de la Tuna">
-            🏛 Portal Público
+            Portal Público
           </a>
           <a href="../visitante/index.html" class="btn btn-outline" style="font-size:12px; padding:6px 12px;" onclick="TunaApp.logout()">
             Cerrar sesión
@@ -27,6 +27,15 @@
         
       </div>
     </header>
+    <div class="screen-nav-bar">
+        <a href="index.html" class="btn-back-nav" onclick="TunaApp.goBack('index.html')">
+          <span class="arrow">←</span> <span>Volver al Inicio</span>
+        </a>
+        <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
+          <a href="index.html" class="bc-link">Inicio</a><span class="bc-sep">›</span><span class="bc-current">Gestionar cuenta</span>
+        </nav>
+      </div>
+    
     
 
   <div class="main-content">
@@ -34,14 +43,7 @@
 
     
 
-<main style="flex: 1; min-height: 0; padding: 24px 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px"><div class="screen-nav-bar">
-        <a href="index.html" class="btn-back-nav" onclick="TunaApp.goBack('index.html')">
-          <span class="arrow">←</span> <span>Volver al Inicio</span>
-        </a>
-        <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
-          <a href="index.html" class="bc-link">Inicio</a><span class="bc-sep">›</span><span class="bc-current">Gestionar cuenta</span>
-        </nav>
-      </div><div style="flex: none"><h1 style="margin: 0; font-size: 26px">Gestionar cuenta</h1><p style="margin: 6px 0 0; font-size: 13px; color: var(--muted)">Tus datos y tu acceso</p></div><section style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; "><a href="CuentaDatos.html" style="text-decoration: none; border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 10px"><div class="tuna-photo-frame" style="height: 120px; border-radius: 6px; border: 1px solid var(--line); flex: none;"><img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" alt="Gestión" loading="lazy"></div><h3 style="margin: 0; font-size: 15px">Modificar información personal</h3><p style="margin: 0; font-size: 12px; color: var(--muted)">Nombre, correo y teléfono</p></a><a href="CuentaPassword.html" style="text-decoration: none; border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 10px"><div class="tuna-photo-frame" style="height: 120px; border-radius: 6px; border: 1px solid var(--line); flex: none;"><img src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=600&q=80" alt="Gestión" loading="lazy"></div><h3 style="margin: 0; font-size: 15px">Cambiar contraseña</h3><p style="margin: 0; font-size: 12px; color: var(--muted)">Actualiza tu contraseña de acceso</p></a></section></main>
+<main style="flex: 1; min-height: 0; padding: 24px 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px"><div style="flex: none"><h1 style="margin: 0; font-size: 26px">Gestionar cuenta</h1><p style="margin: 6px 0 0; font-size: 13px; color: var(--muted)">Tus datos y tu acceso</p></div><section style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; "><a href="CuentaDatos.html" style="text-decoration: none; border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 10px"><div class="tuna-photo-frame" style="height: 120px; border-radius: 6px; border: 1px solid var(--line); flex: none;"><img src="../assets/img/galeria_grupo_plaza.jpg" alt="Gestión" loading="lazy"></div><h3 style="margin: 0; font-size: 15px">Modificar información personal</h3><p style="margin: 0; font-size: 12px; color: var(--muted)">Nombre, correo y teléfono</p></a><a href="CuentaPassword.html" style="text-decoration: none; border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 10px"><div class="tuna-photo-frame" style="height: 120px; border-radius: 6px; border: 1px solid var(--line); flex: none;"><img src="../assets/img/galeria_arcos.jpg" alt="Gestión" loading="lazy"></div><h3 style="margin: 0; font-size: 15px">Cambiar contraseña</h3><p style="margin: 0; font-size: 12px; color: var(--muted)">Actualiza tu contraseña de acceso</p></a></section></main>
 
     
 
@@ -59,7 +61,7 @@
             Agrupación musical tradicional universitaria de la <strong>Facultad de Derecho de la Universidad de Almería</strong>. Fundada en el verano de 1993. Portadora de la alegría, la música y el buen hacer estudiantil.
           </p>
           <p style="font-size:12px; color:var(--gold);">
-            🏛 Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
+            Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
           </p>
         </div>
         <div class="footer-col">
@@ -84,10 +86,10 @@
         <div class="footer-col">
           <h4>Contacto Oficial</h4>
           <p>
-            📞 <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
-            ✉️ <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
-            📸 <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
-            🎵 <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
+            <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
+            <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
+            <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
+            <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
           </p>
         </div>
       </div>

@@ -14,12 +14,13 @@
         <img src="../assets/img/logo_corporativo.svg" alt="Tuna de Derecho Almería Logo" style="height:48px;">
       </a>
       <nav class="site-nav">
-        <a href="Conoce.html" class="">Conoce la tuna</a><a href="Contratacion.html" class="">Contratación</a><a href="Multimedia.html" class="">Multimedia</a><a href="Tienda.html" class="">Tienda</a><a href="Cancionero.html" class="">Cancionero</a><a href="Unete.html" class="">Únete</a>
+        <a href="Conoce.html" class=""><img src="../assets/img/iconos/icono_conoce.png" alt="" class="nav-icon">Conoce la tuna</a><a href="Contratacion.html" class=""><img src="../assets/img/iconos/icono_contratacion.png" alt="" class="nav-icon">Contratación</a><a href="Multimedia.html" class=""><img src="../assets/img/iconos/icono_multimedia.png" alt="" class="nav-icon">Multimedia</a><a href="Tienda.html" class=""><img src="../assets/img/iconos/icono_bolsa.png" alt="" class="nav-icon">Tienda</a><a href="Cancionero.html" class=""><img src="../assets/img/iconos/icono_cancionero.png" alt="" class="nav-icon">Cancionero</a><a href="Unete.html" class=""><img src="../assets/img/iconos/icono_unete.png" alt="" class="nav-icon">Únete</a>
       </nav>
       <div class="header-actions">
         
-          <a href="Cesta.html" class="btn-header-cart">
-            🛒 Cesta (<span class="cart-counter-val">0</span>)
+          <a href="Cesta.html" class="btn-header-cart" title="Cesta" aria-label="Cesta">
+        <img src="../assets/img/iconos/icono_tienda.png" alt="" class="cart-icon">
+        <span class="cart-counter-val is-empty">0</span>
           </a>
           <a href="Acceso.html" class="btn-header-login">
             Iniciar sesión
@@ -27,6 +28,15 @@
         
       </div>
     </header>
+    <div class="screen-nav-bar">
+        <a href="Cancionero.html" class="btn-back-nav" onclick="TunaApp.goBack('Cancionero.html')">
+          <span class="arrow">←</span> <span>Volver a Cancionero</span>
+        </a>
+        <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
+          <a href="index.html" class="bc-link">Inicio</a><span class="bc-sep">›</span><a href="Cancionero.html" class="bc-link">Cancionero</a><span class="bc-sep">›</span><span class="bc-current">Nuestro repertorio de canciones</span>
+        </nav>
+      </div>
+    
     
 
   <div class="main-content">
@@ -34,14 +44,7 @@
 
     
 
-<main style="flex: 1; min-height: 0; padding: 24px 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px"><div class="screen-nav-bar">
-        <a href="Cancionero.html" class="btn-back-nav" onclick="TunaApp.goBack('Cancionero.html')">
-          <span class="arrow">←</span> <span>Volver a Cancionero</span>
-        </a>
-        <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
-          <a href="index.html" class="bc-link">Inicio</a><span class="bc-sep">›</span><a href="Cancionero.html" class="bc-link">Cancionero</a><span class="bc-sep">›</span><span class="bc-current">Nuestro repertorio de canciones</span>
-        </nav>
-      </div><div style="flex: none"><h1 style="margin: 0; font-size: 26px">Nuestro repertorio de canciones</h1><p style="margin: 6px 0 0; font-size: 13px; color: var(--muted)">Busca por título o palabra clave</p></div>
+<main style="flex: 1; min-height: 0; padding: 24px 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px"><div style="flex: none"><h1 style="margin: 0; font-size: 26px">Nuestro repertorio de canciones</h1><p style="margin: 6px 0 0; font-size: 13px; color: var(--muted)">Busca por título o palabra clave</p></div>
     <!-- REPRODUCTOR OFICIAL DE LA TUNA CON WEB AUDIO -->
     <section class="audio-player-card" style="margin-bottom: 24px;">
       <div class="audio-track-info">
@@ -96,7 +99,7 @@
             Agrupación musical tradicional universitaria de la <strong>Facultad de Derecho de la Universidad de Almería</strong>. Fundada en el verano de 1993. Portadora de la alegría, la música y el buen hacer estudiantil.
           </p>
           <p style="font-size:12px; color:var(--gold);">
-            🏛 Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
+            Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
           </p>
         </div>
         <div class="footer-col">
@@ -122,10 +125,10 @@
         <div class="footer-col">
           <h4>Contacto Oficial</h4>
           <p>
-            📞 <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
-            ✉️ <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
-            📸 <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
-            🎵 <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
+            <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
+            <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
+            <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
+            <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
           </p>
         </div>
       </div>

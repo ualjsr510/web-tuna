@@ -77,6 +77,7 @@ const TunaCart = {
     const count = cart.reduce((acc, it) => acc + (it.qty || 1), 0);
     document.querySelectorAll('.cart-counter-val').forEach(el => {
       el.textContent = count;
+      el.classList.toggle('is-empty', count === 0);
     });
   },
 
@@ -127,7 +128,7 @@ const TunaCart = {
         </td>
         <td style="font-weight:700; color:var(--accent); padding:12px;">${lineTotal.toFixed(2)} €</td>
         <td style="padding:12px;">
-          <button type="button" onclick="TunaCart.removeItem(${idx})" title="Eliminar producto" style="border:none; background:none; color:#c92a2a; cursor:pointer; font-size:16px;">🗑</button>
+          <button type="button" onclick="TunaCart.removeItem(${idx})" title="Eliminar producto" style="border:none; background:none; color:#c92a2a; cursor:pointer; font-size:16px;">✕</button>
         </td>
       `;
       tableBody.appendChild(tr);
@@ -275,7 +276,7 @@ const TunaCart = {
         <strong>${addr.name || 'Marta Gil Sánchez'}</strong><br>
         ${addr.street || 'Calle Real 12, 2ºB'}<br>
         ${addr.postalCode || '04001'} ${addr.city || 'Almería'}, ${addr.province || 'Almería'}<br>
-        <span style="color:var(--muted); font-size:12px;">📞 ${addr.phone || '685 99 55 10'}</span>
+        <span style="color:var(--muted); font-size:12px;">${addr.phone || '685 99 55 10'}</span>
       `;
     }
 
@@ -313,7 +314,7 @@ const TunaCart = {
         if (subtotalEl) subtotalEl.textContent = subtotal.toFixed(2) + ' €';
         if (shippingEl) shippingEl.textContent = shipping === 0 ? 'Gratis (Promoción)' : shipping.toFixed(2) + ' €';
         if (totalEl) totalEl.textContent = total.toFixed(2) + ' €';
-        if (btnSubmit) btnSubmit.textContent = `🔒 Formalizar y Pagar Pedido (${total.toFixed(2)} €)`;
+        if (btnSubmit) btnSubmit.textContent = `Formalizar y Pagar Pedido (${total.toFixed(2)} €)`;
       }
     }
   },

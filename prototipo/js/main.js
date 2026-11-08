@@ -35,7 +35,7 @@ const TunaApp = {
       if (user.rol === 'admin') {
         userBox.innerHTML = `
           <a href="${pathPrefix}admin/index.html" class="btn btn-outline" style="font-size: 12.5px; padding: 6px 12px; border-color: var(--gold); color: var(--gold-dark); font-weight: 700;">
-            ⚙️ Panel Admin
+            Panel Admin
           </a>
           <button type="button" onclick="TunaDB.auth.logout()" class="btn btn-outline" style="font-size: 12px; padding: 6px 10px; color: var(--muted);" title="Cerrar sesión">
             Cerrar sesión
@@ -44,7 +44,7 @@ const TunaApp = {
       } else {
         userBox.innerHTML = `
           <a href="${pathPrefix}cliente/index.html" class="btn btn-outline" style="font-size: 12.5px; padding: 6px 12px; font-weight: 600;" title="Ver mi cuenta">
-            👤 Hola, ${user.nombre}
+            Hola, ${user.nombre}
           </a>
           <button type="button" onclick="TunaDB.auth.logout()" class="btn btn-outline" style="font-size: 12px; padding: 6px 10px; color: var(--muted);" title="Cerrar sesión">
             Salir
@@ -84,7 +84,7 @@ const TunaApp = {
     }
     const toast = document.createElement('div');
     toast.className = 'toast-message';
-    const icon = type === 'success' ? '✓' : (type === 'error' ? '⚠' : 'ℹ');
+    const icon = type === 'success' ? '✓' : (type === 'error' ? '!' : 'ℹ');
     toast.innerHTML = `<span style="color:var(--gold); font-size:18px; font-weight:bold;">${icon}</span> <span>${message}</span>`;
     container.appendChild(toast);
     setTimeout(() => {
@@ -144,6 +144,15 @@ const TunaApp = {
 
 // Inicialización de la aplicación
 document.addEventListener('DOMContentLoaded', () => {
+  // 0. Barra "Volver" fija justo debajo de la cabecera (altura real, también en móvil)
+  const siteHeader = document.querySelector('.site-header');
+  if (siteHeader) {
+    const syncHeaderHeight = () =>
+      document.documentElement.style.setProperty('--header-h', siteHeader.offsetHeight + 'px');
+    syncHeaderHeight();
+    window.addEventListener('resize', syncHeaderHeight);
+  }
+
   // 1. Verificar seguridad de rutas
   TunaApp.enforceRouteGuard();
 
@@ -158,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const totalCount = cart.reduce((acc, item) => acc + (item.qty || 1), 0);
   document.querySelectorAll('.cart-counter-val').forEach(el => {
     el.textContent = totalCount;
+    el.classList.toggle('is-empty', totalCount === 0);
   });
   
   // 5. Soporte para modales de imágenes (Lightbox)

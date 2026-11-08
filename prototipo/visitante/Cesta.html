@@ -14,12 +14,13 @@
         <img src="../assets/img/logo_corporativo.svg" alt="Tuna de Derecho Almería Logo" style="height:48px;">
       </a>
       <nav class="site-nav">
-        <a href="Conoce.html" class="">Conoce la tuna</a><a href="Contratacion.html" class="">Contratación</a><a href="Multimedia.html" class="">Multimedia</a><a href="Tienda.html" class="active">Tienda</a><a href="Cancionero.html" class="">Cancionero</a><a href="Unete.html" class="">Únete</a>
+        <a href="Conoce.html" class=""><img src="../assets/img/iconos/icono_conoce.png" alt="" class="nav-icon">Conoce la tuna</a><a href="Contratacion.html" class=""><img src="../assets/img/iconos/icono_contratacion.png" alt="" class="nav-icon">Contratación</a><a href="Multimedia.html" class=""><img src="../assets/img/iconos/icono_multimedia.png" alt="" class="nav-icon">Multimedia</a><a href="Tienda.html" class="active"><img src="../assets/img/iconos/icono_bolsa.png" alt="" class="nav-icon">Tienda</a><a href="Cancionero.html" class=""><img src="../assets/img/iconos/icono_cancionero.png" alt="" class="nav-icon">Cancionero</a><a href="Unete.html" class=""><img src="../assets/img/iconos/icono_unete.png" alt="" class="nav-icon">Únete</a>
       </nav>
       <div class="header-actions">
         
-          <a href="Cesta.html" class="btn-header-cart">
-            🛒 Cesta (<span class="cart-counter-val">0</span>)
+          <a href="Cesta.html" class="btn-header-cart" title="Cesta" aria-label="Cesta">
+        <img src="../assets/img/iconos/icono_tienda.png" alt="" class="cart-icon">
+        <span class="cart-counter-val is-empty">0</span>
           </a>
           <a href="Acceso.html" class="btn-header-login">
             Iniciar sesión
@@ -27,6 +28,15 @@
         
       </div>
     </header>
+    <div class="screen-nav-bar">
+        <a href="Tienda.html" class="btn-back-nav" onclick="TunaApp.goBack('Tienda.html')">
+          <span class="arrow">←</span> <span>Volver a Tienda</span>
+        </a>
+        <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
+          <a href="index.html" class="bc-link">Inicio</a><span class="bc-sep">›</span><a href="Tienda.html" class="bc-link">Tienda</a><span class="bc-sep">›</span><span class="bc-current">Cesta</span>
+        </nav>
+      </div>
+    
     
 
   <div class="main-content">
@@ -34,14 +44,7 @@
 
     
 
-<main style="flex: 1; min-height: 0; padding: 24px 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px"><div class="screen-nav-bar">
-        <a href="Tienda.html" class="btn-back-nav" onclick="TunaApp.goBack('Tienda.html')">
-          <span class="arrow">←</span> <span>Volver a Tienda</span>
-        </a>
-        <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
-          <a href="index.html" class="bc-link">Inicio</a><span class="bc-sep">›</span><a href="Tienda.html" class="bc-link">Tienda</a><span class="bc-sep">›</span><span class="bc-current">Cesta</span>
-        </nav>
-      </div><div style="flex: none"><h1 style="margin: 0; font-size: 26px">Cesta</h1><p style="margin: 6px 0 0; font-size: 13px; color: var(--muted)">Revisa tu pedido antes de continuar</p></div><div id="cart-empty-state" style="display:block; text-align:center; padding:50px; background:var(--card); border:1px dashed var(--line); border-radius:8px;"><span style="font-size:48px;">🛒</span><h2 style="margin:12px 0 6px;">Tu cesta de la compra está vacía</h2><p style="color:var(--muted); margin-bottom:20px;">No tienes productos seleccionados todavía.</p><a href="Catalogo.html" class="btn btn-gold">Ir al Catálogo de Productos</a></div><div id="cart-content-wrapper" style="display: none; gap: 24px; align-items: flex-start;"><div style="flex: 1; min-width: 0"><table style="width: 100%; border-collapse: collapse; border: 1px solid var(--line)"><thead><tr><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Producto</th><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Precio</th><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Cantidad</th><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Subtotal</th><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px"></th></tr></thead><tbody id="cart-items-body"></tbody></table></div><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; width: 340px; flex: none"><h2 style="margin: 0; font-size: 15px">Resumen</h2><div style="display: flex; gap: 8px; align-items: center; justify-content: space-between"><p style="margin: 0; font-size: 13px; color: var(--muted-2); line-height: 1.5; ">Subtotal</p><p style="margin: 0; font-size: 13px; color: var(--ink); line-height: 1.5; ">63,00 €</p></div><div style="display: flex; gap: 8px; align-items: center; justify-content: space-between"><p style="margin: 0; font-size: 13px; color: var(--muted-2); line-height: 1.5; ">Envío</p><p style="margin: 0; font-size: 13px; color: var(--ink); line-height: 1.5; ">4,90 €</p></div><div style="display: flex; gap: 8px; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 10px"><strong style="font-size: 15px">Total</strong><strong style="font-size: 15px">67,90 €</strong></div><a href="AccesoPedido.html" style="text-decoration: none; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; background: var(--accent); color: var(--on-accent); padding: 12px 20px; border: 1px solid var(--accent); ">Realizar pedido</a><a href="Catalogo.html" style="text-decoration: none; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; color: var(--ink); padding: 11px 20px; border: 1px solid var(--accent); ">Seguir comprando</a></section></div></main>
+<main style="flex: 1; min-height: 0; padding: 24px 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px"><div style="flex: none"><h1 style="margin: 0; font-size: 26px">Cesta</h1><p style="margin: 6px 0 0; font-size: 13px; color: var(--muted)">Revisa tu pedido antes de continuar</p></div><div id="cart-empty-state" style="display:block; text-align:center; padding:50px; background:var(--card); border:1px dashed var(--line); border-radius:8px;"><h2 style="margin:12px 0 6px;">Tu cesta de la compra está vacía</h2><p style="color:var(--muted); margin-bottom:20px;">No tienes productos seleccionados todavía.</p><a href="Catalogo.html" class="btn btn-gold">Ir al Catálogo de Productos</a></div><div id="cart-content-wrapper" style="display: none; gap: 24px; align-items: flex-start;"><div style="flex: 1; min-width: 0"><table style="width: 100%; border-collapse: collapse; border: 1px solid var(--line)"><thead><tr><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Producto</th><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Precio</th><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Cantidad</th><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px">Subtotal</th><th style="text-align: left; padding: 9px 10px; background: var(--soft); border-bottom: 1px solid var(--line); font-weight: 600; font-size: 12px"></th></tr></thead><tbody id="cart-items-body"></tbody></table></div><section style="border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; width: 340px; flex: none"><h2 style="margin: 0; font-size: 15px">Resumen</h2><div style="display: flex; gap: 8px; align-items: center; justify-content: space-between"><p style="margin: 0; font-size: 13px; color: var(--muted-2); line-height: 1.5; ">Subtotal</p><p style="margin: 0; font-size: 13px; color: var(--ink); line-height: 1.5; ">63,00 €</p></div><div style="display: flex; gap: 8px; align-items: center; justify-content: space-between"><p style="margin: 0; font-size: 13px; color: var(--muted-2); line-height: 1.5; ">Envío</p><p style="margin: 0; font-size: 13px; color: var(--ink); line-height: 1.5; ">4,90 €</p></div><div style="display: flex; gap: 8px; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 10px"><strong style="font-size: 15px">Total</strong><strong style="font-size: 15px">67,90 €</strong></div><a href="AccesoPedido.html" style="text-decoration: none; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; background: var(--accent); color: var(--on-accent); padding: 12px 20px; border: 1px solid var(--accent); ">Realizar pedido</a><a href="Catalogo.html" style="text-decoration: none; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; color: var(--ink); padding: 11px 20px; border: 1px solid var(--accent); ">Seguir comprando</a></section></div></main>
 
     
 
@@ -59,7 +62,7 @@
             Agrupación musical tradicional universitaria de la <strong>Facultad de Derecho de la Universidad de Almería</strong>. Fundada en el verano de 1993. Portadora de la alegría, la música y el buen hacer estudiantil.
           </p>
           <p style="font-size:12px; color:var(--gold);">
-            🏛 Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
+            Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
           </p>
         </div>
         <div class="footer-col">
@@ -85,10 +88,10 @@
         <div class="footer-col">
           <h4>Contacto Oficial</h4>
           <p>
-            📞 <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
-            ✉️ <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
-            📸 <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
-            🎵 <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
+            <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
+            <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
+            <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
+            <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
           </p>
         </div>
       </div>

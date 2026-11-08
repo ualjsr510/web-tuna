@@ -471,14 +471,15 @@ html, body {
   background: #1c1417;
   color: var(--gold);
   border: 1px solid var(--gold);
-  border-radius: 50%;
-  width: 38px;
+  border-radius: 19px;
+  padding: 0 14px;
   height: 38px;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(0,0,0,.3);
-  font-size: 16px;
+  font-size: 12px;
+  font-weight: 600;
   transition: transform .15s ease;
 }
 #btn-reopen-switcher:hover {
@@ -565,7 +566,7 @@ html, body {
           <span class="arrow">←</span> <span>Volver a la pantalla anterior</span>
         </button>
         <div class="root-portal-badge">
-          <span style="color:var(--gold); font-size:16px">🏛</span>
+          
           <span>Tuna de la Facultad de Derecho de Almería · Portal Oficial</span>
         </div>
         <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
@@ -577,7 +578,7 @@ html, body {
       <section class="tuna-card" style="background: var(--hero); color: #fff; padding: 38px 32px; border: 1px solid var(--accent); position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px; box-shadow: var(--shadow-lg);">
         <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(197, 155, 63, 0.16) 1px, transparent 1px); background-size: 20px 20px; pointer-events: none;"></div>
         <div style="display: inline-flex; align-items: center; gap: 8px; padding: 5px 16px; background: rgba(0,0,0,0.38); border: 1px solid var(--gold); border-radius: 99px; font-size: 11px; font-weight: 700; color: var(--gold-light); letter-spacing: 0.1em; text-transform: uppercase;">
-          <span>🏛</span> FACULTAD DE DERECHO · UNIVERSIDAD DE ALMERÍA
+          FACULTAD DE DERECHO · UNIVERSIDAD DE ALMERÍA
         </div>
         <h1 style="margin: 0; font-size: clamp(28px, 4vw, 42px); color: #fbf3df; font-family: var(--serif); text-shadow: 0 2px 10px rgba(0,0,0,0.5); line-height: 1.2;">
           Tuna de la Facultad de Derecho de Almería
@@ -589,29 +590,29 @@ html, body {
         <!-- Badges de Prestigio Oficiales -->
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 4px;">
           <span style="display: flex; align-items: center; gap: 6px; padding: 6px 14px; background: rgba(0,0,0,0.45); border-radius: 6px; font-size: 12px; color: #fdf5e2; border: 1px solid rgba(197,155,63,0.45);">
-            <span style="color: var(--gold);">🏆</span> <strong>18 Galardones</strong> Oficiales
+            <strong>18 Galardones</strong> Oficiales
           </span>
           <span style="display: flex; align-items: center; gap: 6px; padding: 6px 14px; background: rgba(0,0,0,0.45); border-radius: 6px; font-size: 12px; color: #fdf5e2; border: 1px solid rgba(197,155,63,0.45);">
-            <span style="color: var(--gold);">⭐</span> <strong>XXV Años</strong> de Historia
+            <strong>XXV Años</strong> de Historia
           </span>
           <span style="display: flex; align-items: center; gap: 6px; padding: 6px 14px; background: rgba(0,0,0,0.45); border-radius: 6px; font-size: 12px; color: #fdf5e2; border: 1px solid rgba(197,155,63,0.45);">
-            <span style="color: var(--gold);">🎵</span> <strong>4 Álbumes</strong> Grabados
+            <strong>4 Álbumes</strong> Grabados
           </span>
           <span style="display: flex; align-items: center; gap: 6px; padding: 6px 14px; background: rgba(0,0,0,0.45); border-radius: 6px; font-size: 12px; color: #fdf5e2; border: 1px solid rgba(197,155,63,0.45);">
-            <span style="color: var(--gold);">🌹</span> <strong>+150 Rondas</strong> y Bodas
+            <strong>+150 Rondas</strong> y Bodas
           </span>
         </div>
 
         <!-- Botones CTA principales -->
         <div class="hero-cta-btns" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 8px; z-index: 2;">
           <a href="#/visitante/Contratacion.html" style="background: var(--gold); color: #1c1417; font-weight: 700; text-decoration: none; padding: 13px 24px; border-radius: 6px; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.3); border: 1px solid #ffd875;">
-            <span>🎻</span> Contratar para tu boda o evento
+            Contratar para tu boda o evento
           </a>
           <a href="#/visitante/Tienda.html" style="background: rgba(255,255,255,0.12); color: #fff; font-weight: 600; text-decoration: none; padding: 13px 22px; border-radius: 6px; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(4px);">
-            <span>🛍️</span> Tienda oficial y recuerdos
+            Tienda oficial y recuerdos
           </a>
           <a href="#/visitante/Cancionero.html" style="background: rgba(0,0,0,0.38); color: var(--gold-light); font-weight: 600; text-decoration: none; padding: 13px 22px; border-radius: 6px; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(197,155,63,0.5);">
-            <span>🎶</span> Escuchar cancionero
+            Escuchar cancionero
           </a>
         </div>
       </section>
@@ -669,7 +670,7 @@ html, body {
       <section class="tuna-card" style="padding: 20px 24px; background: var(--soft-2); border-left: 4px solid var(--gold); display: flex; flex-direction: column; gap: 14px;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
           <div>
-            <h3 style="margin: 0; font-size: 17px;">📅 Próximas Actuaciones y Rondas en Directo</h3>
+            <h3 style="margin: 0; font-size: 17px;">Próximas Actuaciones y Rondas en Directo</h3>
             <p style="margin: 4px 0 0; font-size: 12.5px; color: var(--muted);">Fechas confirmadas del calendario oficial de la tuna</p>
           </div>
           <a href="#/visitante/Contratacion.html" style="font-size: 13px; font-weight: 700; background: var(--accent); color: var(--on-accent); padding: 8px 16px; border-radius: 5px; text-decoration: none;">Reservar fecha</a>
@@ -829,7 +830,7 @@ html, body {
           <p style="margin: 0; font-size: 13.5px; color: #d6c6b2; line-height: 1.5;">Hacemos bodas, serenatas de balcón, aniversarios, graduaciones y cenas corporativas. ¡Inicia sesión o regístrate para solicitar fecha!</p>
         </div>
         <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-          <a href="tel:+34600000000" style="padding: 12px 18px; background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.25); border-radius: 5px; text-decoration: none; font-size: 13px; font-weight: 600;">📞 600 000 000</a>
+          <a href="tel:+34600000000" style="padding: 12px 18px; background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.25); border-radius: 5px; text-decoration: none; font-size: 13px; font-weight: 600;">600 000 000</a>
           <a href="#/visitante/Contratacion.html" style="background: var(--gold); color: #1c1417; text-decoration: none; font-size: 14px; font-weight: 700; padding: 12px 22px; border-radius: 5px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">Contratar actuación</a>
         </div>
       </section>
@@ -1449,10 +1450,10 @@ html, body {
         </div>
         <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
           <a href="#/visitante/Catalogo.html" style="background: var(--gold); color: #1c1417; font-weight: 700; text-decoration: none; padding: 12px 20px; border-radius: 5px; font-size: 13.5px; box-shadow: 0 4px 12px rgba(0,0,0,0.25);">
-            🔍 Ver Catálogo con Filtros
+            Ver Catálogo con Filtros
           </a>
           <a href="#/visitante/Cesta.html" style="background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); font-weight: 600; text-decoration: none; padding: 12px 18px; border-radius: 5px; font-size: 13.5px;">
-            🛒 Cesta de la compra
+            Cesta de la compra
           </a>
         </div>
       </section>
@@ -1580,19 +1581,19 @@ html, body {
       <!-- MENÚ DE CATEGORÍAS EN PESTAÑAS (PILLS) -->
       <nav style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;" aria-label="Filtro por categoría">
         <button type="button" class="cat-pill-btn active" data-cat="all" onclick="setCategoryTab('all')">
-          <span>🌟</span> Todos los productos (8)
+          Todos los productos (8)
         </button>
         <button type="button" class="cat-pill-btn" data-cat="indumentaria" onclick="setCategoryTab('indumentaria')">
-          <span>👘</span> Indumentaria & Capas (3)
+          Indumentaria & Capas (3)
         </button>
         <button type="button" class="cat-pill-btn" data-cat="musica" onclick="setCategoryTab('musica')">
-          <span>💿</span> Música & Discos (2)
+          Música & Discos (2)
         </button>
         <button type="button" class="cat-pill-btn" data-cat="instrumentos" onclick="setCategoryTab('instrumentos')">
-          <span>🪕</span> Instrumentos & Cintas (2)
+          Instrumentos & Cintas (2)
         </button>
         <button type="button" class="cat-pill-btn" data-cat="recuerdos" onclick="setCategoryTab('recuerdos')">
-          <span>🏷️</span> Recuerdos & Parches (1)
+          Recuerdos & Parches (1)
         </button>
       </nav>
 
@@ -1816,7 +1817,7 @@ html, body {
           </div>
 
           <button type="button" onclick="addToCart(document.getElementById('cat-detail-title').textContent, parseFloat(document.getElementById('cat-detail-price').textContent))" style="font-size: 14px; font-weight: 700; background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent); padding: 12px 20px; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 2px 8px rgba(122,31,43,.25);">
-            <span>🛒</span> Añadir a la cesta
+            Añadir a la cesta
           </button>
 
           <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line-soft); padding-top: 8px;">
@@ -3321,7 +3322,7 @@ html, body {
   <a href="#/admin/index.html" id="sw-admin">Admin</a>
   <button type="button" class="btn-close-switcher" onclick="hideSwitcher()" title="Ocultar selector flotante">✕</button>
 </aside>
-<button type="button" id="btn-reopen-switcher" onclick="showSwitcher()" title="Mostrar selector de perfil">🎭</button>
+<button type="button" id="btn-reopen-switcher" onclick="showSwitcher()" title="Mostrar selector de perfil">Perfil</button>
 <div id="toast" role="status"></div>
 <script>
 const ROUTES={"visitante/index.html": ["0", "Inicio visitante"], "visitante/Conoce.html": ["1", "Conoce la tuna"], "visitante/Historia.html": ["1.1", "Historia"], "visitante/Miembros.html": ["1.2", "Miembros"], "visitante/Contratacion.html": ["2", "Contratación de nuestros servicios"], "visitante/AccesoContratacion.html": ["2.1", "Inicio de sesión para contratación"], "visitante/FormularioContratacion.html": ["2.1.1", "Rellenar formulario de contratación"], "visitante/Multimedia.html": ["3", "Contenido multimedia"], "visitante/MejoresMomentos.html": ["3.1", "Nuestros mejores momentos"], "visitante/Videos.html": ["3.1.1", "Vídeos"], "visitante/Fotos.html": ["3.1.2", "Fotos"], "visitante/Certamenes.html": ["3.2", "Certámenes"], "visitante/Tienda.html": ["4", "Tienda"], "visitante/Catalogo.html": ["4.1", "Catálogo"], "visitante/Cesta.html": ["4.2", "Cesta"], "visitante/AccesoPedido.html": ["4.2.1", "Iniciar sesión o registrarse para realizar pedido"], "visitante/DireccionEnvio.html": ["4.2.1.1", "Dirección de envío"], "visitante/Cancionero.html": ["5", "Cancionero"], "visitante/Repertorio.html": ["5.1", "Nuestro repertorio de canciones"], "visitante/Spotify.html": ["5.2", "Escúchanos en Spotify"], "visitante/Unete.html": ["6", "Únete a nosotros"], "visitante/Formulario.html": ["6.1", "Formulario para unirse"], "visitante/LocalEnsayo.html": ["6.2", "Local de ensayo"], "visitante/Acceso.html": ["7", "Inicio de sesión"], "visitante/RecuperarContrasena.html": ["7.1", "Recuperar contraseña"], "visitante/Registro.html": ["7.2", "Registrarse"], "cliente/index.html": ["0", "Inicio de cliente"], "cliente/Contratos.html": ["1", "Ver historial de contratos"], "cliente/ContratoDetalle.html": ["1.1", "Ver contrato en detalle"], "cliente/Pedidos.html": ["2", "Ver historial de pedidos"], "cliente/PedidoDetalle.html": ["2.1", "Ver pedido en detalle"], "cliente/PedidoEditar.html": ["2.1.1", "Editar datos del pedido"], "cliente/PedidoDevolucion.html": ["2.1.2", "Tramitar devolución"], "cliente/Cuenta.html": ["3", "Gestionar cuenta"], "cliente/CuentaDatos.html": ["3.1", "Modificar información personal"], "cliente/CuentaPassword.html": ["3.2", "Cambiar contraseña"], "admin/index.html": ["0", "Panel de administración con estadísticas"], "admin/Contratos.html": ["1", "Gestionar contratos"], "admin/ContratoDetalle.html": ["1.1", "Ver contrato en detalle"], "admin/Clientes.html": ["2", "Gestionar cartera de clientes"], "admin/FichaCliente.html": ["2.1", "Ver ficha de cliente"], "admin/ContratosCliente.html": ["2.1.1", "Ver contratos del cliente"], "admin/PedidosCliente.html": ["2.1.2", "Ver pedidos del cliente"], "admin/Pedidos.html": ["3", "Gestionar pedidos de la tienda"], "admin/PedidoDetalle.html": ["3.1", "Ver pedido en detalle"], "admin/Productos.html": ["4", "Gestionar productos de la tienda"], "admin/ProductoNuevo.html": ["4.1", "Añadir producto"], "admin/ProductosGestion.html": ["4.2", "Modificar o eliminar producto"], "admin/Miembros.html": ["5", "Gestionar lista de miembros"], "admin/MiembrosGestion.html": ["5.1", "Modificar o eliminar miembro existente"], "admin/MiembroNuevo.html": ["5.2", "Añadir nuevos miembros"], "admin/Cuenta.html": ["6", "Gestionar cuenta"], "admin/CuentaDatos.html": ["6.1", "Modificar información personal"], "admin/CuentaPassword.html": ["6.2", "Cambiar contraseña"], "admin/Certamenes.html": ["7", "Gestionar certámenes"], "admin/CertamenesGestion.html": ["7.1", "Modificar o eliminar certamen existente"], "admin/CertamenNuevo.html": ["7.2", "Crear nuevo certamen"]};

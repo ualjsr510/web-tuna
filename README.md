@@ -6,7 +6,7 @@
 
 ---
 
-## 🏛 Descripción del Proyecto
+## Descripción del Proyecto
 
 Portal web corporativo oficial para la **Tuna de la Facultad de Derecho de la Universidad de Almería** (fundada en 1993). El sistema implementa un diseño modular, responsive, conectado a base de datos relacional y con separación de tres áreas principales:
 
@@ -17,7 +17,7 @@ Portal web corporativo oficial para la **Tuna de la Facultad de Derecho de la Un
 
 ---
 
-## 📁 Estructura del Repositorio
+## Estructura del Repositorio
 
 ```text
 ├── index.html                 # Entrada principal con redirección al prototipo
@@ -46,7 +46,7 @@ Portal web corporativo oficial para la **Tuna de la Facultad de Derecho de la Un
 
 ---
 
-## 🗄️ Base de Datos y Cuentas de Acceso
+## Base de Datos y Cuentas de Acceso
 
 La aplicación cuenta con una capa ORM client-side (`prototipo/js/db.js`) conectada al esquema SQL de `database/schema.sql`:
 
@@ -55,7 +55,7 @@ La aplicación cuenta con una capa ORM client-side (`prototipo/js/db.js`) conect
 
 ---
 
-## 🌿 Ramas del Repositorio
+## Ramas del Repositorio
 
 - `main`: Código actual del proyecto con prototipo funcional, base de datos relacional y embudo de compra en 5 pasos.
 - `version-antigua` / `version_antigua`: Código histórico previo del repositorio preservado íntegramente.

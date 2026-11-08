@@ -20,7 +20,7 @@
         
           <span class="badge-accent" style="font-size:11px;">ADMIN</span>
           <a href="../visitante/index.html" class="btn-header-cart" title="Ver portal público">
-            👁 Ver Web
+            Ver Web
           </a>
           <a href="../visitante/index.html" class="btn btn-outline" style="font-size:12px; padding:6px 12px;" onclick="TunaApp.logout()">
             Salir
@@ -28,6 +28,15 @@
         
       </div>
     </header>
+    <div class="screen-nav-bar">
+        <a href="index.html" class="btn-back-nav" onclick="TunaApp.goBack('index.html')">
+          <span class="arrow">←</span> <span>Volver al Panel</span>
+        </a>
+        <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
+          <a href="index.html" class="bc-link">Panel</a><span class="bc-sep">›</span><span class="bc-current">Gestionar certámenes</span>
+        </nav>
+      </div>
+    
     
 
   <div class="main-content">
@@ -36,14 +45,7 @@
     
     <div style="flex: 1; min-height: 0; display: flex">
       <aside style="width: 232px; flex: none; border-right: 1px solid var(--line); padding: 20px 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 4px"><a href="index.html" style="text-decoration: none; font-size: 13px; padding: 11px 14px; border: 1px solid transparent">Panel de estadísticas</a><a href="Contratos.html" style="text-decoration: none; font-size: 13px; padding: 11px 14px; border: 1px solid transparent">1 Contratos</a><a href="Clientes.html" style="text-decoration: none; font-size: 13px; padding: 11px 14px; border: 1px solid transparent">2 Cartera de clientes</a><a href="Pedidos.html" style="text-decoration: none; font-size: 13px; padding: 11px 14px; border: 1px solid transparent">3 Pedidos de la tienda</a><a href="Productos.html" style="text-decoration: none; font-size: 13px; padding: 11px 14px; border: 1px solid transparent">4 Productos de la tienda</a><a href="Miembros.html" style="text-decoration: none; font-size: 13px; padding: 11px 14px; border: 1px solid transparent">5 Lista de miembros</a><a href="Cuenta.html" style="text-decoration: none; font-size: 13px; padding: 11px 14px; border: 1px solid transparent">6 Cuenta</a><a href="Certamenes.html" style="text-decoration: none; font-size: 13px; padding: 11px 14px; background: var(--accent); color: var(--on-accent)">7 Certámenes</a></aside>
-      <main style="flex: 1; min-width: 0; min-height: 0; padding: 24px 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px"><div class="screen-nav-bar">
-        <a href="index.html" class="btn-back-nav" onclick="TunaApp.goBack('index.html')">
-          <span class="arrow">←</span> <span>Volver al Panel</span>
-        </a>
-        <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
-          <a href="index.html" class="bc-link">Panel</a><span class="bc-sep">›</span><span class="bc-current">Gestionar certámenes</span>
-        </nav>
-      </div><div style="flex: none"><h1 style="margin: 0; font-size: 26px">Gestionar certámenes</h1><p style="margin: 6px 0 0; font-size: 13px; color: var(--muted)">Certámenes que aparecen en la web</p></div><section style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; "><a href="CertamenesGestion.html" style="text-decoration: none; border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 10px"><div class="tuna-photo-frame" style="height: 120px; border-radius: 6px; border: 1px solid var(--line); flex: none;"><img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" alt="Gestión" loading="lazy"></div><h3 style="margin: 0; font-size: 15px">Modificar o eliminar certamen</h3><p style="margin: 0; font-size: 12px; color: var(--muted)">Editar o retirar certámenes</p></a><a href="CertamenNuevo.html" style="text-decoration: none; border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 10px"><div class="tuna-photo-frame" style="height: 120px; border-radius: 6px; border: 1px solid var(--line); flex: none;"><img src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=600&q=80" alt="Gestión" loading="lazy"></div><h3 style="margin: 0; font-size: 15px">Crear nuevo certamen</h3><p style="margin: 0; font-size: 12px; color: var(--muted)">Publicar un certamen nuevo</p></a></section></main>
+      <main style="flex: 1; min-width: 0; min-height: 0; padding: 24px 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px"><div style="flex: none"><h1 style="margin: 0; font-size: 26px">Gestionar certámenes</h1><p style="margin: 6px 0 0; font-size: 13px; color: var(--muted)">Certámenes que aparecen en la web</p></div><section style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; "><a href="CertamenesGestion.html" style="text-decoration: none; border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 10px"><div class="tuna-photo-frame" style="height: 120px; border-radius: 6px; border: 1px solid var(--line); flex: none;"><img src="../assets/img/galeria_grupo_plaza.jpg" alt="Gestión" loading="lazy"></div><h3 style="margin: 0; font-size: 15px">Modificar o eliminar certamen</h3><p style="margin: 0; font-size: 12px; color: var(--muted)">Editar o retirar certámenes</p></a><a href="CertamenNuevo.html" style="text-decoration: none; border: 1px solid var(--line); background: var(--card); padding: 16px; display: flex; flex-direction: column; gap: 10px"><div class="tuna-photo-frame" style="height: 120px; border-radius: 6px; border: 1px solid var(--line); flex: none;"><img src="../assets/img/galeria_arcos.jpg" alt="Gestión" loading="lazy"></div><h3 style="margin: 0; font-size: 15px">Crear nuevo certamen</h3><p style="margin: 0; font-size: 12px; color: var(--muted)">Publicar un certamen nuevo</p></a></section></main>
     </div>
 
 
@@ -60,7 +62,7 @@
             Agrupación musical tradicional universitaria de la <strong>Facultad de Derecho de la Universidad de Almería</strong>. Fundada en el verano de 1993. Portadora de la alegría, la música y el buen hacer estudiantil.
           </p>
           <p style="font-size:12px; color:var(--gold);">
-            🏛 Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
+            Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
           </p>
         </div>
         <div class="footer-col">
@@ -86,10 +88,10 @@
         <div class="footer-col">
           <h4>Contacto Oficial</h4>
           <p>
-            📞 <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
-            ✉️ <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
-            📸 <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
-            🎵 <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
+            <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
+            <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
+            <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
+            <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
           </p>
         </div>
       </div>

@@ -56,7 +56,7 @@ html, body {
   color: var(--ink);
   font-family: var(--sans);
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: clip; /* clip (no hidden) para no romper position: sticky */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -231,18 +231,22 @@ img {
    BARRA DE RETORNO Y BREADCRUMBS EN CADA PANTALLA
    ========================================================================== */
 .screen-nav-bar {
+  position: sticky;
+  top: var(--header-h, 74px);
+  z-index: 45;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 12px;
-  padding: 10px 18px;
-  margin-bottom: 20px;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-left: 4px solid var(--accent);
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(28,20,23,.05);
+  width: 100%;
+  padding: 8px 36px;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 3px 10px rgba(28,20,23,.06);
 }
 
 .btn-back-nav {
@@ -1042,4 +1046,35 @@ img {
   flex-wrap: wrap;
   gap: 10px;
   align-items: center;
+}
+
+/* Iconos descriptivos de las secciones del portal */
+.portal-card-title { display: flex; align-items: center; gap: 10px; }
+.portal-icon { width: 44px; height: 44px; object-fit: contain; flex-shrink: 0; transition: transform .2s ease; }
+.tuna-card-hover:hover .portal-icon { transform: scale(1.08) rotate(-3deg); }
+
+/* Iconos del menú superior */
+.site-nav a { display: inline-flex; align-items: center; gap: 6px; }
+.nav-icon { width: 22px; height: 22px; object-fit: contain; flex-shrink: 0; transition: transform .2s ease; }
+.site-nav a:hover .nav-icon, .site-nav a.active .nav-icon { transform: scale(1.12); }
+
+/* Botón de cesta con icono de carrito y contador */
+.btn-header-cart:has(.cart-icon) { position: relative; padding: 6px 10px; }
+.cart-icon { width: 26px; height: 26px; object-fit: contain; }
+.btn-header-cart .cart-counter-val {
+  position: absolute; top: -7px; right: -7px;
+  min-width: 18px; height: 18px; padding: 0 5px; box-sizing: border-box;
+  border-radius: 9px; background: var(--accent); color: #fff;
+  font-size: 11px; font-weight: 700; line-height: 18px; text-align: center;
+  border: 1.5px solid #fff;
+}
+.btn-header-cart .cart-counter-val.is-empty { display: none; }
+
+@media (max-width: 1024px) {
+  .site-nav a { gap: 4px; }
+  .nav-icon { width: 18px; height: 18px; }
+}
+
+@media (max-width: 768px) {
+  .screen-nav-bar { padding: 6px 16px; }
 }

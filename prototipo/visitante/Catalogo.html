@@ -14,12 +14,13 @@
         <img src="../assets/img/logo_corporativo.svg" alt="Tuna de Derecho Almería Logo" style="height:48px;">
       </a>
       <nav class="site-nav">
-        <a href="Conoce.html" class="">Conoce la tuna</a><a href="Contratacion.html" class="">Contratación</a><a href="Multimedia.html" class="">Multimedia</a><a href="Tienda.html" class="active">Tienda</a><a href="Cancionero.html" class="">Cancionero</a><a href="Unete.html" class="">Únete</a>
+        <a href="Conoce.html" class=""><img src="../assets/img/iconos/icono_conoce.png" alt="" class="nav-icon">Conoce la tuna</a><a href="Contratacion.html" class=""><img src="../assets/img/iconos/icono_contratacion.png" alt="" class="nav-icon">Contratación</a><a href="Multimedia.html" class=""><img src="../assets/img/iconos/icono_multimedia.png" alt="" class="nav-icon">Multimedia</a><a href="Tienda.html" class="active"><img src="../assets/img/iconos/icono_bolsa.png" alt="" class="nav-icon">Tienda</a><a href="Cancionero.html" class=""><img src="../assets/img/iconos/icono_cancionero.png" alt="" class="nav-icon">Cancionero</a><a href="Unete.html" class=""><img src="../assets/img/iconos/icono_unete.png" alt="" class="nav-icon">Únete</a>
       </nav>
       <div class="header-actions">
         
-          <a href="Cesta.html" class="btn-header-cart">
-            🛒 Cesta (<span class="cart-counter-val">0</span>)
+          <a href="Cesta.html" class="btn-header-cart" title="Cesta" aria-label="Cesta">
+        <img src="../assets/img/iconos/icono_tienda.png" alt="" class="cart-icon">
+        <span class="cart-counter-val is-empty">0</span>
           </a>
           <a href="Acceso.html" class="btn-header-login">
             Iniciar sesión
@@ -27,6 +28,15 @@
         
       </div>
     </header>
+    <div class="screen-nav-bar">
+        <a href="Tienda.html" class="btn-back-nav" onclick="TunaApp.goBack('Tienda.html')">
+          <span class="arrow">←</span> <span>Volver a Tienda</span>
+        </a>
+        <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
+          <a href="index.html" class="bc-link">Inicio</a><span class="bc-sep">›</span><a href="Tienda.html" class="bc-link">Tienda</a><span class="bc-sep">›</span><span class="bc-current">Catálogo</span>
+        </nav>
+      </div>
+    
     
 
   <div class="main-content">
@@ -35,14 +45,7 @@
     
 
 <main style="flex: 1; min-height: 0; padding: 24px 36px; box-sizing: border-box; display: flex; flex-direction: column; gap: 22px">
-      <div class="screen-nav-bar">
-        <a href="Tienda.html" class="btn-back-nav" onclick="TunaApp.goBack('Tienda.html')">
-          <span class="arrow">←</span> <span>Volver a Tienda</span>
-        </a>
-        <nav class="breadcrumb-trail" aria-label="Ruta de navegación">
-          <a href="index.html" class="bc-link">Inicio</a><span class="bc-sep">›</span><a href="Tienda.html" class="bc-link">Tienda</a><span class="bc-sep">›</span><span class="bc-current">Catálogo</span>
-        </nav>
-      </div>
+      
 
       <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px;">
         <div>
@@ -55,19 +58,19 @@
       <!-- MENÚ DE CATEGORÍAS EN PESTAÑAS (PILLS) -->
       <nav style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;" aria-label="Filtro por categoría">
         <button type="button" class="cat-pill-btn active" data-cat="all" onclick="setCategoryTab('all')">
-          <span>🌟</span> Todos los productos (8)
+          Todos los productos (8)
         </button>
         <button type="button" class="cat-pill-btn" data-cat="indumentaria" onclick="setCategoryTab('indumentaria')">
-          <span>👘</span> Indumentaria & Capas (3)
+          Indumentaria & Capas (3)
         </button>
         <button type="button" class="cat-pill-btn" data-cat="musica" onclick="setCategoryTab('musica')">
-          <span>💿</span> Música & Discos (2)
+          Música & Discos (2)
         </button>
         <button type="button" class="cat-pill-btn" data-cat="instrumentos" onclick="setCategoryTab('instrumentos')">
-          <span>🪕</span> Instrumentos & Cintas (2)
+          Instrumentos & Cintas (2)
         </button>
         <button type="button" class="cat-pill-btn" data-cat="recuerdos" onclick="setCategoryTab('recuerdos')">
-          <span>🏷️</span> Recuerdos & Parches (1)
+          Recuerdos & Parches (1)
         </button>
       </nav>
 
@@ -111,7 +114,7 @@
             <!-- Producto 1 -->
             <article class="catalog-card" data-cat="indumentaria" data-name="Capa tradicional de paño" data-price="25">
               <div class="tuna-photo-frame" style="height: 125px; border-radius: 6px;">
-                <img src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=600&q=80" alt="Capa tradicional" loading="lazy">
+                <img src="../assets/img/prod_capa.jpg" alt="Capa tradicional" loading="lazy">
                 <span class="badge-gold" style="position: absolute; top: 6px; left: 6px;">TOP VENTAS</span>
               </div>
               <div style="display: flex; flex-direction: column; gap: 4px; flex: 1;">
@@ -121,7 +124,7 @@
                 <span style="font-size: 16px; font-weight: 700; color: var(--accent); font-family: var(--serif); margin-top: 4px;">25,00 €</span>
               </div>
               <div style="display: flex; gap: 8px; margin-top: auto;">
-                <button type="button" onclick="selectCatalogProduct('prod-1', 'Capa tradicional de paño', 25.00, 'https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=600&q=80', 'Confeccionada en paño negro de máxima calidad con forro interior rojo púrpura de la Facultad de Derecho. Incluye tirantes de sujeción reforzados y espacio preparado para cintas.', 'S|M|L|XL|A medida')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
+                <button type="button" onclick="selectCatalogProduct('prod-1', 'Capa tradicional de paño', 25.00, '../assets/img/prod_capa.jpg', 'Confeccionada en paño negro de máxima calidad con forro interior rojo púrpura de la Facultad de Derecho. Incluye tirantes de sujeción reforzados y espacio preparado para cintas.', 'S|M|L|XL|A medida')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
                 <button type="button" onclick="addToCart('Capa tradicional de paño', 25.00)" style="font-size: 12px; font-weight: 700; background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent); padding: 7px 12px;">+ Cesta</button>
               </div>
             </article>
@@ -129,7 +132,7 @@
             <!-- Producto 2 -->
             <article class="catalog-card" data-cat="musica" data-name="CD 'Veinticinco Años de Ronda'" data-price="12">
               <div class="tuna-photo-frame" style="height: 125px; border-radius: 6px;">
-                <img src="https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=600&q=80" alt="CD XXV Aniversario" loading="lazy">
+                <img src="../assets/img/prod_cd.jpg" alt="CD XXV Aniversario" loading="lazy">
                 <span class="badge-accent" style="position: absolute; top: 6px; left: 6px;">NUEVO</span>
               </div>
               <div style="display: flex; flex-direction: column; gap: 4px; flex: 1;">
@@ -139,7 +142,7 @@
                 <span style="font-size: 16px; font-weight: 700; color: var(--accent); font-family: var(--serif); margin-top: 4px;">12,00 €</span>
               </div>
               <div style="display: flex; gap: 8px; margin-top: auto;">
-                <button type="button" onclick="selectCatalogProduct('prod-2', 'CD XXV Aniversario', 12.00, 'https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=600&q=80', 'Grabación oficial conmemorativa del XXV Aniversario. 16 temas clásicos y piezas galardonadas en certámenes nacionales con libreto ilustrado de 20 páginas.', 'CD Físico|Edición Digipack|Descarga Digital FLAC')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
+                <button type="button" onclick="selectCatalogProduct('prod-2', 'CD XXV Aniversario', 12.00, '../assets/img/prod_cd.jpg', 'Grabación oficial conmemorativa del XXV Aniversario. 16 temas clásicos y piezas galardonadas en certámenes nacionales con libreto ilustrado de 20 páginas.', 'CD Físico|Edición Digipack|Descarga Digital FLAC')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
                 <button type="button" onclick="addToCart('CD XXV Aniversario', 12.00)" style="font-size: 12px; font-weight: 700; background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent); padding: 7px 12px;">+ Cesta</button>
               </div>
             </article>
@@ -147,7 +150,7 @@
             <!-- Producto 3 -->
             <article class="catalog-card" data-cat="indumentaria" data-name="Sudadera 'Derecho Almería'" data-price="28">
               <div class="tuna-photo-frame" style="height: 125px; border-radius: 6px;">
-                <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80" alt="Sudadera Derecho" loading="lazy">
+                <img src="../assets/img/prod_sudadera.jpg" alt="Sudadera Derecho" loading="lazy">
                 <span class="badge-gold" style="position: absolute; top: 6px; left: 6px;">POPULAR</span>
               </div>
               <div style="display: flex; flex-direction: column; gap: 4px; flex: 1;">
@@ -157,7 +160,7 @@
                 <span style="font-size: 16px; font-weight: 700; color: var(--accent); font-family: var(--serif); margin-top: 4px;">28,00 €</span>
               </div>
               <div style="display: flex; gap: 8px; margin-top: auto;">
-                <button type="button" onclick="selectCatalogProduct('prod-3', 'Sudadera Derecho Almería', 28.00, 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80', 'Algodón orgánico 320g color granate institucional con el escudo bordado en hilo dorado y tipografía universitaria. Corte unisex con capucha ajustable.', 'XS|S|M|L|XL|XXL')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
+                <button type="button" onclick="selectCatalogProduct('prod-3', 'Sudadera Derecho Almería', 28.00, '../assets/img/prod_sudadera.jpg', 'Algodón orgánico 320g color granate institucional con el escudo bordado en hilo dorado y tipografía universitaria. Corte unisex con capucha ajustable.', 'XS|S|M|L|XL|XXL')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
                 <button type="button" onclick="addToCart('Sudadera Derecho Almería', 28.00)" style="font-size: 12px; font-weight: 700; background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent); padding: 7px 12px;">+ Cesta</button>
               </div>
             </article>
@@ -165,7 +168,7 @@
             <!-- Producto 4 -->
             <article class="catalog-card" data-cat="instrumentos" data-name="Pandero decorado con cintas" data-price="18">
               <div class="tuna-photo-frame" style="height: 125px; border-radius: 6px;">
-                <img src="https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?auto=format&fit=crop&w=600&q=80" alt="Pandero decorado" loading="lazy">
+                <img src="../assets/img/prod_pandero.jpg" alt="Pandero decorado" loading="lazy">
               </div>
               <div style="display: flex; flex-direction: column; gap: 4px; flex: 1;">
                 <span style="font-size: 11px; color: var(--muted); text-transform: uppercase; font-weight: 600;">Instrumentos</span>
@@ -174,7 +177,7 @@
                 <span style="font-size: 16px; font-weight: 700; color: var(--accent); font-family: var(--serif); margin-top: 4px;">18,00 €</span>
               </div>
               <div style="display: flex; gap: 8px; margin-top: auto;">
-                <button type="button" onclick="selectCatalogProduct('prod-4', 'Pandero decorado con cintas', 18.00, 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?auto=format&fit=crop&w=600&q=80', 'Pandereta de madera de haya con sonajas de latón y piel de cabra tensada a mano, decorada con cintas bicolores roja y amarilla de 80 cm.', '20 cm|25 cm (Estándar)|28 cm')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
+                <button type="button" onclick="selectCatalogProduct('prod-4', 'Pandero decorado con cintas', 18.00, '../assets/img/prod_pandero.jpg', 'Pandereta de madera de haya con sonajas de latón y piel de cabra tensada a mano, decorada con cintas bicolores roja y amarilla de 80 cm.', '20 cm|25 cm (Estándar)|28 cm')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
                 <button type="button" onclick="addToCart('Pandero decorado', 18.00)" style="font-size: 12px; font-weight: 700; background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent); padding: 7px 12px;">+ Cesta</button>
               </div>
             </article>
@@ -182,7 +185,7 @@
             <!-- Producto 5 -->
             <article class="catalog-card" data-cat="recuerdos" data-name="Parche oficial bordado UAL" data-price="6">
               <div class="tuna-photo-frame" style="height: 125px; border-radius: 6px;">
-                <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" alt="Parche bordado" loading="lazy">
+                <img src="../assets/img/prod_parche.jpg" alt="Parche bordado" loading="lazy">
               </div>
               <div style="display: flex; flex-direction: column; gap: 4px; flex: 1;">
                 <span style="font-size: 11px; color: var(--muted); text-transform: uppercase; font-weight: 600;">Recuerdos</span>
@@ -191,7 +194,7 @@
                 <span style="font-size: 16px; font-weight: 700; color: var(--accent); font-family: var(--serif); margin-top: 4px;">6,00 €</span>
               </div>
               <div style="display: flex; gap: 8px; margin-top: auto;">
-                <button type="button" onclick="selectCatalogProduct('prod-5', 'Parche oficial bordado UAL', 6.00, 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80', 'Emblema oficial de la Tuna de Derecho de Almería con hilo de oro y seda sobre fondo negro. Apto para coser en capa, jubón o mochila.', '8 cm redondo|10 cm escudo')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
+                <button type="button" onclick="selectCatalogProduct('prod-5', 'Parche oficial bordado UAL', 6.00, '../assets/img/prod_parche.jpg', 'Emblema oficial de la Tuna de Derecho de Almería con hilo de oro y seda sobre fondo negro. Apto para coser en capa, jubón o mochila.', '8 cm redondo|10 cm escudo')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
                 <button type="button" onclick="addToCart('Parche bordado', 6.00)" style="font-size: 12px; font-weight: 700; background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent); padding: 7px 12px;">+ Cesta</button>
               </div>
             </article>
@@ -199,7 +202,7 @@
             <!-- Producto 6 -->
             <article class="catalog-card" data-cat="indumentaria" data-name="Camiseta de la tuna" data-price="15">
               <div class="tuna-photo-frame" style="height: 125px; border-radius: 6px;">
-                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" alt="Camiseta de la tuna" loading="lazy">
+                <img src="../assets/img/prod_camiseta.jpg" alt="Camiseta de la tuna" loading="lazy">
               </div>
               <div style="display: flex; flex-direction: column; gap: 4px; flex: 1;">
                 <span style="font-size: 11px; color: var(--muted); text-transform: uppercase; font-weight: 600;">Indumentaria</span>
@@ -208,7 +211,7 @@
                 <span style="font-size: 16px; font-weight: 700; color: var(--accent); font-family: var(--serif); margin-top: 4px;">15,00 €</span>
               </div>
               <div style="display: flex; gap: 8px; margin-top: auto;">
-                <button type="button" onclick="selectCatalogProduct('prod-6', 'Camiseta de la tuna', 15.00, 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80', 'Camiseta 100% algodón suave de alta densidad con serigrafía del escudo de Derecho en el pecho y lema de la tuna en la espalda.', 'S|M|L|XL')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
+                <button type="button" onclick="selectCatalogProduct('prod-6', 'Camiseta de la tuna', 15.00, '../assets/img/prod_camiseta.jpg', 'Camiseta 100% algodón suave de alta densidad con serigrafía del escudo de Derecho en el pecho y lema de la tuna en la espalda.', 'S|M|L|XL')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
                 <button type="button" onclick="addToCart('Camiseta de la tuna', 15.00)" style="font-size: 12px; font-weight: 700; background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent); padding: 7px 12px;">+ Cesta</button>
               </div>
             </article>
@@ -216,7 +219,7 @@
             <!-- Producto 7 -->
             <article class="catalog-card" data-cat="instrumentos" data-name="Cinta de colores con dedicatoria" data-price="4">
               <div class="tuna-photo-frame" style="height: 125px; border-radius: 6px;">
-                <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80" alt="Cinta de colores" loading="lazy">
+                <img src="../assets/img/prod_cintas.jpg" alt="Cinta de colores" loading="lazy">
               </div>
               <div style="display: flex; flex-direction: column; gap: 4px; flex: 1;">
                 <span style="font-size: 11px; color: var(--muted); text-transform: uppercase; font-weight: 600;">Instrumentos</span>
@@ -225,7 +228,7 @@
                 <span style="font-size: 16px; font-weight: 700; color: var(--accent); font-family: var(--serif); margin-top: 4px;">4,00 €</span>
               </div>
               <div style="display: flex; gap: 8px; margin-top: auto;">
-                <button type="button" onclick="selectCatalogProduct('prod-7', 'Cinta de colores', 4.00, 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80', 'Cinta de raso de 1 metro de longitud con orla dorada. Posibilidad de incluir dedicatoria personalizada bordada o estampada.', 'Rojo Derecho|Blanco Almería|Oro Gala|Multicolor')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
+                <button type="button" onclick="selectCatalogProduct('prod-7', 'Cinta de colores', 4.00, '../assets/img/prod_cintas.jpg', 'Cinta de raso de 1 metro de longitud con orla dorada. Posibilidad de incluir dedicatoria personalizada bordada o estampada.', 'Rojo Derecho|Blanco Almería|Oro Gala|Multicolor')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
                 <button type="button" onclick="addToCart('Cinta de colores', 4.00)" style="font-size: 12px; font-weight: 700; background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent); padding: 7px 12px;">+ Cesta</button>
               </div>
             </article>
@@ -233,7 +236,7 @@
             <!-- Producto 8 -->
             <article class="catalog-card" data-cat="musica" data-name="Cancionero impreso ilustrado" data-price="12">
               <div class="tuna-photo-frame" style="height: 125px; border-radius: 6px;">
-                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="Cancionero impreso" loading="lazy">
+                <img src="../assets/img/prod_cancionero.jpg" alt="Cancionero impreso" loading="lazy">
               </div>
               <div style="display: flex; flex-direction: column; gap: 4px; flex: 1;">
                 <span style="font-size: 11px; color: var(--muted); text-transform: uppercase; font-weight: 600;">Música</span>
@@ -242,7 +245,7 @@
                 <span style="font-size: 16px; font-weight: 700; color: var(--accent); font-family: var(--serif); margin-top: 4px;">12,00 €</span>
               </div>
               <div style="display: flex; gap: 8px; margin-top: auto;">
-                <button type="button" onclick="selectCatalogProduct('prod-8', 'Cancionero impreso ilustrado', 12.00, 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80', 'Libro encuadernado de 140 páginas con acordes, tablaturas y letras de más de 80 canciones tradicionales de tuna, boleros y pasodobles.', 'Edición Rústica|Edición Tapa Dura')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
+                <button type="button" onclick="selectCatalogProduct('prod-8', 'Cancionero impreso ilustrado', 12.00, '../assets/img/prod_cancionero.jpg', 'Libro encuadernado de 140 páginas con acordes, tablaturas y letras de más de 80 canciones tradicionales de tuna, boleros y pasodobles.', 'Edición Rústica|Edición Tapa Dura')" style="flex: 1; font-size: 12px; font-weight: 600; background: var(--soft); border: 1px solid var(--line); color: var(--ink); padding: 7px;">Ver detalle</button>
                 <button type="button" onclick="addToCart('Cancionero impreso', 12.00)" style="font-size: 12px; font-weight: 700; background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent); padding: 7px 12px;">+ Cesta</button>
               </div>
             </article>
@@ -258,7 +261,7 @@
           </div>
 
           <div class="tuna-photo-frame" style="height: 180px; border-radius: 6px;">
-            <img id="cat-detail-img" src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=600&q=80" alt="Detalle del producto">
+            <img id="cat-detail-img" src="../assets/img/prod_capa.jpg" alt="Detalle del producto">
           </div>
 
           <div>
@@ -291,7 +294,7 @@
           </div>
 
           <button type="button" onclick="addToCart(document.getElementById('cat-detail-title').textContent, parseFloat(document.getElementById('cat-detail-price').textContent))" style="font-size: 14px; font-weight: 700; background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent); padding: 12px 20px; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 2px 8px rgba(122,31,43,.25);">
-            <span>🛒</span> Añadir a la cesta
+            Añadir a la cesta
           </button>
 
           <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line-soft); padding-top: 8px;">
@@ -319,7 +322,7 @@
             Agrupación musical tradicional universitaria de la <strong>Facultad de Derecho de la Universidad de Almería</strong>. Fundada en el verano de 1993. Portadora de la alegría, la música y el buen hacer estudiantil.
           </p>
           <p style="font-size:12px; color:var(--gold);">
-            🏛 Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
+            Edificio CAE · Universidad de Almería · La Cañada de San Urbano, 04120 Almería
           </p>
         </div>
         <div class="footer-col">
@@ -345,10 +348,10 @@
         <div class="footer-col">
           <h4>Contacto Oficial</h4>
           <p>
-            📞 <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
-            ✉️ <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
-            📸 <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
-            🎵 <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
+            <strong>Teléfono:</strong> <a href="tel:685995510" style="color:#fff;">685 99 55 10</a><br>
+            <strong>Email:</strong> <a href="mailto:tunaderechoalmeria@hotmail.es" style="color:#eed793;">tunaderechoalmeria@hotmail.es</a><br>
+            <strong>Instagram:</strong> <a href="https://instagram.com/tunaderechoalmeria" target="_blank" style="color:#eed793;">@tunaderechoalmeria</a><br>
+            <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCAYXgNyTwe-L2edchU-Ee0A" target="_blank" style="color:#eed793;">Tuna Derecho Almería</a>
           </p>
         </div>
       </div>
