@@ -613,7 +613,7 @@ img {
    ========================================================================== */
 #toast-container {
   position: fixed;
-  bottom: 24px;
+  bottom: 100px; /* por encima del botón flotante de contacto */
   right: 24px;
   z-index: 9999;
   display: flex;
@@ -905,31 +905,82 @@ img {
 
 /* ==========================================================================
    WIDGET FLOTANTE DE CONTACTO RÁPIDO (CONTACTA A LA TUNA)
-   Diseño noble, amplio margen interno, máxima elegancia y sin solapamiento
+   Botón redondo a la derecha que se despliega hacia la izquierda
+   (hover con ratón, foco con teclado, toque en pantallas táctiles)
    ========================================================================== */
 .floating-tuna-contact {
   position: fixed;
   bottom: 26px;
-  left: 26px;
+  right: 26px;
   z-index: 9995;
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
-  gap: 16px;
-  padding: 10px 20px 10px 18px;
+  max-width: calc(100vw - 52px);
   background: rgba(18, 5, 8, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1.5px solid rgba(197, 155, 63, 0.65);
   border-radius: 999px;
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(122, 31, 43, 0.35);
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease;
+  transition: box-shadow 0.22s ease;
   user-select: none;
 }
 
 .floating-tuna-contact:hover {
-  transform: translateY(-2px);
   box-shadow: 0 16px 42px rgba(0, 0, 0, 0.55), 0 4px 14px rgba(197, 155, 63, 0.4);
   border-color: rgba(197, 155, 63, 0.9);
+}
+
+.floating-tuna-contact .floating-contact-toggle {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--gold-light);
+}
+
+.floating-tuna-contact .floating-contact-toggle:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: -4px;
+}
+
+.floating-tuna-contact .floating-contact-panel {
+  min-width: 0;
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: max-width 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, visibility 0.3s;
+}
+
+.floating-tuna-contact.is-open .floating-contact-panel,
+.floating-tuna-contact:has(:focus-visible) .floating-contact-panel {
+  max-width: 420px;
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (hover: hover) {
+  .floating-tuna-contact:hover .floating-contact-panel {
+    max-width: 420px;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.floating-tuna-contact .floating-contact-panel-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: max-content;
+  padding: 8px 4px 8px 22px;
 }
 
 .floating-tuna-contact .contact-badge-label {
@@ -1011,9 +1062,16 @@ img {
 @media (max-width: 680px) {
   .floating-tuna-contact {
     bottom: 16px;
-    left: 14px;
-    padding: 8px 14px;
+    right: 14px;
+    max-width: calc(100vw - 28px);
+  }
+  .floating-tuna-contact .floating-contact-toggle {
+    width: 48px;
+    height: 48px;
+  }
+  .floating-tuna-contact .floating-contact-panel-inner {
     gap: 10px;
+    padding: 6px 2px 6px 16px;
   }
   .floating-tuna-contact .contact-badge-label a.phone-num {
     font-size: 13px;
@@ -1024,6 +1082,31 @@ img {
   .floating-tuna-contact a.floating-btn-icon {
     width: 32px;
     height: 32px;
+  }
+}
+
+/* Móviles muy estrechos: el panel debe caber entero junto al botón */
+@media (max-width: 380px) {
+  .floating-tuna-contact .floating-contact-panel-inner {
+    gap: 8px;
+    padding-left: 12px;
+  }
+  .floating-tuna-contact .floating-sep {
+    display: none;
+  }
+  .floating-tuna-contact .contact-badge-label {
+    margin-right: 0;
+  }
+  .floating-tuna-contact .contact-badge-label span.sub {
+    font-size: 8px;
+    letter-spacing: 0.02em;
+  }
+  .floating-tuna-contact .floating-icons-group {
+    gap: 5px;
+  }
+  .floating-tuna-contact a.floating-btn-icon {
+    width: 30px;
+    height: 30px;
   }
 }
 
@@ -1163,16 +1246,220 @@ img {
 .tuna-photo-frame img { object-position: center 35%; }
 .tuna-photo-frame[style*="aspect-ratio"] { height: auto; }
 
-/* Cabecera de admin: 7 apartados con icono. Se compacta y, si no cabe, el menú pasa a una segunda fila */
-.site-header--admin .site-logo { flex-shrink: 0; }
-@media (max-width: 1500px) {
-  .site-header--admin { padding: 0 20px; gap: 16px; }
-  .site-header--admin .site-nav { gap: 12px; font-size: 12.5px; }
-  .site-header--admin .nav-icon { width: 18px; height: 18px; }
-  .site-header--admin .site-nav a { gap: 4px; }
+/* ==========================================================================
+   PANEL DE ADMINISTRACIÓN: LA NAVEGACIÓN ES SOLO EL MENÚ LATERAL
+   ========================================================================== */
+.main-content--admin {
+  max-width: none;
+  padding: 0;
 }
-@media (min-width: 769px) and (max-width: 1300px) {
-  .site-header--admin { height: auto; padding: 10px 20px 6px; flex-wrap: wrap; justify-content: space-between; row-gap: 6px; }
-  .site-header--admin .site-nav { order: 3; width: 100%; }
-  .site-header--admin .header-actions { margin-left: 0; }
+
+.admin-layout {
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  background: #efe7da; /* fondo propio del panel, algo más oscuro que el de la web */
+}
+
+.admin-layout > main {
+  max-width: 1200px;
+  overflow-x: auto; /* las tablas anchas se desplazan en vez de quedar recortadas */
+}
+
+.admin-sidebar {
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  flex: none;
+  width: 264px;
+  height: 100vh;
+  background: var(--card);
+  border-right: 1px solid var(--line);
+}
+
+.admin-sidebar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex: none;
+  padding: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.admin-sidebar-logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.admin-sidebar-logo img {
+  display: block;
+  height: 48px;
+}
+
+.admin-sidebar-toggle {
+  display: none;
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.admin-sidebar-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  gap: 16px;
+  padding: 16px 12px;
+  overflow-y: auto;
+}
+
+.admin-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admin-menu-link,
+.admin-menu-section > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 11px 14px;
+  font-size: 13px;
+  color: var(--ink);
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.admin-menu-link:hover,
+.admin-menu-section > summary:hover,
+.admin-submenu a:hover {
+  background: var(--soft);
+}
+
+.admin-menu-link.is-active,
+.admin-menu-link.is-active:hover,
+.admin-menu-section.is-active > summary,
+.admin-menu-section.is-active > summary:hover {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* Marcador propio: flecha que gira al abrir la sección */
+.admin-menu-section > summary {
+  list-style: none;
+}
+
+.admin-menu-section > summary::-webkit-details-marker {
+  display: none;
+}
+
+.admin-menu-section > summary::after {
+  content: '';
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 0.15s ease;
+}
+
+.admin-menu-section[open] > summary::after {
+  transform: rotate(45deg);
+}
+
+.admin-submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 4px 0 6px 14px;
+  padding-left: 8px;
+  border-left: 2px solid var(--line);
+}
+
+.admin-submenu a {
+  padding: 8px 10px;
+  font-size: 12.5px;
+  color: var(--ink);
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.admin-submenu a.is-active {
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--soft);
+}
+
+.admin-sidebar-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.admin-sidebar-actions a {
+  padding: 9px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+}
+
+.admin-sidebar-actions a:hover {
+  background: var(--soft);
+}
+
+/* En móvil el menú se pliega bajo una barra fija para no empujar el contenido */
+@media (max-width: 768px) {
+  .admin-layout {
+    flex-direction: column;
+  }
+  .admin-layout > main {
+    flex: 1 0 auto !important;
+    max-width: none;
+    padding: 16px !important;
+  }
+  .admin-sidebar {
+    align-self: stretch;
+    width: 100%;
+    height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .admin-sidebar-top {
+    padding: 8px 16px;
+    border-bottom: 0;
+  }
+  .admin-sidebar-toggle {
+    display: block;
+  }
+  .admin-sidebar-body {
+    display: none;
+    max-height: calc(100vh - 66px);
+    border-top: 1px solid var(--line);
+  }
+  .admin-sidebar.is-open .admin-sidebar-body {
+    display: flex;
+  }
 }

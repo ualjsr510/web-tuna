@@ -108,6 +108,72 @@ const TunaApp = {
     }
   },
 
+  // Menú lateral de administración: única navegación del panel
+  renderAdminSidebar() {
+    const sidebar = document.querySelector('.admin-sidebar');
+    if (!sidebar) return;
+
+    const MENU = [
+      { label: 'Panel de estadísticas', href: 'index.html' },
+      { label: 'Contratos', href: 'Contratos.html', pages: ['ContratoDetalle.html'] },
+      { label: 'Cartera de clientes', href: 'Clientes.html', pages: ['FichaCliente.html', 'ContratosCliente.html', 'PedidosCliente.html'] },
+      { label: 'Pedidos de la tienda', href: 'Pedidos.html', pages: ['PedidoDetalle.html'] },
+      { label: 'Productos de la tienda', pages: ['Productos.html'], options: [
+        { label: 'Añadir producto', href: 'ProductoNuevo.html' },
+        { label: 'Modificar o eliminar producto', href: 'ProductosGestion.html' }
+      ] },
+      { label: 'Lista de miembros', pages: ['Miembros.html'], options: [
+        { label: 'Añadir nuevos miembros', href: 'MiembroNuevo.html' },
+        { label: 'Modificar o eliminar miembro', href: 'MiembrosGestion.html' }
+      ] },
+      { label: 'Cuenta', pages: ['Cuenta.html'], options: [
+        { label: 'Modificar información personal', href: 'CuentaDatos.html' },
+        { label: 'Cambiar contraseña', href: 'CuentaPassword.html' }
+      ] },
+      { label: 'Certámenes', pages: ['Certamenes.html'], options: [
+        { label: 'Crear nuevo certamen', href: 'CertamenNuevo.html' },
+        { label: 'Modificar o eliminar certamen', href: 'CertamenesGestion.html' }
+      ] }
+    ];
+
+    const current = window.location.pathname.split('/').pop() || 'index.html';
+    const items = MENU.map((item) => {
+      if (!item.options) {
+        const active = item.href === current || (item.pages || []).includes(current);
+        return `<a href="${item.href}" class="admin-menu-link${active ? ' is-active' : ''}"${active ? ' aria-current="page"' : ''}>${item.label}</a>`;
+      }
+      const inSection = item.pages.includes(current) || item.options.some((o) => o.href === current);
+      const links = item.options.map((o) =>
+        `<a href="${o.href}"${o.href === current ? ' class="is-active" aria-current="page"' : ''}>${o.label}</a>`
+      ).join('');
+      return `<details class="admin-menu-section${inSection ? ' is-active' : ''}" name="admin-menu"${inSection ? ' open' : ''}>
+        <summary>${item.label}</summary>
+        <div class="admin-submenu">${links}</div>
+      </details>`;
+    }).join('');
+
+    sidebar.innerHTML = `
+      <div class="admin-sidebar-top">
+        <a href="index.html" class="admin-sidebar-logo">
+          <img src="../assets/img/logo_corporativo.svg" alt="Tuna de Derecho Almería Logo">
+        </a>
+        <button type="button" class="admin-sidebar-toggle" aria-expanded="false">Menú</button>
+      </div>
+      <div class="admin-sidebar-body">
+        <nav class="admin-menu">${items}</nav>
+        <div class="admin-sidebar-actions">
+          <a href="../visitante/index.html">Ver web</a>
+          <a href="../visitante/index.html" onclick="TunaApp.logout()">Cerrar sesión</a>
+        </div>
+      </div>
+    `;
+
+    const toggle = sidebar.querySelector('.admin-sidebar-toggle');
+    toggle.addEventListener('click', () => {
+      toggle.setAttribute('aria-expanded', sidebar.classList.toggle('is-open'));
+    });
+  },
+
   // Botón flotante interactivo de máxima elegancia (Contacta a la tuna)
   renderFloatingContact() {
     if (document.querySelector('.floating-tuna-contact')) return;
@@ -120,6 +186,12 @@ const TunaApp = {
     widget.className = 'floating-tuna-contact';
     widget.setAttribute('aria-label', 'Contacta a la tuna');
     widget.innerHTML = `
+      <button type="button" class="floating-contact-toggle" aria-label="Mostrar opciones de contacto" title="Contacta a la tuna">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+      </button>
+      <div class="floating-contact-panel"><div class="floating-contact-panel-inner">
       <div class="contact-badge-label">
         <span class="sub">Contacta a la tuna</span>
         <a href="tel:685995510" class="phone-num" title="Llamar directamente a la Tuna">📞 685 99 55 10</a>
@@ -142,8 +214,22 @@ const TunaApp = {
           </svg>
         </a>
       </div>
+      </div></div>
     `;
     document.body.appendChild(widget);
+
+    // En pantallas táctiles no hay hover: se abre y se cierra con un toque
+    const toggle = widget.querySelector('.floating-contact-toggle');
+    const setOpen = (open) => {
+      widget.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', open);
+    };
+    toggle.addEventListener('click', () => {
+      if (window.matchMedia('(hover: none)').matches) setOpen(!widget.classList.contains('is-open'));
+    });
+    document.addEventListener('click', (e) => {
+      if (!widget.contains(e.target)) setOpen(false);
+    });
   }
 };
 
@@ -163,7 +249,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 2. Actualizar estado de autenticación en cabecera
   TunaApp.updateHeaderAuth();
-  
+  TunaApp.renderAdminSidebar();
+
   // 3. Renderizar botón flotante elegante de contacto (Contacta a la tuna)
   TunaApp.renderFloatingContact();
   
