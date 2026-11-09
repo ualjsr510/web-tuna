@@ -902,6 +902,76 @@ html, body {
 }
 
 /* ==========================================================================
+   DESPLEGABLES DEL MENÚ DE LA CABECERA
+   Solo con ratón o teclado: en táctil los enlaces llevan a la página de la sección
+   ========================================================================== */
+.nav-dropdown {
+  position: relative;
+  display: inline-flex;
+}
+
+.nav-dropdown-menu {
+  display: none;
+}
+
+@media (hover: hover) and (min-width: 769px) {
+  .nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 18px);
+    left: -10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 190px;
+    padding: 8px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--gold);
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 12px 28px rgba(28, 20, 23, 0.16);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+  }
+
+  /* Puente invisible para que el menú no se cierre al bajar el ratón */
+  .nav-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -22px;
+    height: 22px;
+  }
+
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:has(:focus-visible) .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .wireframe > header nav .nav-dropdown-menu a,
+  .wireframe > header nav .nav-dropdown-menu a:hover {
+    display: block;
+    padding: 9px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    white-space: nowrap;
+    border-radius: 5px;
+  }
+
+  .wireframe > header nav .nav-dropdown-menu a:hover,
+  .wireframe > header nav .nav-dropdown-menu a:focus-visible {
+    color: var(--accent) !important;
+    background: var(--soft);
+  }
+}
+
+/* ==========================================================================
    PANEL DE ADMINISTRACIÓN: LA NAVEGACIÓN ES SOLO EL MENÚ LATERAL
    ========================================================================== */
 .admin-layout {
@@ -1370,70 +1440,6 @@ html, body {
               <button type="button" onclick="addToCart('Sudadera Derecho Almería', 28.00)" style="font-size: 12px; font-weight: 600; background: var(--soft); color: var(--accent); border: 1px solid var(--line); padding: 6px 12px; border-radius: 4px;">Añadir</button>
             </div>
           </div>
-        </div>
-      </section>
-
-      <!-- LAS 6 SECCIONES OFICIALES DEL ÁRBOL DE CONTENIDO (NODOS 1 A 6) -->
-      <section style="display: flex; flex-direction: column; gap: 14px;">
-        <div style="border-bottom: 2px solid var(--line); padding-bottom: 8px;">
-          <span class="badge-accent">ÁRBOL DE CONTENIDOS</span>
-          <h2 style="margin: 6px 0 0; font-size: 20px;">Explora el Portal de la Tuna</h2>
-        </div>
-        <div class="responsive-grid-3" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px;">
-          <a href="#/visitante/Conoce.html" class="tuna-card" style="text-decoration: none; padding: 16px; gap: 12px;">
-            <div class="tuna-photo-frame" style="height: 135px; border-radius: 6px;">
-              <img src="https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&w=700&q=80" alt="Conoce la tuna" loading="lazy">
-              <span style="position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.7); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;">SECCIÓN 1</span>
-            </div>
-            <h3 style="margin: 0; font-size: 16px; color: var(--ink);">1 Conoce la tuna</h3>
-            <p style="margin: 0; font-size: 12.5px; color: var(--muted); line-height: 1.4;">Historia desde 1998, fundación, hitos y galería de miembros oficiales.</p>
-            <span style="font-size: 12px; font-weight: 600; color: var(--accent); margin-top: auto;">Descubrir historia →</span>
-          </a>
-          <a href="#/visitante/Contratacion.html" class="tuna-card" style="text-decoration: none; padding: 16px; gap: 12px;">
-            <div class="tuna-photo-frame" style="height: 135px; border-radius: 6px;">
-              <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=700&q=80" alt="Contratación" loading="lazy">
-              <span style="position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.7); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;">SECCIÓN 2</span>
-            </div>
-            <h3 style="margin: 0; font-size: 16px; color: var(--ink);">2 Contratación</h3>
-            <p style="margin: 0; font-size: 12.5px; color: var(--muted); line-height: 1.4;">Pide cuenta para contratar bodas, aniversarios, graduaciones y fiestas.</p>
-            <span style="font-size: 12px; font-weight: 600; color: var(--accent); margin-top: auto;">Solicitar presupuesto →</span>
-          </a>
-          <a href="#/visitante/Multimedia.html" class="tuna-card" style="text-decoration: none; padding: 16px; gap: 12px;">
-            <div class="tuna-photo-frame" style="height: 135px; border-radius: 6px;">
-              <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=700&q=80" alt="Multimedia" loading="lazy">
-              <span style="position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.7); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;">SECCIÓN 3</span>
-            </div>
-            <h3 style="margin: 0; font-size: 16px; color: var(--ink);">3 Contenido multimedia</h3>
-            <p style="margin: 0; font-size: 12.5px; color: var(--muted); line-height: 1.4;">Vídeos de actuaciones, galería de fotos históricas y certámenes premiados.</p>
-            <span style="font-size: 12px; font-weight: 600; color: var(--accent); margin-top: auto;">Ver galería y vídeos →</span>
-          </a>
-          <a href="#/visitante/Tienda.html" class="tuna-card" style="text-decoration: none; padding: 16px; gap: 12px;">
-            <div class="tuna-photo-frame" style="height: 135px; border-radius: 6px;">
-              <img src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=700&q=80" alt="Tienda" loading="lazy">
-              <span style="position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.7); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;">SECCIÓN 4</span>
-            </div>
-            <h3 style="margin: 0; font-size: 16px; color: var(--ink);">4 Tienda</h3>
-            <p style="margin: 0; font-size: 12.5px; color: var(--muted); line-height: 1.4;">Catálogo interactivo con filtros, tallas, cesta de compra y recuerdos.</p>
-            <span style="font-size: 12px; font-weight: 600; color: var(--accent); margin-top: auto;">Entrar a la tienda →</span>
-          </a>
-          <a href="#/visitante/Cancionero.html" class="tuna-card" style="text-decoration: none; padding: 16px; gap: 12px;">
-            <div class="tuna-photo-frame" style="height: 135px; border-radius: 6px;">
-              <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=700&q=80" alt="Cancionero" loading="lazy">
-              <span style="position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.7); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;">SECCIÓN 5</span>
-            </div>
-            <h3 style="margin: 0; font-size: 16px; color: var(--ink);">5 Cancionero</h3>
-            <p style="margin: 0; font-size: 12.5px; color: var(--muted); line-height: 1.4;">Repertorio completo con letras, pasodobles, boleros y enlace a Spotify.</p>
-            <span style="font-size: 12px; font-weight: 600; color: var(--accent); margin-top: auto;">Consultar letras →</span>
-          </a>
-          <a href="#/visitante/Unete.html" class="tuna-card" style="text-decoration: none; padding: 16px; gap: 12px;">
-            <div class="tuna-photo-frame" style="height: 135px; border-radius: 6px;">
-              <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=700&q=80" alt="Únete" loading="lazy">
-              <span style="position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.7); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;">SECCIÓN 6</span>
-            </div>
-            <h3 style="margin: 0; font-size: 16px; color: var(--ink);">6 Únete a nosotros</h3>
-            <p style="margin: 0; font-size: 12.5px; color: var(--muted); line-height: 1.4;">Formulario de aspirantes, horarios de ensayo y mapa del local en la UAL.</p>
-            <span style="font-size: 12px; font-weight: 600; color: var(--accent); margin-top: auto;">Inscribirse como novato →</span>
-          </a>
         </div>
       </section>
 
@@ -4453,6 +4459,35 @@ function toast(t) {
 window.addEventListener('hashchange', render);
 window.addEventListener('DOMContentLoaded', renderFloatingContact);
 window.addEventListener('DOMContentLoaded', renderAdminSidebars);
+window.addEventListener('DOMContentLoaded', renderNavDropdowns);
+
+// Desplegables del menú de la cabecera (visitante). En pantallas táctiles los enlaces siguen llevando a su sección
+function renderNavDropdowns() {
+  const SUBMENUS = {
+    'Conoce.html': [['Historia', 'Historia.html'], ['Miembros', 'Miembros.html']],
+    'Contratacion.html': [['Contratar', 'AccesoContratacion.html'], ['Escúchanos en Spotify', 'Spotify.html']],
+    'Multimedia.html': [['Vídeos', 'Videos.html'], ['Fotos', 'Fotos.html'], ['Certámenes', 'Certamenes.html']],
+    'Tienda.html': [['Catálogo', 'Catalogo.html'], ['Cesta de la compra', 'Cesta.html']],
+    'Cancionero.html': [['Nuestro repertorio de canciones', 'Repertorio.html'], ['Escúchanos en Spotify', 'Spotify.html']],
+    'Unete.html': [['Formulario para unirse', 'Formulario.html'], ['Local de ensayo', 'LocalEnsayo.html']]
+  };
+
+  $$('.wireframe > header nav > a').forEach((link) => {
+    const href = link.getAttribute('href');
+    const file = href.split('/').pop();
+    const options = SUBMENUS[file];
+    if (!options) return;
+
+    const base = href.slice(0, -file.length);
+    const wrapper = document.createElement('div');
+    wrapper.className = 'nav-dropdown';
+    link.replaceWith(wrapper);
+    wrapper.appendChild(link);
+    wrapper.insertAdjacentHTML('beforeend', `<div class="nav-dropdown-menu">${
+      options.map(([label, target]) => `<a href="${base}${target}">${label}</a>`).join('')
+    }</div>`);
+  });
+}
 
 // Menú lateral de administración: única navegación del panel (una copia por pantalla)
 function renderAdminSidebars() {

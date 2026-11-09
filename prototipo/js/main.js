@@ -5,6 +5,84 @@
  */
 
 const TunaApp = {
+  // Utilidades para pintar datos en las áreas de cliente y administración
+  format: {
+    // Los datos vienen de formularios: se escapan antes de insertarlos en la página
+    esc(value) {
+      return String(value ?? '').replace(/[&<>"']/g, (c) => (
+        { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+      ));
+    },
+    parseDay(iso) {
+      return new Date(`${iso}T00:00:00`);
+    },
+    date(iso) {
+      const day = this.parseDay(iso);
+      return Number.isNaN(day.getTime()) ? String(iso ?? '') : day.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    },
+    longDate(iso) {
+      const day = this.parseDay(iso);
+      return Number.isNaN(day.getTime()) ? String(iso ?? '') : day.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+    },
+    money(amount) {
+      return `${Number(amount || 0).toFixed(2).replace('.', ',')} €`;
+    },
+    badge(status, classes) {
+      return `<span class="badge ${classes[status] || 'badge-info'}">${this.esc(status)}</span>`;
+    },
+    contractBadge(status) {
+      return this.badge(status, { Confirmado: 'badge-ok', Pendiente: 'badge-warn', Rechazado: 'badge-bad', Realizado: 'badge-info' });
+    },
+    orderBadge(status) {
+      return this.badge(status, {
+        Pendiente: 'badge-warn',
+        'En preparación': 'badge-warn',
+        Enviado: 'badge-info',
+        Entregado: 'badge-ok',
+        'Devolución solicitada': 'badge-bad',
+        Devuelto: 'badge-bad'
+      });
+    },
+    queryId() {
+      return new URLSearchParams(window.location.search).get('id');
+    },
+    fill(values) {
+      Object.entries(values).forEach(([field, value]) => {
+        const element = document.querySelector(`[data-field="${field}"]`);
+        if (element) element.textContent = value ?? '';
+      });
+    },
+    setCount(elementId, count, singular, plural) {
+      const element = document.getElementById(elementId);
+      if (element) element.textContent = `${count} ${count === 1 ? singular : plural}`;
+    },
+    emptyRow(columns, message) {
+      return `<tr><td colspan="${columns}" class="db-empty">${message}</td></tr>`;
+    },
+    orderItemRows(order) {
+      const items = (order.items || []).map((item) => `
+        <tr>
+          <td>${this.esc(item.name)}${item.size && item.size !== 'Estándar' ? ` (${this.esc(item.size)})` : ''}</td>
+          <td>${this.esc(item.qty)}</td>
+          <td>${this.money(item.price)}</td>
+          <td>${this.money(item.price * item.qty)}</td>
+        </tr>
+      `).join('');
+      const shipping = order.shipping ? `<tr><td>Gastos de envío</td><td></td><td></td><td>${this.money(order.shipping)}</td></tr>` : '';
+      return `${items}${shipping}<tr><td><strong>Total</strong></td><td></td><td></td><td><strong>${this.money(order.total)}</strong></td></tr>`;
+    },
+    // Sustituye la página por un aviso cuando el registro de la URL no existe o no es accesible
+    notFound(title, message, backHref, backLabel) {
+      document.querySelector('main').innerHTML = `
+        <div>
+          <h1 style="margin: 0; font-size: 26px">${this.esc(title)}</h1>
+          <p class="client-card-text" style="margin-top: 6px">${this.esc(message)}</p>
+        </div>
+        <div><a href="${backHref}" class="btn btn-outline client-card-link">${this.esc(backLabel)}</a></div>
+      `;
+    }
+  },
+
   // Sincronizar estado de sesión en la cabecera
   updateHeaderAuth() {
     const user = TunaDB.auth.getCurrentUser();
@@ -32,23 +110,27 @@ const TunaApp = {
         headerActions.appendChild(userBox);
       }
 
+      // Las páginas de cliente ya traen su propio "Cerrar sesión" en la cabecera
+      const hasOwnLogout = headerActions.querySelector('[onclick="TunaApp.logout()"]');
+      const logoutButton = hasOwnLogout ? '' : `
+          <button type="button" onclick="TunaDB.auth.logout()" class="btn btn-outline" style="font-size: 12px; padding: 6px 10px; color: var(--muted);" title="Cerrar sesión">
+            Cerrar sesión
+          </button>
+      `;
+
       if (user.rol === 'admin') {
         userBox.innerHTML = `
           <a href="${pathPrefix}admin/index.html" class="btn btn-outline" style="font-size: 12.5px; padding: 6px 12px; border-color: var(--gold); color: var(--gold-dark); font-weight: 700;">
             Panel Admin
           </a>
-          <button type="button" onclick="TunaDB.auth.logout()" class="btn btn-outline" style="font-size: 12px; padding: 6px 10px; color: var(--muted);" title="Cerrar sesión">
-            Cerrar sesión
-          </button>
+          ${logoutButton}
         `;
       } else {
         userBox.innerHTML = `
           <a href="${pathPrefix}cliente/index.html" class="btn btn-outline" style="font-size: 12.5px; padding: 6px 12px; font-weight: 600;" title="Ver mi cuenta">
             Hola, ${user.nombre}
           </a>
-          <button type="button" onclick="TunaDB.auth.logout()" class="btn btn-outline" style="font-size: 12px; padding: 6px 10px; color: var(--muted);" title="Cerrar sesión">
-            Salir
-          </button>
+          ${logoutButton}
         `;
       }
     }
@@ -106,6 +188,35 @@ const TunaApp = {
     } else if (fallbackUrl) {
       window.location.href = fallbackUrl;
     }
+  },
+
+  // Desplegables del menú de la cabecera (visitante y cliente). En pantallas táctiles los enlaces siguen llevando a su sección
+  renderNavDropdowns() {
+    const SUBMENUS = {
+      'Cuenta.html': [['Modificar información personal', 'CuentaDatos.html'], ['Cambiar contraseña', 'CuentaPassword.html']],
+      'Conoce.html': [['Historia', 'Historia.html'], ['Miembros', 'Miembros.html']],
+      'Contratacion.html': [['Contratar', 'AccesoContratacion.html'], ['Escúchanos en Spotify', 'Spotify.html']],
+      'Multimedia.html': [['Vídeos', 'Videos.html'], ['Fotos', 'Fotos.html'], ['Certámenes', 'Certamenes.html']],
+      'Tienda.html': [['Catálogo', 'Catalogo.html'], ['Cesta de la compra', 'Cesta.html']],
+      'Cancionero.html': [['Nuestro repertorio de canciones', 'Repertorio.html'], ['Escúchanos en Spotify', 'Spotify.html']],
+      'Unete.html': [['Formulario para unirse', 'Formulario.html'], ['Local de ensayo', 'LocalEnsayo.html']]
+    };
+
+    document.querySelectorAll('.site-nav > a').forEach((link) => {
+      const href = link.getAttribute('href');
+      const file = href.split('/').pop();
+      const options = SUBMENUS[file];
+      if (!options) return;
+
+      const base = href.slice(0, -file.length); // en la portada raíz los enlaces llevan "visitante/"
+      const wrapper = document.createElement('div');
+      wrapper.className = 'nav-dropdown';
+      link.replaceWith(wrapper);
+      wrapper.appendChild(link);
+      wrapper.insertAdjacentHTML('beforeend', `<div class="nav-dropdown-menu">${
+        options.map(([label, target]) => `<a href="${base}${target}">${label}</a>`).join('')
+      }</div>`);
+    });
   },
 
   // Menú lateral de administración: única navegación del panel
@@ -249,6 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 2. Actualizar estado de autenticación en cabecera
   TunaApp.updateHeaderAuth();
+  TunaApp.renderNavDropdowns();
   TunaApp.renderAdminSidebar();
 
   // 3. Renderizar botón flotante elegante de contacto (Contacta a la tuna)

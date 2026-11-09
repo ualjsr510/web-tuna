@@ -40,17 +40,7 @@
       color: var(--ink);
       margin: 0;
     }
-    .portal-nav-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-      margin-bottom: 32px;
-    }
-    @media (max-width: 900px) {
-      .portal-nav-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
     @media (max-width: 600px) {
-      .portal-nav-grid { grid-template-columns: 1fr; }
       .home-hero-card { padding: 28px 18px; }
     }
   </style>
@@ -283,66 +273,7 @@
       </div>
     </section>
 
-    <!-- 6. SECCIONES PRINCIPALES DEL PORTAL -->
-    <section style="display: flex; flex-direction: column; gap: 14px;">
-      <div class="home-section-title">
-        <div>
-          <span class="badge-accent">EXPLORAR</span>
-          <h2>Secciones del Portal de la Tuna</h2>
-        </div>
-      </div>
-      <div class="portal-nav-grid">
-        <a href="Conoce.html" class="tuna-card tuna-card-hover" style="gap: 12px; text-decoration: none;">
-          <div class="tuna-photo-frame" style="aspect-ratio: 16 / 10; border-radius: 6px;">
-            <img src="../assets/img/tuna_oficial_grupo.jpg" alt="Conoce la tuna" loading="lazy">
-          </div>
-          <div class="portal-card-title"><img src="../assets/img/iconos/icono_conoce.png" alt="" class="portal-icon"><h3 style="margin: 0; font-size: 16px; color: var(--ink);">Conoce la tuna</h3></div>
-          <p style="margin: 0; font-size: 12.5px; color: var(--muted); line-height: 1.4;">Historia desde 1993, cuadro de honor, becas y fichas de miembros en activo.</p>
-        </a>
-
-        <a href="Contratacion.html" class="tuna-card tuna-card-hover" style="gap: 12px; text-decoration: none;">
-          <div class="tuna-photo-frame" style="aspect-ratio: 16 / 10; border-radius: 6px;">
-            <img src="../assets/img/tuna_oficial_ronda.jpg" alt="Contratación" loading="lazy">
-          </div>
-          <div class="portal-card-title"><img src="../assets/img/iconos/icono_contratacion.png" alt="" class="portal-icon"><h3 style="margin: 0; font-size: 16px; color: var(--ink);">Contratación</h3></div>
-          <p style="margin: 0; font-size: 12.5px; color: var(--muted); line-height: 1.4;">Serenatas de boda, aniversarios y actos con cálculo de presupuesto en vivo.</p>
-        </a>
-
-        <a href="Multimedia.html" class="tuna-card tuna-card-hover" style="gap: 12px; text-decoration: none;">
-          <div class="tuna-photo-frame" style="aspect-ratio: 16 / 10; border-radius: 6px;">
-            <img src="../assets/img/tuna_oficial_certamen.jpg" alt="Contenido multimedia" loading="lazy">
-          </div>
-          <div class="portal-card-title"><img src="../assets/img/iconos/icono_multimedia.png" alt="" class="portal-icon"><h3 style="margin: 0; font-size: 16px; color: var(--ink);">Contenido multimedia</h3></div>
-          <p style="margin: 0; font-size: 12.5px; color: var(--muted); line-height: 1.4;">Vídeos de certámenes, galería fotográfica ampliable y palmarés oficial.</p>
-        </a>
-
-        <a href="Tienda.html" class="tuna-card tuna-card-hover" style="gap: 12px; text-decoration: none;">
-          <div class="tuna-photo-frame" style="aspect-ratio: 16 / 10; border-radius: 6px;">
-            <img src="../assets/img/prod_capa.jpg" alt="Tienda" loading="lazy">
-          </div>
-          <div class="portal-card-title"><img src="../assets/img/iconos/icono_bolsa.png" alt="" class="portal-icon"><h3 style="margin: 0; font-size: 16px; color: var(--ink);">Tienda oficial</h3></div>
-          <p style="margin: 0; font-size: 12.5px; color: var(--muted); line-height: 1.4;">Catálogo interactivo con filtros, tallas, indumentaria y recuerdos.</p>
-        </a>
-
-        <a href="Cancionero.html" class="tuna-card tuna-card-hover" style="gap: 12px; text-decoration: none;">
-          <div class="tuna-photo-frame" style="aspect-ratio: 16 / 10; border-radius: 6px;">
-            <img src="../assets/img/prod_cd.jpg" alt="Cancionero" loading="lazy">
-          </div>
-          <div class="portal-card-title"><img src="../assets/img/iconos/icono_cancionero.png" alt="" class="portal-icon"><h3 style="margin: 0; font-size: 16px; color: var(--ink);">Cancionero</h3></div>
-          <p style="margin: 0; font-size: 12.5px; color: var(--muted); line-height: 1.4;">Repertorio lírico con reproductor musical Web Audio y letras completas.</p>
-        </a>
-
-        <a href="Unete.html" class="tuna-card tuna-card-hover" style="gap: 12px; text-decoration: none;">
-          <div class="tuna-photo-frame" style="aspect-ratio: 16 / 10; border-radius: 6px;">
-            <img src="../assets/img/tuna_oficial_ensayo.jpg" alt="Únete a nosotros" loading="lazy">
-          </div>
-          <div class="portal-card-title"><img src="../assets/img/iconos/icono_unete.png" alt="" class="portal-icon"><h3 style="margin: 0; font-size: 16px; color: var(--ink);">Únete a nosotros</h3></div>
-          <p style="margin: 0; font-size: 12.5px; color: var(--muted); line-height: 1.4;">Formulario de aspirante (Pardillos) y ubicación de nuestro local de ensayo.</p>
-        </a>
-      </div>
-    </section>
-
-    <!-- 7. BANNER FINAL DE CONTRATACIÓN Y CONTACTO DIRECTO -->
+    <!-- 6. BANNER FINAL DE CONTRATACIÓN Y CONTACTO DIRECTO -->
     <section class="tuna-card" style="background: linear-gradient(135deg, #180407 0%, #460f18 60%, #200509 100%); color: #fff; padding: 36px 40px; border: 1.5px solid var(--gold); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; box-shadow: var(--shadow-lg);">
       <div style="flex: 1; min-width: 300px;">
         <span class="badge-gold">ATENCIÓN TELEFÓNICA DIRECTA Y REDES SOCIALES</span>

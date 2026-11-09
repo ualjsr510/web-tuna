@@ -41,6 +41,32 @@ const TunaDB = {
         ciudad: 'Almería',
         cp: '04120',
         fechaRegistro: '2024-09-01'
+      },
+      {
+        id: 3,
+        email: 'carlos.ruiz@ual.es',
+        password: 'cliente123',
+        rol: 'cliente',
+        nombre: 'Carlos',
+        apellidos: 'Ruiz Sánchez',
+        telefono: '600 234 567',
+        direccion: 'Avenida de la Estación, 8',
+        ciudad: 'Almería',
+        cp: '04005',
+        fechaRegistro: '2026-02-03'
+      },
+      {
+        id: 4,
+        email: 'lucia.fernandez@ual.es',
+        password: 'cliente123',
+        rol: 'cliente',
+        nombre: 'Lucía',
+        apellidos: 'Fernández Mora',
+        telefono: '600 345 678',
+        direccion: 'Calle Murcia, 21',
+        ciudad: 'Almería',
+        cp: '04004',
+        fechaRegistro: '2026-03-20'
       }
     ];
     localStorage.setItem('tuna_db_users', JSON.stringify(users));
@@ -61,7 +87,7 @@ const TunaDB = {
         hours: 2,
         musicians: 8,
         price: 'A convenir',
-        status: 'Confirmado',
+        status: 'Realizado',
         notes: 'Recepción en cóctel y serenata bajo balcón.'
       },
       {
@@ -71,7 +97,7 @@ const TunaDB = {
         email: 'marta.gil@ual.es',
         phone: '600 123 456',
         service: 'Serenata Aniversario',
-        date: '2026-06-21',
+        date: '2027-03-20',
         time: '22:30',
         location: 'Casco Histórico Almería',
         guests: 30,
@@ -80,6 +106,40 @@ const TunaDB = {
         price: 'A convenir',
         status: 'Pendiente',
         notes: 'Ronda sorpresa.'
+      },
+      {
+        id: 'CTR-2026-03',
+        userId: 3,
+        clientName: 'Carlos Ruiz Sánchez',
+        email: 'carlos.ruiz@ual.es',
+        phone: '600 234 567',
+        service: 'Cumpleaños',
+        date: '2027-01-16',
+        time: '20:00',
+        location: 'Finca Los Olivos, Viator',
+        guests: 60,
+        hours: 1,
+        musicians: 6,
+        price: 'A convenir',
+        status: 'Confirmado',
+        notes: 'Entrada por sorpresa durante la cena.'
+      },
+      {
+        id: 'CTR-2026-04',
+        userId: 4,
+        clientName: 'Lucía Fernández Mora',
+        email: 'lucia.fernandez@ual.es',
+        phone: '600 345 678',
+        service: 'Evento de empresa',
+        date: '2027-02-12',
+        time: '19:00',
+        location: 'Auditorio Maestro Padilla, Almería',
+        guests: 150,
+        hours: 2,
+        musicians: 10,
+        price: 'A convenir',
+        status: 'Pendiente',
+        notes: ''
       }
     ];
     localStorage.setItem('tuna_db_contracts', JSON.stringify(contracts));
@@ -98,6 +158,32 @@ const TunaDB = {
         items: [
           { name: 'Capa tradicional de paño', price: 25.00, qty: 1, size: 'M' },
           { name: 'CD XXV Aniversario', price: 12.00, qty: 1, size: 'Estándar' }
+        ]
+      },
+      {
+        id: 'PED-2026-074',
+        userId: 3,
+        date: '2026-10-22',
+        subtotal: 28.00,
+        shipping: 4.50,
+        total: 32.50,
+        status: 'Enviado',
+        address: 'Avenida de la Estación, 8, 04005 Almería',
+        items: [
+          { name: "Sudadera 'Derecho Almería'", price: 28.00, qty: 1, size: 'L' }
+        ]
+      },
+      {
+        id: 'PED-2026-052',
+        userId: 4,
+        date: '2026-09-02',
+        subtotal: 25.00,
+        shipping: 0,
+        total: 25.00,
+        status: 'Entregado',
+        address: 'Calle Murcia, 21, 04004 Almería',
+        items: [
+          { name: 'Capa tradicional de paño', price: 25.00, qty: 1, size: 'S' }
         ]
       }
     ];
@@ -243,10 +329,14 @@ const TunaDB = {
       return this.getAll().filter(c => c.userId === userId);
     },
 
+    getById(id) {
+      return this.getAll().find(c => c.id === id) || null;
+    },
+
     create(data) {
       TunaDB.init();
       const list = this.getAll();
-      const currentUser = TunaDB.auth.getCurrentUser() || { id: 1, nombre: 'Marta', apellidos: 'Gil' };
+      const currentUser = TunaDB.auth.getCurrentUser() || { id: null, nombre: 'Cliente web', apellidos: '' };
       
       const newContract = {
         id: 'CTR-2026-' + Math.floor(10 + Math.random() * 90),
@@ -297,10 +387,23 @@ const TunaDB = {
       return this.getAll().filter(o => o.userId === userId);
     },
 
+    getById(id) {
+      return this.getAll().find(o => o.id === id) || null;
+    },
+
+    update(id, updates) {
+      const list = this.getAll();
+      const order = list.find(o => o.id === id);
+      if (!order) return false;
+      Object.assign(order, updates);
+      localStorage.setItem('tuna_db_orders', JSON.stringify(list));
+      return true;
+    },
+
     create(orderData) {
       TunaDB.init();
       const list = this.getAll();
-      const currentUser = TunaDB.auth.getCurrentUser() || { id: 1 };
+      const currentUser = TunaDB.auth.getCurrentUser() || { id: null };
 
       const newOrder = {
         id: 'PED-2026-' + Math.floor(100 + Math.random() * 900),
