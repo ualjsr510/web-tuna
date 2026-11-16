@@ -37,7 +37,11 @@ Portal web corporativo oficial para la **Tuna de la Facultad de Derecho de la Un
 ├── database/                  # Base de datos relacional
 │   ├── schema.sql             # Esquema DDL de 10 tablas relacionales
 │   ├── seed_data.sql          # Datos de prueba (usuarios, productos, contratos, canciones)
-│   └── tuna_almeria.db        # Base de datos SQLite compilada
+│   ├── tuna_almeria.db        # Base de datos SQLite compilada
+│   └── mysql/                 # Esquema MySQL 8 adaptado al prototipo (26 tablas, triggers, procedimientos, vistas)
+│       ├── tuna.sql           # mysql -u root -p < database/mysql/tuna.sql
+│       ├── diagrama.pdf       # Diagrama entidad-relación (también .svg y .html)
+│       └── generar_diagrama.py # Regenera el diagrama leyendo tuna.sql
 ├── mockup/                    # Mockups interactivos y diseño gráfico previo
 ├── wireframes_tuna/           # Wireframes iniciales en HTML
 ├── diagramas_tuna_png/        # Diagramas de flujo y arquitectura
